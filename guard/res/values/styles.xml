@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- text: xlarge -->
+    <style name="style_label_xlarge">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">?attr/common_text_color_dark</item>
+    </style>
+
+    <style name="style_text_xlarge">
+        <item name="android:textSize">@dimen/text_size_xlarge</item>
+        <item name="android:textColor">?attr/common_text_color</item>
+    </style>
+
+    <!-- text: large -->
+    <style name="style_label_large">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">?attr/common_text_color_dark</item>
+    </style>
+
+    <style name="style_text_large">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textColor">?attr/common_text_color</item>
+    </style>
+
+    <!-- text: medium -->
+    <style name="style_label_medium">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">?attr/common_text_color_dark</item>
+    </style>
+
+    <style name="style_text_medium">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">?attr/common_text_color</item>
+    </style>
+
+    <!-- text: small -->
+    <style name="style_label_small">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">?attr/common_text_color_dark</item>
+    </style>
+
+    <style name="style_text_small">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">?attr/common_text_color</item>
+    </style>
+
+    <!-- text: micro -->
+    <style name="style_label_micro">
+        <item name="android:textSize">@dimen/text_size_micro</item>
+        <item name="android:textColor">?attr/common_text_color_dark</item>
+    </style>
+
+    <style name="style_text_micro">
+        <item name="android:textSize">@dimen/text_size_micro</item>
+        <item name="android:textColor">?attr/common_text_color</item>
+    </style>
+
+    <!-- text: list header -->
+    <style name="style_text_list_header">
+        <item name="android:textSize">@dimen/text_size_small</item>
+        <item name="android:textColor">?attr/common_list_header_text_color</item>
+    </style>
+
+    <!-- title bar -->
+    <style name="style_title_bar_item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/title_bar_height</item>
+        <item name="android:paddingLeft">22dp</item>
+        <item name="android:paddingRight">22dp</item>
+    </style>
+
+    <style name="style_grid_item">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">#cfd8e6</item>
+    </style>
+
+    <!-- input -->
+    <style name="style_input" parent="style_text_medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/input_line_height</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/input_bg</item>
+        <item name="android:textColorHint">?attr/common_text_color_dark</item>
+    </style>
+
+    <style name="style_input2_panel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/input_line_height</item>
+        <item name="android:background">@color/common_item_bg</item>
+        <item name="android:paddingLeft">@dimen/edge_margin2</item>
+        <item name="android:paddingRight">@dimen/edge_margin2</item>
+    </style>
+
+    <style name="style_input2_label" parent="style_text_medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="style_input2" parent="style_input2_label">
+        <item name="android:background">@drawable/input_bg_no_corner</item>
+        <item name="android:textColorHint">?attr/common_text_color_dark</item>
+    </style>
+
+</resources>

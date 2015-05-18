@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="@string/personal_register" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp" >
+
+        <ImageView
+            android:id="@+id/iv_hint"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/success" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            style="@style/style_text_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/input_line_height"
+            android:layout_below="@+id/iv_hint"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:text="@string/personal_profile_label_registered" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/edge_margin"
+        android:paddingRight="@dimen/edge_margin" >
+
+        <TextView
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/line_margin"
+            android:text="@string/personal_profile_lable_input_data"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:id="@+id/name_panel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_line_height"
+            android:layout_marginTop="@dimen/line_margin"
+            android:background="@drawable/input_bg" >
+
+            <TextView
+                android:id="@+id/tv_name_label"
+                style="@style/style_label_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/personal_profile_lable_name" />
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/style_input"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tv_name_label"
+                android:background="@android:color/transparent"
+                android:hint="@string/personal_profile_hint_input_name">
+            </EditText>
+        </RelativeLayout>
+        
+        <TextView
+            android:id="@+id/tv_finish"
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_bg_blue"
+            android:gravity="center"
+            android:text="@string/finish" />
+
+        <TextView
+            style="@style/style_label_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/personal_profile_lable_select_invest_role"
+            android:visibility="gone" />
+
+        <com.pplt.ui.LineListView
+            android:id="@+id/tag_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

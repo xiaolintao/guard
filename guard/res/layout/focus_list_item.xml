@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:minHeight="65dp"
+    android:paddingLeft="10dp" >
+
+    <ImageView
+        android:id="@+id/iv_type"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/title_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_type"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/iv_type" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/style_text_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false" />
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_timestamp"
+            style="@style/style_label_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/style_label_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/title_panel"
+        android:layout_below="@+id/title_panel"
+        android:layout_marginRight="10dp"
+        android:includeFontPadding="false"
+        android:maxLines="2" />
+
+    <!-- 占位 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_alignLeft="@+id/tv_content"
+        android:layout_below="@+id/tv_content" />
+
+    <!-- 分隔线 -->
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/tv_content"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/common_divider" />
+
+</RelativeLayout>

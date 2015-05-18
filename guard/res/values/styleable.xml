@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- tab host -->
+    <declare-styleable name="TabChange">
+        <attr name="textColor" format="color"></attr>
+        <attr name="checkedTextColor" format="color"></attr>
+        <attr name="borderWidth" format="dimension"></attr>
+        <attr name="repeatClick" format="boolean"></attr>
+    </declare-styleable>
+    <!-- 五挡 -->
+    <declare-styleable name="KLine">
+        <attr name="priceColor" format="color"></attr>
+    </declare-styleable>
+    <!-- 标题栏 -->
+    <declare-styleable name="TitleBar">
+        <attr name="titleText" format="string"></attr>
+        <attr name="leftText" format="string"></attr>
+        <attr name="leftImage" format="reference"></attr>
+        <attr name="leftBg" format="reference"></attr>
+        <attr name="rightText" format="string"></attr>
+        <attr name="rightImage" format="reference"></attr>
+        <attr name="rightBg" format="reference"></attr>
+    </declare-styleable>
+    <!-- 设置 -->
+    <declare-styleable name="PreferenceItem">
+        <attr name="piStyle">
+            <flag name="single" value="0x0" />
+            <flag name="top" value="0x1" />
+            <flag name="middle" value="0x2" />
+            <flag name="bottom" value="0x3" />
+        </attr>
+        <attr name="piIcon" format="reference"></attr>
+        <attr name="piTitle" format="string"></attr>
+        <attr name="piShowArrow" format="boolean"></attr>
+    </declare-styleable>
+    <!-- 排序的head item -->
+    <declare-styleable name="SortHeadItem">
+        <attr name="drawableWidth" format="dimension" />
+        <attr name="drawableHeight" format="dimension" />
+    </declare-styleable>
+    <!-- RowListView -->
+    <declare-styleable name="RowListView">
+        <attr name="columns" format="integer" />
+        <attr name="rowHeight" format="dimension" />
+    </declare-styleable>
+
+</resources>

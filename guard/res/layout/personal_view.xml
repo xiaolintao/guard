@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="@string/personal_title" />
+
+    <RelativeLayout
+        android:id="@+id/user_panel"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="?attr/common_list_header_bg" >
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/photo_default" />
+
+        <ImageView
+            android:id="@+id/iv_photo_mark"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/photo_mark" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_label_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/iv_photo"
+            android:text="@string/personal_not_login" />
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            style="@style/Item_Right_Pic_Style"
+            android:background="@drawable/item_arrow" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            style="@style/Item_TextView_Style"
+            android:layout_toLeftOf="@id/iv_arrow"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/content_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

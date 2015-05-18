@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/edge_margin"
+    android:paddingRight="@dimen/edge_margin">
+    
+    <TextView
+        style="@style/style_label_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="left|center_vertical"
+        android:text="@string/chart_after_market" />
+    
+    <TextView
+        android:id="@+id/tv_price"
+        style="@style/style_text_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/defaultvalue" />
+    
+    <TextView
+        android:id="@+id/tv_change_amount"
+        style="@style/style_text_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/defaultvalue" />
+    
+    <TextView
+        android:id="@+id/tv_change_rate"
+        style="@style/style_text_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/defaultvalue" />
+    
+    <TextView
+        android:id="@+id/tv_timestamp"
+        style="@style/style_text_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="right|center_vertical"
+        android:text="@string/defaultvalue" />
+    
+    </LinearLayout>

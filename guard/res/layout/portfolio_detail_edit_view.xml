@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back"
+        app:rightText="@string/save"
+        app:titleText="@string/portfolio_detail_edit_title" />
+
+    <!-- 交易时间 -->
+
+    <RelativeLayout style="@style/Item_Style" >
+
+        <TextView
+            android:id="@+id/label_timestamp"
+            style="@style/Item_Left_TextView_Style"
+            android:textColor="?attr/common_text_color_dark"
+            android:text="@string/portfolio_detail_edit_timestamp" />
+
+        <TextView
+            android:id="@+id/et_timestamp"
+            style="@style/Item_Right_TextView_Style"
+            android:layout_toRightOf="@+id/label_timestamp"
+            android:enabled="false"
+            android:gravity="right" />
+
+        <!-- 分隔线 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/label_timestamp"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/common_divider" />
+    </RelativeLayout>
+
+    <!-- 交易状态 -->
+
+    <RelativeLayout
+        android:id="@+id/type_panel"
+        style="@style/Item_Style" >
+
+        <TextView
+            android:id="@+id/label_type"
+            style="@style/Item_Left_TextView_Style"
+            android:text="@string/portfolio_detail_edit_type" />
+
+        <RelativeLayout
+            android:id="@+id/type_buy_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/type_sell_panel" >
+
+            <ToggleButton
+                android:id="@+id/tb_type_buy"
+                android:layout_width="@dimen/icon_width"
+                android:layout_height="@dimen/icon_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_bg_checkbox"
+                android:clickable="false"
+                android:enabled="false"
+                android:textOff=""
+                android:textOn="" />
+
+            <TextView
+                android:id="@+id/tv_type_buy"
+                style="@style/style_label_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tb_type_buy"
+                android:text="@string/buy" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/type_sell_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/edge_margin" >
+
+            <ToggleButton
+                android:id="@+id/tb_type_sell"
+                android:layout_width="@dimen/icon_width"
+                android:layout_height="@dimen/icon_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_bg_checkbox"
+                android:clickable="false"
+                android:enabled="false"
+                android:textOff=""
+                android:textOn="" />
+
+            <TextView
+                android:id="@+id/tv_type_sell"
+                style="@style/style_label_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tb_type_sell"
+                android:text="@string/sell" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- 数量 -->
+
+    <RelativeLayout
+        style="@style/Item_Style"
+        android:layout_marginTop="@dimen/line_margin" >
+
+        <TextView
+            android:id="@+id/label_amount"
+            style="@style/Item_Left_TextView_Style"
+            android:text="@string/portfolio_detail_edit_amount" />
+
+        <EditText
+            android:id="@+id/et_amount"
+            style="@style/Item_Right_TextView_Style"
+            android:layout_toRightOf="@+id/label_amount"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:hint="@string/hint_input_amout"
+            android:inputType="number" />
+
+        <!-- 分隔线 -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/label_amount"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/common_divider" />
+    </RelativeLayout>
+
+    <!-- 价格 -->
+
+    <RelativeLayout style="@style/Item_Style" >
+
+        <TextView
+            android:id="@+id/label_price"
+            style="@style/Item_Left_TextView_Style"
+            android:text="@string/portfolio_detail_edit_price" />
+
+        <EditText
+            android:id="@+id/et_price"
+            style="@style/Item_Right_TextView_Style"
+            android:layout_toRightOf="@+id/label_price"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:hint="@string/hint_input_price"
+            android:inputType="numberDecimal" />
+    </RelativeLayout>
+
+</LinearLayout>

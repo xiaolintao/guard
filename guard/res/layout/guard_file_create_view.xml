@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_content_bg" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back"
+        app:titleText="@string/guard_file_title_create" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_bar"
+        android:layout_above="@+id/bottom_panel"
+        android:scrollbars="none"
+        app:ptrAnimationStyle="flip"
+        app:ptrMode="pullFromStart" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <!-- 选择文件 -->
+            <RelativeLayout
+                style="@style/style_input2_panel"
+                android:layout_marginTop="@dimen/common_line_spacing" >
+
+                <TextView
+                    android:id="@+id/tv_select_file"
+                    style="@style/style_input2_label"
+                    android:textSize="@dimen/text_size_large"
+                    android:layout_width="wrap_content"
+                    android:text="@string/guard_file_label_select_file" />
+            </RelativeLayout>
+
+            <!-- 打开次数 -->
+
+            <RelativeLayout
+                style="@style/style_input2_panel"
+                android:layout_marginTop="@dimen/common_line_spacing" >
+
+                <TextView
+                    android:id="@+id/label_open_times"
+                    style="@style/style_input2_label"
+                    android:layout_width="wrap_content"
+                    android:text="@string/guard_file_label_open_times" />
+
+                <EditText
+                    android:id="@+id/et_open_times"
+                    style="@style/style_input2"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/label_open_times" />
+            </RelativeLayout>
+            
+            <!-- 开始日期-->
+
+            <RelativeLayout
+                style="@style/style_input2_panel"
+                android:layout_marginTop="@dimen/common_line_spacing" >
+
+                <TextView
+                    android:id="@+id/label_begin_time"
+                    style="@style/style_input2_label"
+                    android:layout_width="wrap_content"
+                    android:text="@string/guard_file_label_begin_time2" />
+
+                <TextView
+                    android:id="@+id/tv_begin_time"
+                    style="@style/style_input2"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/label_begin_time" />
+            </RelativeLayout>
+            
+            <!-- 截止日期-->
+
+            <RelativeLayout
+                style="@style/style_input2_panel"
+                android:layout_marginTop="@dimen/common_line_spacing" >
+
+                <TextView
+                    android:id="@+id/label_end_time"
+                    style="@style/style_input2_label"
+                    android:layout_width="wrap_content"
+                    android:text="@string/guard_file_label_end_time2" />
+
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    style="@style/style_input2"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/label_end_time" />
+            </RelativeLayout>
+           
+        </LinearLayout>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    
+    <RelativeLayout
+        android:id="@+id/bottom_panel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/common_bar_bg" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent" >
+
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="@dimen/icon_width"
+                android:layout_height="@dimen/icon_height"
+                android:layout_centerVertical="true"
+                android:src="@drawable/add" />
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_add"
+                android:text="@string/add_trade"
+                android:textSize="@dimen/text_size_large" 
+                android:textColor="?attr/common_title_text_color_highlight"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

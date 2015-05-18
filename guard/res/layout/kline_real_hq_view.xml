@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ml"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/defaultvalue"
+                android:textSize="38sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/fu1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="@string/defaultvalue"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/fu2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="@string/defaultvalue"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/jinkai_panel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/jinkai"
+                        style="@style/style_label_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pricetoday" />
+
+                    <TextView
+                        android:id="@+id/jinkaiData"
+                        style="@style/style_text_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/jinkai"
+                        android:layout_below="@id/jinkai"
+                        android:text="@string/defaultvalue" />
+
+                    <TextView
+                        android:id="@+id/chengjiaoliang"
+                        style="@style/style_label_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/jinkai"
+                        android:layout_below="@id/jinkaiData"
+                        android:text="@string/volume" />
+
+                    <TextView
+                        android:id="@+id/chengjiaoliangData"
+                        style="@style/style_text_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/chengjiaoliang"
+                        android:layout_below="@id/chengjiaoliang"
+                        android:text="@string/defaultvalue" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp" >
+
+                    <TextView
+                        android:id="@+id/zuoshou"
+                        style="@style/style_label_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/prec" />
+
+                    <TextView
+                        android:id="@+id/zuoshouData"
+                        style="@style/style_text_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/zuoshou"
+                        android:layout_below="@id/zuoshou"
+                        android:text="@string/defaultvalue" />
+
+                    <TextView
+                        android:id="@+id/huanshoulv"
+                        style="@style/style_label_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/zuoshou"
+                        android:layout_below="@id/zuoshouData"
+                        android:text="@string/stockturnover" />
+
+                    <TextView
+                        android:id="@+id/huangshoulvData"
+                        style="@style/style_text_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@id/huanshoulv"
+                        android:layout_below="@id/huanshoulv"
+                        android:text="@string/defaultvalue" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="15dp" >
+
+            <TextView
+                android:id="@+id/zuigao"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/highest" />
+
+            <TextView
+                android:id="@+id/zuigaoData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/zuigao"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/zuigao"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+
+            <TextView
+                android:id="@+id/neipan"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/zuigao"
+                android:layout_below="@id/zuigao"
+                android:text="@string/neipan" />
+
+            <TextView
+                android:id="@+id/neipanData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/neipan"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/neipan"
+                android:layout_below="@id/zuigaoData"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+
+            <TextView
+                android:id="@+id/shiyinglv"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/neipan"
+                android:layout_below="@id/neipan"
+                android:text="@string/earnings" />
+
+            <TextView
+                android:id="@+id/shiyinglvData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/shiyinglv"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/shiyinglv"
+                android:layout_below="@id/neipanData"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="15dp" >
+
+            <TextView
+                android:id="@+id/zuidi"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lowest" />
+
+            <TextView
+                android:id="@+id/zuidiData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/zuidi"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/zuidi"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+
+            <TextView
+                android:id="@+id/waipan"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/zuidi"
+                android:layout_below="@id/zuidi"
+                android:text="@string/waipan" />
+
+            <TextView
+                android:id="@+id/waipanData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/waipan"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/waipan"
+                android:layout_below="@id/zuidiData"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+
+            <TextView
+                android:id="@+id/zhenfu"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/waipan"
+                android:layout_below="@id/waipan"
+                android:text="@string/amplitude" />
+
+            <TextView
+                android:id="@+id/zhenfuData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/zhenfu"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/zhenfu"
+                android:layout_below="@id/waipanData"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/chengjiaoe"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/turnover" />
+
+            <TextView
+                android:id="@+id/chengjiaoeData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/chengjiaoe"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/chengjiaoe"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+
+            <TextView
+                android:id="@+id/shizhi"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/chengjiaoe"
+                android:layout_below="@id/chengjiaoe"
+                android:text="@string/marketvalue" />
+
+            <TextView
+                android:id="@+id/shizhiData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/shizhi"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/shizhi"
+                android:layout_below="@id/chengjiaoeData"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+
+            <TextView
+                android:id="@+id/liutongshizhi"
+                style="@style/style_label_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/shizhi"
+                android:layout_below="@id/shizhi"
+                android:text="@string/tradingmarket" />
+
+            <TextView
+                android:id="@+id/liutongshizhiData"
+                style="@style/style_text_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/liutongshizhi"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/liutongshizhi"
+                android:layout_below="@id/shizhiData"
+                android:gravity="center_vertical"
+                android:text="@string/defaultvalue" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

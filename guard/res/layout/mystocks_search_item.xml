@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/list_item_height"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <include
+        android:id="@+id/stock_info_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        layout="@layout/mystocks_stock" />
+
+    <RelativeLayout
+        android:id="@+id/remove_panel"
+        android:layout_width="64dp"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_marginRight="30dp"
+        android:layout_toLeftOf="@+id/add_panel"
+        android:background="?attr/common_btn_pressed_mark" >
+
+        <TextView
+            android:id="@+id/tv_remove"
+            style="@style/style_label_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:text="@string/deleted"/>
+
+        <ImageView
+            android:id="@+id/iv_remove"
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="@dimen/icon_height"
+            android:layout_centerInParent="true"
+            android:background="@drawable/mystocks_item_remove" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/add_panel"
+        android:layout_width="64dp"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_alignParentRight="true"
+        android:background="?attr/common_btn_pressed_mark" >
+
+        <TextView
+            android:id="@+id/tv_add"
+            style="@style/style_label_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:text="@string/added" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="@dimen/icon_height"
+            android:layout_centerInParent="true"
+            android:background="@drawable/mystocks_item_add" />
+    </RelativeLayout>
+
+</RelativeLayout>

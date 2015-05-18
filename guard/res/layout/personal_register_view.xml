@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back"
+        app:titleText="@string/personal_register_phone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/edge_margin"
+        android:paddingRight="@dimen/edge_margin" >
+
+        <EditText
+            android:id="@+id/et_phone"
+            style="@style/style_input"
+            android:layout_marginTop="@dimen/line_margin"
+            android:hint="@string/personal_login_hint_phone"
+            android:inputType="phone" >
+        </EditText>
+
+        <LinearLayout
+            android:id="@+id/verify_code_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/line_margin" 
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_verify_code"
+                style="@style/style_input"
+                android:layout_width="0dp"
+                android:hint="@string/personal_login_hint_input_verifycode"
+                android:layout_weight="1">
+            </EditText>
+            
+            <TextView
+                android:id="@+id/tv_verify_code"
+                style="@style/style_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/input_line_height"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_bg_grey"
+                android:gravity="center"
+                android:text="@string/personal_register_get_verifycode" 
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_pwd"
+            style="@style/style_input"
+            android:layout_marginTop="@dimen/line_margin"
+            android:hint="@string/personal_login_hint_input_pwd"
+            android:inputType="textPassword" >
+        </EditText>
+
+        <TextView
+            android:id="@+id/tv_register"
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_bg_blue"
+            android:gravity="center"
+            android:text="@string/personal_register" />
+    </LinearLayout>
+
+</LinearLayout>

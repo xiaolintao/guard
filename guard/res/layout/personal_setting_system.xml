@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <!-- 修改密码 -->
+
+    <com.pplt.ui.PreferenceItem
+        android:id="@+id/item_change_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/preference_margin"
+        app:piStyle="single"
+        app:piTitle="@string/personal_item_change_pwd" />
+
+    <!-- 意见反馈 -->
+
+    <com.pplt.ui.PreferenceItem
+        android:id="@+id/item_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/preference_margin"
+        app:piStyle="top"
+        app:piTitle="@string/personal_item_feedback" />
+
+    <!-- 版本 -->
+
+    <com.pplt.ui.PreferenceItem
+        android:id="@+id/item_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/preference_margin"
+        app:piStyle="bottom"
+        app:piTitle="@string/personal_item_version" />
+
+    <!-- 退出登录 -->
+
+    <TextView
+        android:id="@+id/tv_logout"
+        style="@style/style_text_medium"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginBottom="@dimen/preference_margin"
+        android:layout_marginLeft="@dimen/edge_margin"
+        android:layout_marginRight="@dimen/edge_margin"
+        android:layout_marginTop="@dimen/preference_margin"
+        android:background="@drawable/btn_bg_red"
+        android:gravity="center"
+        android:text="@string/personal_logout" />
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- common: background -->
+    <attr name="common_bar_bg" format="reference|color"></attr>
+    <attr name="common_content_bg" format="reference|color"></attr>
+    <attr name="common_divider" format="reference|color"></attr>
+    
+    <!-- common: text color -->
+    <attr name="common_text_color" format="color"></attr>
+    <attr name="common_text_color_dark" format="color"></attr>
+    <attr name="common_title_text_color_light" format="color"></attr>
+    <attr name="common_title_text_color_highlight" format="color"></attr>
+    
+    <!-- common: btn pressed mark -->
+    <attr name="common_btn_pressed_mark" format="reference|color"></attr>
+    
+    <!-- common: list header -->
+    <attr name="common_list_header_bg" format="reference|color"></attr>
+    <attr name="common_list_header_text_color" format="color"></attr>
+    
+    <!-- navigation bar -->
+    <attr name="navigationbar_button_back" format="reference"></attr>
+    <attr name="navigationbar_button_search" format="reference"></attr>
+    <attr name="navigationbar_button_refresh" format="reference"></attr>
+    
+    <!-- charts -->
+    <attr name="charts_axis_color" format="color"></attr>
+    <attr name="charts_crossline_color" format="color"></attr>
+    <attr name="charts_longitude_font_color" format="color"></attr>
+    <attr name="charts_latitude_font_color" format="color"></attr>
+    
+</resources>

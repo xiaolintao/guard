@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftText="@string/edit"
+        app:titleText="@string/mystocks_title" />
+
+    <com.jty.ui.hscroll.HScrollContainer
+        android:id="@+id/hscroll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_bar"
+        android:orientation="vertical" >
+
+        <com.jty.ui.hscroll.HScrollHeadView
+            android:id="@+id/list_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_header_height" />
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@null"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:listSelector="?attr/common_btn_pressed_mark"
+            android:scrollbars="none"
+            app:ptrHeaderTextColor="?attr/common_text_color" 
+            app:ptrAnimationStyle="flip"/>
+    </com.jty.ui.hscroll.HScrollContainer>
+
+    <RelativeLayout
+        android:id="@+id/hint_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_bar" >
+
+        <RelativeLayout
+            android:id="@+id/rl_add_stock"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/border_dark" >
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="4dp"
+                android:layout_centerInParent="true"
+                android:background="#057aff" />
+
+            <ImageView
+                android:layout_width="4dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:background="#057aff" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/style_text_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_add_stock"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/mystocks_hint_no_stocks"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/share_popupwindow_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/btn_popup_background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/popup_take_photo"
+        style="@style/popup_menu_item_button"
+        android:text="@string/photo_take_photo"/>
+
+    <TextView
+        android:id="@+id/popup_from_album"
+        style="@style/popup_menu_item_button"
+        android:text="@string/photo_from_album"/>
+
+    <TextView
+        android:id="@+id/popup_cancel"
+        style="@style/popup_menu_item_cancel"/>
+
+</LinearLayout>

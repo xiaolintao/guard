@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- app -->
+    <string name="app_name">紫色密防</string>
+    <string name="press_twice_exit">再按一次退出</string>
+    <string name="place_holder">占位符</string>
+    
+    <!-- common -->
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="next">下一步</string>
+    <string name="finish">完成</string>
+    <string name="add">添加</string>
+    <string name="added">已添加</string>
+    <string name="add_successed">添加成功</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="deleted">已删除</string>
+    <string name="save">保存</string>
+    <string name="refreshed">数据刷新成功</string>
+    <string name="default_sort">默认排序</string>
+    <string name="select_all">全选</string>
+    <string name="selected">已选</string>
+    <string name="totoped">已置顶</string>
+    <string name="focused">已关注</string>
+    <string name="history">历史</string>
+    <string name="loading">正在加载&#8230;</string>
+    <string name="waiting">请稍候&#8230;</string>
+    <string name="filter">筛选</string>
+    <string name="phone">手机号码</string>
+    <string name="about">关于</string>
+    <string name="version">V%1$s</string>
+    
+    <!-- common: trade -->
+    <string name="buy">买入</string>
+    <string name="sell">卖出</string>
+    <string name="add_trade">添加交易</string>
+    
+    <!-- common: confirm & hint -->
+    <string name="confirm_delete">确定删除？</string>
+    <string name="confirm_clear">确定清除？</string>
+    <string name="confirm_change">确定修改</string>
+    <string name="confirm_sort_market_code">是否按市场及名称排序？</string>
+    <string name="hint_input_amout">请输入数量</string>
+    <string name="hint_input_price">请输入价格</string>
+    
+    <!-- common:unit -->
+    <string name="yuan">元</string>
+    <string name="percent">%</string>
+    <string name="day">天</string>
+    <string name="month">月</string>
+    <string name="second">秒</string>
+    
+    <!-- style -->
+    <string name="style_black">黑色系</string>
+    <string name="style_red">红色系</string>
+    <string name="style_blue">蓝色系</string>
+    
+     <!-- about -->
+    <string name="about_item_version">版本更新</string>
+    <string name="about_item_disclaimer">免责声明</string>
+    <string name="about_hint_version_newest">当前版本已是最新，无需更新。</string>
+    <string name="about_hint_download_newversion">最新版本%1$s，是否下载更新?</string>
+
+    <!-- chart tab -->
+    <string name="chart_tab_min">分时</string>
+    <string name="chart_tab_5d">五日</string>
+    <string name="chart_tab_day">日K</string>
+    <string name="chart_detail_tab_bidsell">五档</string>
+    <string name="chart_detail_tab_time">明细</string>
+    <string name="chart_detail_tab_price">分价</string>
+    
+    <!-- 成交量单位 -->
+    <string name="volume_format_unit">手</string>
+    <string name="volume_format_unit_miriade">万手</string>
+    <string name="volume_format_unit_tenmillion">千万手</string>
+    
+    <!-- 行情 -->
+    <string name="time">时间</string>
+    <string name="tradeamount">成交数量</string>
+    <string name="tradeprice">成交价</string>
+    <string name="buyamount">买入量</string>
+    <string name="allamount">总成交量</string>
+    <string name="pricetoday">今开</string>
+    <string name="prec">昨收</string>
+    <string name="volume">成交量</string>
+    <string name="stockturnover">换手率</string>
+    <string name="highest">最&#160;&#160;&#160;&#160;高</string>
+    <string name="neipan">内&#160;&#160;&#160;&#160;盘</string>
+    <string name="earnings">市盈率</string>
+    <string name="lowest">最&#160;&#160;&#160;&#160;低</string>
+    <string name="waipan">外&#160;&#160;&#160;&#160;盘</string>
+    <string name="amplitude">振&#160;&#160;&#160;&#160;幅</string>
+    <string name="turnover">成交额</string>
+    <string name="marketvalue">市&#160;&#160;&#160;&#160;值</string>
+    <string name="tradingmarket">流通市值</string>
+    
+    <!-- 五档 -->
+    <string name="buy1">买1</string>
+    <string name="buy2">买2</string>
+    <string name="buy3">买3</string>
+    <string name="buy4">买4</string>
+    <string name="buy5">买5</string>
+    <string name="sell1">卖1</string>
+    <string name="sell2">卖2</string>
+    <string name="sell3">卖3</string>
+    <string name="sell4">卖4</string>
+    <string name="sell5">卖5</string>
+    <string name="defaultvalue">--</string>
+    <string name="current_price">当前价(元)：%.2f</string>
+    
+    <!-- chart -->
+    <string name="chart_title_price">价格</string>
+    <string name="chart_title_volume">成交</string>
+    <string name="chart_title_time">时间</string>
+    <string name="chart_title_change">涨跌幅</string>
+    <string name="chart_title_turnover_rate">换手率</string>
+    
+    <!-- chart : OHLC -->
+    <string name="chart_ohlc_open">开盘</string>
+    <string name="chart_ohlc_close">收盘</string>
+    <string name="chart_ohlc_high">最高</string>
+    <string name="chart_ohlc_low">最低</string>
+    <string name="chart_ohlc_date">日期</string>
+    
+    <!-- chart : 盘后 -->
+    <string name="chart_after_market">盘后</string>
+    
+    <!-- main -->
+    <string name="main_tab_portfolio">自选</string>
+    <string name="main_tab_focus">关注</string>
+    <string name="main_tab_stock">选股</string>
+    <string name="main_tab_guba">股吧</string>
+    
+    <!-- 自选股 -->
+    <string name="mystocks_title">自选股</string>
+    <string name="mystocks_search">股票搜索</string>
+    <string name="mystocks_hint_refreshed">自选股数据更新成功 %1$s</string>
+    <string name="mystocks_refresh_release_label_first">释放刷新</string>
+    <string name="mystocks_refresh_release_label">释放刷新 最后更新%1$s</string>
+    
+    <!-- 自选股:编辑 -->
+    <string name="mystocks_edit_header_select">选择</string>
+    <string name="mystocks_edit_header_stock_info">名称代码</string>
+    <string name="mystocks_edit_header_totop">置顶</string>
+    <string name="mystocks_edit_header_drag">拖动</string>
+    
+    <!-- 自选股:搜索 -->
+    <string name="mystocks_search_hint_filter">股票代码/简拼</string>
+    <string name="mystocks_search_label_filter">以下为搜索结果</string>
+    <string name="mystocks_search_label_histories">以下为历史记录</string>
+    <string name="mystocks_search_label_hot_day">以下为当日热门</string>
+    <string name="mystocks_search_label_hot_month">以下为当月热门</string>
+    
+    <string name="mystocks_search_tab_histories">历史</string>
+    <string name="mystocks_search_tab_hot_day">当日热门</string>
+    <string name="mystocks_search_tab_hot_month">当月热门</string>
+    
+    <!-- 自选股:hint -->
+    <string name="mystocks_hint_no_stocks">暂无股票  点击添加</string>
+    <string name="mystocks_hint_no_selection">未选中任何股票</string>
+    
+    <!-- 个股 -->
+    <string name="market_tab_comment">发布评论</string>
+    <string name="market_tab_profit">持仓盈亏</string>
+    <string name="market_tab_remind">股价提醒</string>
+    <string name="market_tab_mystock_add">添加自选</string>
+    <string name="market_tab_mystock_delete">取消自选</string>
+    
+    <!-- 个股: remind -->
+    <string name="market_remind_up_over_price">股价涨到</string>
+    <string name="market_remind_down_blow_price">股价跌到</string>
+    <string name="market_remind_change_over">日涨跌幅度</string>
+    <string name="market_remind_continue_up_day">阶段连升</string>
+    <string name="market_remind_continue_down_day">阶段连跌</string>
+    <string name="market_remind_new_high_month">阶段新高</string>
+    <string name="market_remind_new_low_month">阶段新低</string>
+    
+    <string name="market_remind_hint_up_over_price">%1$s(%2$s) 股价涨到 %3$.2f以上</string>
+    <string name="market_remind_hint_down_blow_price">%1$s(%2$s) 股价跌到 %3$.2f以下</string>
+    <string name="market_remind_hint_change_over">%1$s(%2$s) 日涨跌幅度超过%3$.2f%%</string>
+    
+    <string name="market_remind_hint_up_over_price_range">提示：较最新价涨%1$.2f%%</string>
+    <string name="market_remind_hint_down_blow_price_range">提示：较最新价跌%1$.2f%%</string>
+    
+    <string name="market_remind_hint_wrong_up_over_price">价格有误</string>
+    <string name="market_remind_hint_wrong_down_blow_price">价格有误</string>
+    
+    <!-- 个股 -->
+    <string name="week1">周一</string>
+    <string name="week2">周二</string>
+    <string name="week3">周三</string>
+    <string name="week4">周四</string>
+    <string name="week5">周五</string>
+    
+    <!-- 个股:八周涨跌 -->
+    <string name="w8_up">上涨</string>
+    <string name="w8_down">下跌</string>
+    <string name="w8_no_change">没有涨跌/停牌</string>
+    <string name="w8_no_trade">休市/未能交易</string>
+    
+    <!-- 关注 -->
+    <string name="focus_title">关注</string>
+    <string name="focus_filter_title">关注筛选</string>
+    <string name="focus_ranking_title">关注榜</string>
+    <string name="focus_hint_no_content">现在还没有任何关注</string>
+    
+    <!-- 关注：关注榜 -->
+    <string name="focus_ranking_stock">股票关注榜</string>
+    <string name="focus_ranking_person">个人关注榜</string>
+    <string name="focus_ranking_master">股王</string>
+    
+    <!-- 关注：类型 -->
+    <string name="focus_type_post_hot">热贴</string>
+    <string name="focus_type_notice">公告</string>
+    <string name="focus_type_news">新闻</string>
+    <string name="focus_type_remind">股价提醒</string>
+    <string name="focus_type_profit">盈亏提醒</string>
+    <string name="focus_type_post">用户发帖</string>
+    <string name="focus_type_mystocks">自选增减提醒</string>
+    <string name="focus_type_share">用户分享 </string>
+    
+    <string name="focus_type_data">数据</string>
+    <string name="focus_type_post_new">新贴</string>
+    
+    <!-- 个人 -->
+    <string name="personal_title">个人中心</string>
+    <string name="personal_login">登录</string>
+    <string name="personal_logout">退出登录</string>
+    <string name="personal_register">注册</string>
+    <string name="personal_profile">个人资料</string>
+    <string name="personal_retrieve_pwd">找回密码</string>
+    <string name="personal_change_pwd">修改密码</string>
+    
+    <!-- 个人：login -->
+    <string name="personal_to_login">立即登录</string>
+    <string name="personal_not_login">未登录</string>
+    <string name="personal_forget_pwd">忘记密码?</string>
+    
+    <!-- 个人：login -->
+    <string name="personal_login_hint_account">手机/邮箱/账号</string>
+    <string name="personal_login_hint_phone">手机号码</string>
+    
+    <string name="personal_login_hint_input_phone">请输入手机号码</string>
+    <string name="personal_login_hint_input_pwd">请输入密码</string>
+    <string name="personal_login_hint_input_pwd2">请重复输入密码</string>
+    <string name="personal_login_hint_input_old_pwd">请输入旧密码</string>
+    <string name="personal_login_hint_input_new_pwd">请输入新密码</string>
+    <string name="personal_login_hint_input_new_pwd2">确认新密码</string>
+    <string name="personal_login_hint_input_verifycode">验证码</string>
+    <string name="personal_login_hint_input_pwd_not_equal">密码不一致</string>
+    <string name="personal_login_hint_wrong_pwd_three_times">密码已输错3次,请稍候再试</string>
+    
+    <!-- 个人：register -->
+    <string name="personal_register_successed">注册成功</string>
+    <string name="personal_register_get_verifycode">获取验证码</string>
+    <string name="personal_register_hint_verifycode_sended">手机验证码已发送</string>
+    <string name="personal_register_hint_time_left">剩余%1$d秒</string>
+    
+    <!-- 个人：profile -->
+    <string name="personal_profile_label_registered">恭喜您，%1$s 注册成功</string>
+    <string name="personal_profile_lable_input_data">请完善以下资料：</string>
+    <string name="personal_profile_lable_select_invest_role">选择投资角色：(最多3个)</string>
+    <string name="personal_profile_lable_name">用户昵称：</string>
+    <string name="personal_profile_hint_input_name">请输入昵称</string>
+    
+    <!-- 个人：找回密码 -->
+    <string name="personal_retrieve_pwd_verified">成功通过验证，请重设您的密码！</string>
+    <string name="personal_retrieve_pwd_changed">您的密码已修改成功，请牢记新密码。</string>
+    
+    <!-- 个人：detail  -->
+    <string name="personal_item_nick_name">昵称</string>
+    <string name="personal_item_place">居住地</string>
+    <string name="personal_item_gender">性别</string>
+    <string name="personal_item_introduction">个人简介</string>
+    
+    <!-- 个人: center item -->
+    <string name="personal_item_portfolio">持仓盈亏</string>
+    <string name="personal_item_my_focus">我的关注</string>
+    <string name="personal_item_my_fans">我的粉丝</string>
+    <string name="personal_item_my_collection">我的收藏</string>
+    <string name="personal_item_my_post">我的主贴</string>
+    <string name="personal_item_my_comment">我的评论</string>
+    
+    <!-- 个人: center hint -->
+    <string name="personal_hint_no_portfolio">现在还没有任何持仓</string>
+    <string name="personal_hint_no_collection">现在还没有任何收藏</string>
+    <string name="personal_hint_no_message">现在还没有任何消息</string>
+    
+    <!-- 个人: center item -->
+    <string name="personal_item_system_setting">系统设置</string>
+    <string name="personal_item_message_center">消息中心</string>
+    
+    
+    <!-- 个人: setting item -->
+    <string name="personal_item_push">推送设置</string>
+    <string name="personal_item_refresh_frequence">信息刷新频率</string>
+    <string name="personal_item_up_down_color">涨跌显示设置</string>
+    <string name="personal_item_switch_skin">切换皮肤</string>
+    <string name="personal_item_clear_cache">清除缓存</string>
+    <string name="personal_item_about">关于</string>
+    
+    
+    <!-- 个人： setting -->
+    <string name="personal_setting_up_color_to_red">红涨绿跌</string>
+    <string name="personal_setting_up_color_to_green">红跌绿涨</string>
+    
+    <!-- photo -->
+    <string name="photo_take_photo">拍照</string>
+    <string name="photo_from_album">从手机相册选择</string>
+    
+    <!-- 持仓 -->
+    <string name="portfolio_edit_title">持仓编辑</string>
+    <string name="portfolio_detail_title">持仓明细</string>
+    <string name="portfolio_detail_edit_title">持仓设置</string>
+    <string name="portfolio_item_today_profit">今日盈亏</string>
+    <string name="portfolio_item_total_profit">累计盈亏</string>
+    <string name="portfolio_item_amount">持仓</string>
+    <string name="portfolio_item_profit">盈亏</string>
+    
+    <!-- 持仓：明细 -->
+    <string name="portfolio_detail_amount">持股数量</string>
+    <string name="portfolio_detail_price">即时价格</string>
+    <string name="portfolio_detail_market_value">持股市值</string>
+    <string name="portfolio_detail_average_price">平均价格</string>
+    <string name="portfolio_detail_trade_detail">交易明细</string>
+    <string name="portfolio_hint_no_selection">未选中任何持仓</string>
+    
+    <!-- 持仓：编辑明细 -->
+    <string name="portfolio_detail_edit_timestamp">交易时间</string>
+    <string name="portfolio_detail_edit_type">交易状态</string>
+    <string name="portfolio_detail_edit_amount">数量(股)</string>
+    <string name="portfolio_detail_edit_price">价格(元)</string>
+    
+</resources>

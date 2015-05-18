@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- unknown -->
+    <string name="error_unknown">未知错误</string>
+
+    <!-- App -->
+    <string name="error_user_id">用户信息错误</string>
+
+    <!-- System -->
+    <!-- 10001 -->
+    <string name="error_system">系统错误</string>
+    <!-- 10002 -->
+    <string name="error_service_unavailable">服务暂停</string>
+    <!-- 10003 -->
+    <string name="error_ip_limit_resources">IP限制不能请求该资源</string>
+    <!-- 10004 -->
+    <string name="error_permisson_denied">权限错误</string>
+    <!-- 10005 -->
+    <string name="error_param">参数错误</string>
+    <!-- 10006 -->
+    <string name="error_login">未登陆</string>
+    <!-- 10007 -->
+    <string name="error_account">账号资料不完善</string>
+
+    <!-- User -->
+    <!-- 20001 -->
+    <string name="error_illegal_phone_num">手机号错误</string>
+    <!-- 20002 -->
+    <string name="error_illegal_user_name_register">注册用户名错误</string>
+    <!-- 20003 -->
+    <string name="error_password">注册密码错误</string>
+    <!-- 20004 -->
+    <string name="error_verify_code">验证码错误</string>
+    <!-- 20005 -->
+    <string name="error_send_sms_too_quick">请求发送短信太频繁</string>
+    <!-- 20006 -->
+    <string name="error_ip_limit">同一个IP在1个小时内已注册多个账号</string>
+    <!-- 20007 -->
+    <string name="error_send_sms">短信发送失败</string>
+    <!-- 20008 -->
+    <string name="error_sms_code_expire">短信验证码过期</string>
+    <!-- 20009 -->
+    <string name="error_sms_code">短信验证码错误</string>
+    <!-- 20010 -->
+    <string name="error_request_data">注册提交数据错误</string>
+    <!-- 20011 -->
+    <string name="error_insert_data">注册写入数据错误</string>
+    <!-- 20012 -->
+    <string name="error_empty_user_name">用户名不可为空</string>
+    <!-- 20013 -->
+    <string name="error_registered_user_name">用户名已被注册</string>
+    <!-- 20014 -->
+    <string name="error_illegal_user_name">非法用户名</string>
+    <!-- 20016 -->
+    <string name="error_system_user_name">系统用户名，禁止注册</string>
+    <!-- 20017 -->
+    <string name="error_phone_code">手机验证码输入错误超过3次</string>
+    <!-- 20018 -->
+    <string name="error_phone_num">提交的手机号与session中记录不符</string>
+    <!-- 20019 -->
+    <string name="error_bad_user_name">禁词用户名，禁止注册</string>
+
+    <!-- Login -->
+    <!-- 20100 -->
+    <string name="error_user_name">用户名错误</string>
+    <!-- 20101 -->
+    <string name="error_password_login">密码错误</string>
+    <!-- 20102 -->
+    <string name="error_verify_code_login">验证码错误</string>
+    <!-- 20103 -->
+    <string name="error_empty_name_or_password">账号密码不能为空</string>
+    <!-- 20104 -->
+    <string name="error_user_not_exists">用户不存在</string>
+    <!-- 20105 -->
+    <string name="error_user_locked">用户被锁定</string>
+
+    <!-- 帖子 -->
+    <!-- 20200 -->
+    <string name="error_have_fav">已经收藏过</string>
+    <!-- 20201 -->
+    <string name="error_have_no_fav">还未收藏过</string>
+    <!-- 20202 -->
+    <string name="error_have_recom">已经推荐过</string>
+    <!-- 20203 -->
+    <string name="error_postid">非法的贴子ID</string>
+    <!-- 20204 -->
+    <string name="error_post_content_too_long">贴子太长</string>
+    <!-- 20205 -->
+    <string name="error_common_to_long">帖子评论太长</string>
+    <!-- 20206 -->
+    <string name="error_post_content_empty">贴子内容为空</string>
+    <!-- 20207 -->
+    <string name="error_comment_empty">帖子评论为空</string>
+    <!-- 20208 -->
+    <string name="error_at_user_too_many">用户不能超过20</string>
+    <!-- 20209 -->
+    <string name="error_at_theme_too_mang">关联话题不能超过10</string>
+    <!-- 20210 -->
+    <string name="error_transmit_content_too_long">转发内容太长</string>
+
+    <!-- 关注 -->
+    <!-- 20300 -->
+    <string name="error_user_cannot_follow">该用户不可被关注</string>
+    <!-- 20301 -->
+    <string name="error_have_followed">已经关注过该用户</string>
+    <!-- 20302 -->
+    <string name="error_have_not_followed">还未关注过该用户</string>
+
+    <!-- 资讯管理模块 -->
+    <!-- 20400 -->
+    <string name="error_no_data_change">数据没有变更</string>
+
+    <!-- 搜索模块 -->
+    <!-- 20500 -->
+    <string name="error_param_empty">搜索关键字为空</string>
+    
+    <!-- HTTP status -->
+    <string name="status_net_error">网络错误</string>
+    <string name="status_server_error">服务端错误</string>
+    <string name="status_time_out">网络超时</string>
+
+</resources>

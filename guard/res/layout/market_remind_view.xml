@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back"
+        app:rightText="@string/save"
+        app:titleText="@string/market_tab_remind" />
+
+    <include layout="@layout/market_remind_title" />
+
+    <!-- up over price -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_up_over_price"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_up_over_price" />
+
+        <EditText
+            android:id="@+id/et_up_over_price"
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/label_up_over_price_unit"
+            android:layout_toRightOf="@+id/label_up_over_price"
+            android:background="?attr/common_bar_bg"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/label_up_over_price_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_up_over_price_on"
+            android:gravity="center"
+            android:text="@string/yuan" />
+
+        <ToggleButton
+            android:id="@+id/tb_up_over_price_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_up_over_price_hint"
+        style="@style/style_label_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:visibility="gone" />
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+    <!-- down blow price -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_down_blow_price"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_down_blow_price" />
+
+        <EditText
+            android:id="@+id/et_down_blow_price"
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/label_down_blow_price_unit"
+            android:layout_toRightOf="@+id/label_down_blow_price"
+            android:background="?attr/common_bar_bg"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/label_down_blow_price_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_down_blow_price_on"
+            android:gravity="center"
+            android:text="@string/yuan" />
+
+        <ToggleButton
+            android:id="@+id/tb_down_blow_price_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_down_blow_price_hint"
+        style="@style/style_label_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:visibility="gone" />
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+    <!-- change over -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_change_over"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_change_over" />
+
+        <EditText
+            android:id="@+id/et_change_over"
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/label_change_over_unit"
+            android:layout_toRightOf="@+id/label_change_over"
+            android:background="?attr/common_bar_bg"
+            android:gravity="center"
+            android:inputType="numberDecimal"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/label_change_over_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_change_over_on"
+            android:gravity="center"
+            android:text="@string/percent" />
+
+        <ToggleButton
+            android:id="@+id/tb_change_over_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_change_over_hint"
+        style="@style/style_label_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:visibility="gone" />
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+    <!-- continue up -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_continue_up_day"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_continue_up_day" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/tab_continue_up_day"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/label_continue_up_day_unit"
+            android:layout_toRightOf="@+id/label_continue_up_day"
+            app:borderWidth="1dp"
+            app:checkedTextColor="?attr/common_title_text_color_light"
+            app:textColor="?attr/common_text_color_dark" />
+
+        <TextView
+            android:id="@+id/label_continue_up_day_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_continue_up_day_on"
+            android:gravity="center" />
+
+        <ToggleButton
+            android:id="@+id/tb_continue_up_day_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+    <!-- continue down -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_continue_down_day"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_continue_down_day" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/tab_continue_down_day"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/label_continue_down_day_unit"
+            android:layout_toRightOf="@+id/label_continue_down_day"
+            app:borderWidth="1dp"
+            app:checkedTextColor="?attr/common_title_text_color_light"
+            app:textColor="?attr/common_text_color_dark" />
+
+        <TextView
+            android:id="@+id/label_continue_down_day_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_continue_down_day_on"
+            android:gravity="center" />
+
+        <ToggleButton
+            android:id="@+id/tb_continue_down_day_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+    <!-- new high -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_new_high_month"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_new_high_month" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/tab_new_high_month"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/label_new_high_month_unit"
+            android:layout_toRightOf="@+id/label_new_high_month"
+            app:borderWidth="1dp"
+            app:checkedTextColor="?attr/common_title_text_color_light"
+            app:textColor="?attr/common_text_color_dark" />
+
+        <TextView
+            android:id="@+id/label_new_high_month_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_new_high_month_on"
+            android:gravity="center" />
+
+        <ToggleButton
+            android:id="@+id/tb_new_high_month_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+    <!-- new low -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <TextView
+            android:id="@+id/label_new_low_month"
+            style="@style/style_label_medium"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/market_remind_new_low_month" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/tab_new_low_month"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/label_new_low_month_unit"
+            android:layout_toRightOf="@+id/label_new_low_month"
+            app:borderWidth="1dp"
+            app:checkedTextColor="?attr/common_title_text_color_light"
+            app:textColor="?attr/common_text_color_dark" />
+
+        <TextView
+            android:id="@+id/label_new_low_month_unit"
+            style="@style/style_label_medium"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/tb_new_low_month_on"
+            android:gravity="center" />
+
+        <ToggleButton
+            android:id="@+id/tb_new_low_month_on"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_switch"
+            android:textOff=""
+            android:textOn="" />
+    </RelativeLayout>
+
+    <!-- place holder -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <!-- divider -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/common_divider" />
+
+</LinearLayout>

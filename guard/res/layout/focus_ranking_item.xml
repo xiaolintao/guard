@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/list_item_height"
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
+
+    <include
+        android:id="@+id/stock_info_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        layout="@layout/mystocks_stock" />
+
+    <RelativeLayout
+        android:id="@+id/count_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/add_panel"
+        android:background="?attr/common_btn_pressed_mark" >
+        
+        <ImageView
+            android:id="@+id/iv_count"
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="@dimen/icon_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/focus_rate" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            style="@style/style_label_medium"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_count"
+            android:layout_marginLeft="4dp"
+            android:layout_centerVertical="true"
+            android:singleLine="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/add_panel"
+        android:layout_width="64dp"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_alignParentRight="true"
+        android:background="?attr/common_btn_pressed_mark" >
+
+        <ToggleButton
+            android:id="@+id/tb_add"
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="@dimen/icon_height"
+            android:layout_centerInParent="true"
+            android:background="@drawable/focus_selected_selector"
+            android:textOn=""
+            android:textOff="" />
+    </RelativeLayout>
+    
+    <!-- 分隔线 -->
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:background="?attr/common_divider" />
+
+</RelativeLayout>

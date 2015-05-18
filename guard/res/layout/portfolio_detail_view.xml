@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back"
+        app:rightText="@string/edit"
+        app:titleText="@string/portfolio_detail_title" />
+
+    <LinearLayout
+        android:id="@+id/top_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_bar"
+        android:background="@color/preference_item_bg_normal"
+        android:orientation="vertical" >
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_header_height"
+            app:checkedTextColor="?attr/common_text_color_dark"
+            app:textColor="?attr/common_text_color_dark" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_header_height"
+            app:checkedTextColor="?attr/common_text_color"
+            app:textColor="?attr/common_text_color" />
+
+        <!-- 分隔线 -->
+        <ImageView
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/edge_margin"
+            android:layout_marginRight="@dimen/edge_margin"
+            android:background="?attr/common_divider" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_header_height"
+            app:checkedTextColor="?attr/common_text_color_dark"
+            app:textColor="?attr/common_text_color_dark" />
+
+        <com.pplt.ui.TabChange
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_header_height"
+            app:checkedTextColor="?attr/common_text_color"
+            app:textColor="?attr/common_text_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_panel"
+        android:layout_marginTop="@dimen/line_margin"
+        android:background="@color/preference_item_bg_normal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_detail_label"
+            style="@style/style_label_medium"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_marginLeft="@dimen/line_margin"
+            android:gravity="center_vertical"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:text="@string/portfolio_detail_trade_detail" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/line_margin"
+            android:background="?attr/common_divider" />
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/line_margin"
+            android:cacheColorHint="@null"
+            android:divider="?attr/common_divider"
+            android:dividerHeight="1dp"
+            android:listSelector="?attr/common_btn_pressed_mark" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_panel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_bar_height"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/common_bar_bg" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="@dimen/icon_width"
+                android:layout_height="@dimen/icon_height"
+                android:layout_centerVertical="true"
+                android:src="@drawable/add" />
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/iv_add"
+                android:text="@string/add_trade"
+                android:textSize="@dimen/text_size_large" 
+                android:textColor="?attr/common_title_text_color_highlight"/>
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/edit_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/edit_panel"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

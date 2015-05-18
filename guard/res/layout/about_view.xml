@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg"
+    android:orientation="vertical" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back"
+        app:titleText="@string/about" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_text_xlarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_logo"
+            android:text="@string/app_name"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical">
+
+        <!-- 版本更新 -->
+        <com.pplt.ui.PreferenceItem
+            android:id="@+id/item_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:piStyle="top"
+            app:piTitle="@string/about_item_version" />
+
+        <!-- 免责声明 -->
+        <com.pplt.ui.PreferenceItem
+            android:id="@+id/item_disclaimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:piStyle="bottom"
+            app:piTitle="@string/about_item_disclaimer" />
+    </LinearLayout>
+
+</LinearLayout>

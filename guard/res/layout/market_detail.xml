@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/common_content_bg" >
+
+    <com.pplt.ui.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImage="?attr/navigationbar_button_back" />
+
+    <com.pplt.ui.TabChange
+        android:id="@+id/tabBottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabhost_height"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/common_bar_bg"
+        app:textColor="?attr/common_text_color_dark"
+        app:repeatClick="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tabBottom"
+        android:layout_below="@+id/title_bar"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.jty.stock.market.view.RealHQView
+                android:id="@+id/realHQInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="?attr/common_list_header_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical" >
+
+                <com.pplt.ui.TabChange
+                    android:id="@+id/tabKLineMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tabhost_height"
+                    app:borderWidth="-1dp"
+                    app:checkedTextColor="?attr/common_title_text_color_light"
+                    app:textColor="?attr/common_text_color_dark" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="5dp" >
+
+                    <LinearLayout
+                        android:id="@+id/kLineChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" />
+
+                    <TextView
+                        android:id="@+id/btnKLineChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <ProgressBar
+                        android:id="@+id/pbKLineLoading"
+                        style="?android:attr/progressBarStyleSmallTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
