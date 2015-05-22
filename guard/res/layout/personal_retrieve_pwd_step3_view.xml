@@ -37,6 +37,6 @@
         android:layout_marginRight="@dimen/edge_margin"
         android:background="@drawable/btn_bg_blue"
         android:gravity="center"
-        android:text="@string/personal_to_login" />
+        android:text="@string/login" />
 
 </LinearLayout>

@@ -20,7 +20,7 @@
 		        android:layout_marginTop="@dimen/preference_margin"
 		        app:piStyle="top" 
 		        app:piIcon="@drawable/ic_system_setting"
-		        app:piTitle="@string/personal_item_system_setting"/>
+		        app:piTitle="@string/personal_item_setting"/>
 		
 		    <!-- 微信 -->
 		    <com.pplt.ui.PreferenceItem

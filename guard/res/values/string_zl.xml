@@ -13,31 +13,10 @@
     <dimen name="edge_margin">20dp</dimen>
     <dimen name="edge_margin2">30dp</dimen>
     
-    <!-- login -->
-    <string name="login_lable_pplt">紫色密防系统</string>
-    <string name="login_other_account">其他账号登录</string>
-    
     <!-- main -->
     <string name="main_tab_gurad">密防</string>
     <string name="main_tab_contact">联系人</string>
     <string name="main_tab_me">个人</string>
-    
-    <!-- personal -->
-    <string name="personal_register2">注册>></string>
-    <string name="personal_register_phone">手机注册</string>
-    <string name="personal_item_setting">系统设置</string>
-    <string name="personal_item_weixin">推荐给微信好友</string>
-    <string name="personal_item_change_pwd">修改密码</string>
-    <string name="personal_item_feedback">意见反馈</string>
-    <string name="personal_item_version">版本</string>
-    
-    <string name="personal_hint_qq">QQ账号登录</string>
-    <string name="personal_hint_sina">新浪微博账号登录</string>
-    
-    <!-- version -->
-    <string name="version_downloading">正在下载紫色密防</string>
-    <string name="version_downloaded">紫色密防下载完成</string>
-    <string name="version_install">点击安装</string>
     
     <!-- guard file -->
     <string name="guard_file_title">密防文件</string>

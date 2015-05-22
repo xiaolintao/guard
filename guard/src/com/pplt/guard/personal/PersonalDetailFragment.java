@@ -31,12 +31,12 @@ import com.kingdom.sdk.net.http.HttpUtils;
 import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.Global;
+import com.pplt.guard.R;
 import com.pplt.guard.comm.HttpUrls;
 import com.pplt.guard.comm.ResponseCodeHelper;
 import com.pplt.guard.comm.ResponseParser;
 import com.pplt.guard.comm.entity.UserEntity;
 import com.pplt.guard.personal.pwd.ChangePwdActivity;
-import com.pplt.guard.R;
 import com.pplt.ui.PreferenceItem;
 
 /**
@@ -175,7 +175,7 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 				mPhotoIv.setImageBitmap(bmp);
 			}
 		} else {
-			mNameTv.setText(R.string.personal_not_login);
+			mNameTv.setText(R.string.personal_anonymous);
 		}
 	}
 

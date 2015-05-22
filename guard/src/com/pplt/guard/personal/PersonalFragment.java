@@ -25,8 +25,8 @@ import com.jty.util.cache.BitmapKey;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.Global;
-import com.pplt.guard.comm.entity.UserEntity;
 import com.pplt.guard.R;
+import com.pplt.guard.comm.entity.UserEntity;
 
 /**
  * 个人。
@@ -131,7 +131,7 @@ public class PersonalFragment extends Fragment {
 			// 登录按钮
 			mLoginTv.setVisibility(View.GONE);
 		} else {
-			mNameTv.setText(R.string.personal_not_login);
+			mNameTv.setText(R.string.personal_anonymous);
 
 			mLoginTv.setVisibility(View.VISIBLE);
 		}

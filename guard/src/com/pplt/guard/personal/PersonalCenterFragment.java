@@ -16,9 +16,9 @@ import com.jty.weixin.WeiXinHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.pplt.guard.Global;
 import com.pplt.guard.Jump;
+import com.pplt.guard.R;
 import com.pplt.guard.SuperScript;
 import com.pplt.guard.personal.setting.SystemSettingFragment;
-import com.pplt.guard.R;
 import com.pplt.ui.PreferenceItem;
 
 /**
@@ -119,7 +119,7 @@ public class PersonalCenterFragment extends Fragment implements OnClickListener 
 	 * 系统设置。
 	 */
 	private void setting() {
-		Jump.toFragment(getActivity(), R.string.personal_item_system_setting,
+		Jump.toFragment(getActivity(), R.string.personal_item_setting,
 				SystemSettingFragment.class.getName());
 	}
 

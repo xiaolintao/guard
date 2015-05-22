@@ -130,7 +130,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:layout_toRightOf="@+id/iv_add"
-                android:text="@string/add_trade"
+                android:text="@string/guard_file_create_file"
                 android:textSize="@dimen/text_size_large" 
                 android:textColor="?attr/common_title_text_color_highlight"/>
         </RelativeLayout>
