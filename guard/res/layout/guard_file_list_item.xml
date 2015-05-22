@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
     android:padding="@dimen/edge_margin"
-    android:background="?attr/common_btn_pressed_mark" >
+    android:background="@drawable/common_btn_pressed_mark_dark" >
 
     <TextView
         android:id="@+id/tv_filename"

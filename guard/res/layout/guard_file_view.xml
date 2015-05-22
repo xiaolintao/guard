@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_content_bg" >
+    android:background="@@color/common_content_bg" >
 
     <com.pplt.ui.TitleBar
         android:id="@+id/title_bar"
@@ -33,7 +33,7 @@
                 android:cacheColorHint="@android:color/transparent"
                 android:divider="@android:color/transparent"
                 android:dividerHeight="@dimen/common_line_spacing"
-                android:listSelector="?attr/common_btn_pressed_mark" />
+                android:listSelector="@drawable/common_btn_pressed_mark_dark" />
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 

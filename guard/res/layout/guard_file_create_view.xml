@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_content_bg" >
+    android:background="@@color/common_content_bg" >
 
     <com.pplt.ui.TitleBar
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:leftImage="?attr/navigationbar_button_back"
+        app:leftImage="@drawable/navigationbar_button_back_blue"
         app:titleText="@string/guard_file_title_create" />
 
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
@@ -108,7 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_bar_height"
         android:layout_alignParentBottom="true"
-        android:background="?attr/common_bar_bg" >
+        android:background="@color/common_bar_bg" >
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -132,7 +132,7 @@
                 android:layout_toRightOf="@+id/iv_add"
                 android:text="@string/guard_file_create_file"
                 android:textSize="@dimen/text_size_large" 
-                android:textColor="?attr/common_title_text_color_highlight"/>
+                android:textColor="@color/common_title_text_color_highlight"/>
         </RelativeLayout>
     </RelativeLayout>
 

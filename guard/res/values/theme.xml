@@ -7,33 +7,9 @@
     <style name="BaseTheme">
      -->
     <style name="BaseTheme">
-        <!-- common -->
-        <item name="common_text_color_dark">#838c93</item>
-        <!-- charts -->
-        <item name="charts_axis_color">#5a6168</item>
-        <item name="charts_crossline_color">#ffffff</item>
-        <item name="charts_longitude_font_color">#5a6168</item>
-        <item name="charts_latitude_font_color">#5a6168</item>
     </style>
 
     <style name="AppTheme" parent="BaseTheme">
-        <!-- common: background -->
-        <item name="common_bar_bg">#22272e</item>
-        <item name="common_content_bg">#12151a</item>
-        <item name="common_divider">#22272e</item>
-        <!-- common: text color -->
-        <item name="common_text_color">#ffffff</item>
-        <item name="common_title_text_color_light">#ffffff</item>
-        <item name="common_title_text_color_highlight">#057afb</item>
-        <!-- common: btn pressed mark -->
-        <item name="common_btn_pressed_mark">@drawable/common_btn_pressed_mark_dark</item>
-        <!-- common: list header -->
-        <item name="common_list_header_bg">#181b20</item>
-        <item name="common_list_header_text_color">#7e878e</item>
-        <!-- navigation bar -->
-        <item name="navigationbar_button_back">@drawable/navigationbar_button_back_blue</item>
-        <item name="navigationbar_button_search">@drawable/navigationbar_button_search_blue</item>
-        <item name="navigationbar_button_refresh">@drawable/navigationbar_button_refresh_blue</item>
     </style>
 
     

@@ -4,62 +4,62 @@
     <!-- text: xlarge -->
     <style name="style_label_xlarge">
         <item name="android:textSize">@dimen/text_size_xlarge</item>
-        <item name="android:textColor">?attr/common_text_color_dark</item>
+        <item name="android:textColor">@color/common_text_color_dark</item>
     </style>
 
     <style name="style_text_xlarge">
         <item name="android:textSize">@dimen/text_size_xlarge</item>
-        <item name="android:textColor">?attr/common_text_color</item>
+        <item name="android:textColor">@color/common_text_color</item>
     </style>
 
     <!-- text: large -->
     <style name="style_label_large">
         <item name="android:textSize">@dimen/text_size_large</item>
-        <item name="android:textColor">?attr/common_text_color_dark</item>
+        <item name="android:textColor">@color/common_text_color_dark</item>
     </style>
 
     <style name="style_text_large">
         <item name="android:textSize">@dimen/text_size_large</item>
-        <item name="android:textColor">?attr/common_text_color</item>
+        <item name="android:textColor">@color/common_text_color</item>
     </style>
 
     <!-- text: medium -->
     <style name="style_label_medium">
         <item name="android:textSize">@dimen/text_size_medium</item>
-        <item name="android:textColor">?attr/common_text_color_dark</item>
+        <item name="android:textColor">@color/common_text_color_dark</item>
     </style>
 
     <style name="style_text_medium">
         <item name="android:textSize">@dimen/text_size_medium</item>
-        <item name="android:textColor">?attr/common_text_color</item>
+        <item name="android:textColor">@color/common_text_color</item>
     </style>
 
     <!-- text: small -->
     <style name="style_label_small">
         <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:textColor">?attr/common_text_color_dark</item>
+        <item name="android:textColor">@color/common_text_color_dark</item>
     </style>
 
     <style name="style_text_small">
         <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:textColor">?attr/common_text_color</item>
+        <item name="android:textColor">@color/common_text_color</item>
     </style>
 
     <!-- text: micro -->
     <style name="style_label_micro">
         <item name="android:textSize">@dimen/text_size_micro</item>
-        <item name="android:textColor">?attr/common_text_color_dark</item>
+        <item name="android:textColor">@color/common_text_color_dark</item>
     </style>
 
     <style name="style_text_micro">
         <item name="android:textSize">@dimen/text_size_micro</item>
-        <item name="android:textColor">?attr/common_text_color</item>
+        <item name="android:textColor">@color/common_text_color</item>
     </style>
 
     <!-- text: list header -->
     <style name="style_text_list_header">
         <item name="android:textSize">@dimen/text_size_small</item>
-        <item name="android:textColor">?attr/common_list_header_text_color</item>
+        <item name="android:textColor">@color/common_text_color</item>
     </style>
 
     <!-- title bar -->
@@ -82,7 +82,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">@drawable/input_bg</item>
-        <item name="android:textColorHint">?attr/common_text_color_dark</item>
+        <item name="android:textColorHint">@color/common_text_color_dark</item>
     </style>
 
     <style name="style_input2_panel">
@@ -102,7 +102,7 @@
 
     <style name="style_input2" parent="style_input2_label">
         <item name="android:background">@drawable/input_bg_no_corner</item>
-        <item name="android:textColorHint">?attr/common_text_color_dark</item>
+        <item name="android:textColorHint">@color/common_text_color_dark</item>
     </style>
 
 </resources>

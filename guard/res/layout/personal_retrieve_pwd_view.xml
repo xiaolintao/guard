@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/common_content_bg"
+    android:background="@color/common_content_bg"
     android:orientation="vertical" >
 
     <com.pplt.ui.TitleBar
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:leftImage="?attr/navigationbar_button_back"
+        app:leftImage="@drawable/navigationbar_button_back_blue"
         app:titleText="@string/personal_retrieve_pwd" />
 
     <RelativeLayout

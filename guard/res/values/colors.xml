@@ -2,16 +2,26 @@
 <resources>
 
     <!-- common -->
+    <color name="common_bar_bg">#22272e</color>
+    <color name="common_content_bg">#12151a</color>
+    <color name="common_text_color">#ffffff</color>
+    <color name="common_text_color_dark">#838c93</color>
+    <color name="common_title_text_color_light">#ffffff</color>
+    <color name="common_title_text_color_highlight">#057afb</color>
+    <color name="common_list_header_bg">#181b20</color>
+    <color name="common_divider">#22272e</color>
+
+    <!-- common -->
     <color name="common_btn_mark_color_dark">#1b000000</color>
     <color name="common_btn_mark_color_light">#1bffffff</color>
     <color name="common_btn_color_blue">#0465cc</color>
-    
-    <!-- prefrence it -->
+
+    <!-- prefrence color -->
     <color name="preference_item_bg_normal">#181b20</color>
     <color name="preference_item_bg_pushed">#22262d</color>
-    
+
     <!-- TODO: button -->
     <color name="btn_bg">#ff0000</color>
     <color name="btn_bg_pressed">#df0000</color>
-    
+
 </resources>

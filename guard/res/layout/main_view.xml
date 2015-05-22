@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_bar_height"
         android:layout_alignParentBottom="true"
-        android:background="?attr/common_bar_bg"
-        app:checkedTextColor="?attr/common_title_text_color_highlight"
-        app:textColor="?attr/common_text_color_dark"
+        android:background="@color/common_bar_bg"
+        app:checkedTextColor="@color/common_title_text_color_highlight"
+        app:textColor="@color/common_text_color_dark"
         app:repeatClick="true" />
 
     <RelativeLayout
@@ -20,6 +20,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/tab_change"
-        android:background="?attr/common_content_bg" />
+        android:background="@color/common_content_bg" />
 
 </RelativeLayout>
