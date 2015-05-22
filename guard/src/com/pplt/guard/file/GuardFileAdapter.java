@@ -73,6 +73,13 @@ public class GuardFileAdapter extends BaseAdapter {
 		holder.summaryTv.setText(entity.getSummary());
 		holder.summaryTv.setText("summary");
 
+		convertView.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+			}
+		});
+
 		return convertView;
 	}
 
