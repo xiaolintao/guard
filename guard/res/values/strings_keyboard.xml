@@ -1,14 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="keyboard_number">数字</string>
-    <string name="keyboard_character">字母</string>    <string name="keyboard_clear">清空</string>
-    <string name="keyboard_hide">隐藏</string>
-    
-    <string name="keyboard_go">前往</string>
-    <string name="keyboard_search">搜索</string>
-    <string name="keyboard_next">下一个</string>
-    <string name="keyboard_send">发送</string>
-    <string name="keyboard_done">完成</string>
-
-</resources>

@@ -21,11 +21,11 @@ import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
+import com.pplt.guard.R;
 import com.pplt.guard.comm.HttpParameters;
 import com.pplt.guard.comm.HttpUrls;
 import com.pplt.guard.comm.ResponseCodeHelper;
 import com.pplt.guard.comm.ResponseParser;
-import com.pplt.guard.R;
 import com.pplt.ui.TitleBar;
 
 /**
@@ -231,8 +231,6 @@ public class RegisterActivity extends BaseActivity {
 			int uid = ResponseParser.parseInt(response, "uid", -1);
 			if (uid != -1) {
 				profile(uid);
-			} else {
-				ToastHelper.toast(this, R.string.error_user_id);
 			}
 			return;
 		}

@@ -6,7 +6,6 @@ import android.os.Environment;
 import com.jty.util.FileHelper;
 import com.jty.util.PrefHelper;
 import com.pplt.guard.comm.entity.UserEntity;
-import com.pplt.guard.R;
 
 public class Global {
 
@@ -184,8 +183,7 @@ public class Global {
 	public static void applyTheme(Context context) {
 		int style = getTheme();
 
-		int[] themes = new int[] { R.style.AppTheme, R.style.AppTheme_Red,
-				R.style.AppTheme_Blue };
+		int[] themes = new int[] { R.style.AppTheme };
 		if (style < 0 || style >= themes.length) {
 			return;
 		}

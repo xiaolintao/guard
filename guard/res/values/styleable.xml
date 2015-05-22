@@ -8,10 +8,6 @@
         <attr name="borderWidth" format="dimension"></attr>
         <attr name="repeatClick" format="boolean"></attr>
     </declare-styleable>
-    <!-- 五挡 -->
-    <declare-styleable name="KLine">
-        <attr name="priceColor" format="color"></attr>
-    </declare-styleable>
     <!-- 标题栏 -->
     <declare-styleable name="TitleBar">
         <attr name="titleText" format="string"></attr>

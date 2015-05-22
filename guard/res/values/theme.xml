@@ -36,44 +36,6 @@
         <item name="navigationbar_button_refresh">@drawable/navigationbar_button_refresh_blue</item>
     </style>
 
-    <style name="AppTheme.Red" parent="BaseTheme">
-        <!-- common: background -->
-        <item name="common_bar_bg">@color/style_color_red</item>
-        <item name="common_content_bg">#ffffff</item>
-        <item name="common_divider">@color/style_color_red</item>
-        <!-- common: text color -->
-        <item name="common_text_color">#000000</item>
-        <item name="common_title_text_color_light">#ffffff</item>
-        <item name="common_title_text_color_highlight">#ffffff</item>
-        <!-- common: btn pressed mark -->
-        <item name="common_btn_pressed_mark">@drawable/common_btn_pressed_mark_light</item>
-        <!-- common: list header -->
-        <item name="common_list_header_bg">@color/style_color_red</item>
-        <item name="common_list_header_text_color">#ffffff</item>
-        <!-- navigation bar -->
-        <item name="navigationbar_button_back">@drawable/navigationbar_button_back_white</item>
-        <item name="navigationbar_button_search">@drawable/navigationbar_button_search_white</item>
-        <item name="navigationbar_button_refresh">@drawable/navigationbar_button_refresh_white</item>
-    </style>
-
-    <style name="AppTheme.Blue" parent="BaseTheme">
-        <!-- common: background -->
-        <item name="common_bar_bg">@color/style_color_blue</item>
-        <item name="common_content_bg">#ffffff</item>
-        <item name="common_divider">@color/style_color_blue</item>
-        <!-- common: text color -->
-        <item name="common_text_color">#000000</item>
-        <item name="common_title_text_color_light">#ffffff</item>
-        <item name="common_title_text_color_highlight">#ffffff</item>
-        <!-- common: btn pressed mark -->
-        <item name="common_btn_pressed_mark">@drawable/common_btn_pressed_mark_light</item>
-        <!-- common: list header -->
-        <item name="common_list_header_bg">@color/style_color_blue</item>
-        <item name="common_list_header_text_color">#ffffff</item>
-        <!-- navigationbar -->
-        <item name="navigationbar_button_back">@drawable/navigationbar_button_back_white</item>
-        <item name="navigationbar_button_search">@drawable/navigationbar_button_search_white</item>
-        <item name="navigationbar_button_refresh">@drawable/navigationbar_button_refresh_white</item>
-    </style>
+    
 
 </resources>

@@ -1,13 +1,4 @@
 <resources>
-
-    <!-- charts -->
-    <dimen name="charts_axis_width">1dp</dimen>
-    <dimen name="charts_crossline_width">1dp</dimen>
-    <dimen name="charts_longitude_font_size">8sp</dimen>
-    <dimen name="charts_latitude_font_size">8sp</dimen>
-    <dimen name="charts_xtitle_height">15dp</dimen>
-    <dimen name="charts_ytitle_width">30dp</dimen>
-
     <!-- text size -->
     <dimen name="text_size_xlarge">24sp</dimen>
     <dimen name="text_size_large">17sp</dimen>
@@ -23,10 +14,6 @@
     <dimen name="title_bar_height">44dp</dimen>
     <dimen name="title_bar_icon_padding">11dp</dimen>
     <dimen name="bottom_bar_height">45dp</dimen>
-
-    <!-- list view -->
-    <dimen name="list_header_height">35dp</dimen>
-    <dimen name="list_item_height">45dp</dimen>
 
     <!-- tab -->
     <dimen name="tabhost_height">30.0dip</dimen>
