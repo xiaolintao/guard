@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- login -->
+    <string name="login_lable_pplt">紫色密防系统</string>
+    <string name="personal_login_hint_account">手机/邮箱/账号</string>
+    <string name="personal_login_hint_phone">手机号码</string>
+    <string name="login_other_account">其他账号登录</string>
+    <string name="login">立即登录</string>
+    
+    <!-- login&register -->
+    <string name="personal_login">登录</string>
+    <string name="personal_logout">退出登录</string>
+    <string name="personal_register">注册</string>
+    <string name="personal_register2">注册>></string>
+    <string name="personal_register_phone">手机注册</string>
+    <string name="personal_forget_pwd">忘记密码?</string>
+    <string name="personal_change_pwd">修改密码</string>
+    <string name="personal_retrieve_pwd">找回密码</string>
+    <string name="personal_anonymous">匿名</string>
+    
+    <!-- personal: login -->
+    <string name="personal_login_hint_input_phone">请输入手机号码</string>
+    <string name="personal_login_hint_input_pwd">请输入密码</string>
+    <string name="personal_login_hint_input_pwd2">请重复输入密码</string>
+    <string name="personal_login_hint_input_old_pwd">请输入旧密码</string>
+    <string name="personal_login_hint_input_new_pwd">请输入新密码</string>
+    <string name="personal_login_hint_input_new_pwd2">确认新密码</string>
+    <string name="personal_login_hint_input_verifycode">验证码</string>
+    <string name="personal_login_hint_input_pwd_not_equal">密码不一致</string>
+    <string name="personal_login_hint_wrong_pwd_three_times">密码已输错3次,请稍候再试</string>
+    
+    <!-- personal：register -->
+    <string name="personal_register_successed">注册成功</string>
+    <string name="personal_register_get_verifycode">获取验证码</string>
+    <string name="personal_register_hint_verifycode_sended">手机验证码已发送</string>
+    <string name="personal_register_hint_time_left">剩余%1$d秒</string>
+    
+    <!-- personal：找回密码 -->
+    <string name="personal_retrieve_pwd_verified">成功通过验证，请重设您的密码！</string>
+    <string name="personal_retrieve_pwd_changed">您的密码已修改成功，请牢记新密码。</string>
+    
+    <!-- personal -->
+    <string name="personal_title">个人中心</string>
+    
+    <!-- personal：detail  -->
+    <string name="personal_item_nick_name">昵称</string>
+    <string name="personal_item_place">居住地</string>
+    <string name="personal_item_gender">性别</string>
+    <string name="personal_item_introduction">个人简介</string>
+    
+    <!-- 个人：profile -->
+    <string name="personal_profile_label_registered">恭喜您，%1$s 注册成功</string>
+    <string name="personal_profile_lable_input_data">请完善以下资料：</string>
+    <string name="personal_profile_lable_select_invest_role">选择投资角色：(最多3个)</string>
+    <string name="personal_profile_lable_name">用户昵称：</string>
+    <string name="personal_profile_hint_input_name">请输入昵称</string>
+    
+    
+    <!-- personal: setting -->
+    <string name="personal_item_setting">系统设置</string>
+    <string name="personal_item_weixin">推荐给微信好友</string>
+    <string name="personal_item_change_pwd">修改密码</string>
+    <string name="personal_item_feedback">意见反馈</string>
+    <string name="personal_item_version">版本</string>
+    
+    <string name="personal_hint_qq">QQ账号登录</string>
+    <string name="personal_hint_sina">新浪微博账号登录</string>
+    
+    <!-- personal: photo -->
+    <string name="photo_take_photo">拍照</string>
+    <string name="photo_from_album">从手机相册选择</string>
+    
+    <!-- version -->
+    <string name="version_downloading">正在下载紫色密防</string>
+    <string name="version_downloaded">紫色密防下载完成</string>
+    <string name="version_install">点击安装</string>
+</resources>
