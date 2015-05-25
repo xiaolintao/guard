@@ -1,4 +1,4 @@
-package com.pplt.guard.file;
+package com.pplt.guard.contact;
 
 import java.util.List;
 
@@ -10,24 +10,24 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.pplt.guard.R;
-import com.pplt.guard.entity.GuardFile;
+import com.pplt.guard.entity.Contact;
 
 /**
- * 密防文件：adapter。
+ * 联系人：adapter。
  */
-public class GuardFileAdapter extends BaseAdapter {
+public class ContactAdapter extends BaseAdapter {
 
 	// ----------------------------------------------- Private data
 	private LayoutInflater mInflater; // layout inflater
 
-	private List<GuardFile> mData; // data
+	private List<Contact> mData; // data
 
 	// ----------------------------------------------- Constructor & Setting
-	public GuardFileAdapter(Context context) {
+	public ContactAdapter(Context context) {
 		mInflater = LayoutInflater.from(context);
 	}
 
-	public void setData(List<GuardFile> data) {
+	public void setData(List<Contact> data) {
 		mData = data;
 
 		notifyDataSetChanged();
@@ -40,7 +40,7 @@ public class GuardFileAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public GuardFile getItem(int position) {
+	public Contact getItem(int position) {
 		return position >= 0 && position <= getCount() - 1 ? mData
 				.get(position) : null;
 	}
@@ -55,8 +55,7 @@ public class GuardFileAdapter extends BaseAdapter {
 		Holder holder;
 
 		if (convertView == null) {
-			convertView = mInflater
-					.inflate(R.layout.guard_file_list_item, null);
+			convertView = mInflater.inflate(R.layout.contact_list_item, null);
 
 			holder = new Holder(convertView);
 			convertView.setTag(holder);
@@ -64,16 +63,13 @@ public class GuardFileAdapter extends BaseAdapter {
 			holder = (Holder) convertView.getTag();
 		}
 
-		GuardFile entity = getItem(position);
+		Contact entity = getItem(position);
 
-		// 文件名
-		holder.filenameTv.setText(entity.getFileName());
+		// 姓名
+		holder.nameTv.setText(entity.getName());
 
-		// 摘要
-		holder.summaryTv.setText(entity.getSummary());
-
-		// 授权
-		holder.authTv.setOnClickListener(new View.OnClickListener() {
+		// 删除
+		holder.deleteTv.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -103,18 +99,18 @@ public class GuardFileAdapter extends BaseAdapter {
 	}
 
 	class Holder {
-		TextView filenameTv; // 文件名
+		TextView nameTv; // 姓名
 
 		TextView summaryTv; // 摘要
 
-		TextView authTv; // 授权
+		TextView deleteTv; // 删除
 
 		public Holder(View convertView) {
-			filenameTv = (TextView) convertView.findViewById(R.id.tv_filename);
+			nameTv = (TextView) convertView.findViewById(R.id.tv_name);
 
 			summaryTv = (TextView) convertView.findViewById(R.id.tv_summary);
 
-			authTv = (TextView) convertView.findViewById(R.id.tv_auth);
+			deleteTv = (TextView) convertView.findViewById(R.id.tv_delete);
 		}
 	}
 

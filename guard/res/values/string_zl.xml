@@ -13,12 +13,12 @@
     <dimen name="edge_margin">20dp</dimen>
     <dimen name="edge_margin2">30dp</dimen>
     
-    <!-- main -->
-    <string name="main_tab_gurad">密防</string>
+    <!-- 主界面 -->
+    <string name="main_tab_gurad">密防文件</string>
     <string name="main_tab_contact">联系人</string>
-    <string name="main_tab_me">个人</string>
+    <string name="main_tab_me">个人中心</string>
     
-    <!-- guard file -->
+    <!-- 密防文件 -->
     <string name="guard_file_title">密防文件</string>
     <string name="guard_file_create">制作</string>
     <string name="guard_file_create_file">制作文件</string>
@@ -35,5 +35,10 @@
     <string name="guard_file_hint_input_begin_time">请选择授权开始日期</string>
     <string name="guard_file_hint_input_end_time">请选择授权截止日期</string>
     <string name="guard_file_hint_summary">文件摘要</string>
+    
+    <string name="guard_file_btn_auth">授权</string>
+    
+    <!-- 联系人 -->
+    <string name="contact_title">联系人</string>
     
 </resources>

@@ -39,7 +39,8 @@
         <activity
             android:name="com.pplt.guard.WrapperActivity"
             android:screenOrientation="portrait" />
-        <!-- personal -->
+        
+        <!-- 个人中心 -->
         <activity
             android:name="com.pplt.guard.personal.RegisterActivity"
             android:screenOrientation="portrait"/>
@@ -59,9 +60,9 @@
             android:name="com.pplt.guard.personal.setting.Disclaimer"
             android:screenOrientation="portrait" />
         
-        <!-- guard file -->
+        <!-- 密防文件 -->
         <activity
-            android:name="com.pplt.guard.file.GuardFileCreateActivity"
+            android:name="com.pplt.guard.file.GuardFileAddActivity"
             android:screenOrientation="portrait" />
         
         <!-- service -->

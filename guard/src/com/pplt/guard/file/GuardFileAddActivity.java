@@ -22,7 +22,7 @@ import com.pplt.ui.TitleBar;
  * 密防文件：制作。
  * 
  */
-public class GuardFileCreateActivity extends BaseActivity {
+public class GuardFileAddActivity extends BaseActivity {
 
 	// ---------------------------------------------------- Constants
 	/** 时间格式 */

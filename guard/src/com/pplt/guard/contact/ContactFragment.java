@@ -1,8 +1,7 @@
-package com.pplt.guard.file;
+package com.pplt.guard.contact;
 
 import java.util.List;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,15 +12,15 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.R;
-import com.pplt.guard.entity.GuardFile;
-import com.pplt.guard.entity.GuardFileDataHelper;
+import com.pplt.guard.entity.Contact;
+import com.pplt.guard.entity.ContactDataHelper;
 import com.pplt.ui.EmbededListView;
 import com.pplt.ui.TitleBar;
 
 /**
  * 密防文件。
  */
-public class GuardFileFragment extends Fragment {
+public class ContactFragment extends Fragment {
 
 	// ---------------------------------------------------- Private methods
 	@InjectView(id = R.id.title_bar)
@@ -33,15 +32,14 @@ public class GuardFileFragment extends Fragment {
 	@InjectView(id = R.id.list_view)
 	private EmbededListView mListView; // list view
 
-	GuardFileAdapter mAdapter; // adapter
+	ContactAdapter mAdapter; // adapter
 
 	// ---------------------------------------------------- Override methods
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater
-				.inflate(R.layout.guard_file_view, container, false);
+		View view = inflater.inflate(R.layout.contact_view, container, false);
 
 		return view;
 	}
@@ -75,9 +73,6 @@ public class GuardFileFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(),
-						GuardFileAddActivity.class);
-				startActivity(intent);
 			}
 		});
 	}
@@ -87,7 +82,7 @@ public class GuardFileFragment extends Fragment {
 	 */
 	private void initViews() {
 		// adapter
-		mAdapter = new GuardFileAdapter(getActivity());
+		mAdapter = new ContactAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
 	}
 
@@ -95,7 +90,7 @@ public class GuardFileFragment extends Fragment {
 	 * 刷新。
 	 */
 	private void refresh() {
-		List<GuardFile> list = GuardFileDataHelper.getFiles();
+		List<Contact> list = ContactDataHelper.getContacts("");
 		mAdapter.setData(list);
 	}
 
