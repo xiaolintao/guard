@@ -16,8 +16,8 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/title_bar"
         android:layout_above="@+id/bottom_panel"
+        android:layout_below="@+id/title_bar"
         android:scrollbars="none"
         app:ptrAnimationStyle="flip"
         app:ptrMode="pullFromStart" >
@@ -26,8 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-            
+
             <!-- 选择文件 -->
+
             <RelativeLayout
                 style="@style/style_input2_panel"
                 android:layout_marginTop="@dimen/common_line_spacing" >
@@ -35,9 +36,9 @@
                 <TextView
                     android:id="@+id/tv_select_file"
                     style="@style/style_input2_label"
-                    android:textSize="@dimen/text_size_large"
                     android:layout_width="wrap_content"
-                    android:text="@string/guard_file_label_select_file" />
+                    android:text="@string/guard_file_label_select_file"
+                    android:textSize="@dimen/text_size_large" />
             </RelativeLayout>
 
             <!-- 打开次数 -->
@@ -59,8 +60,8 @@
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@+id/label_open_times" />
             </RelativeLayout>
-            
-            <!-- 开始日期-->
+
+            <!-- 开始日期 -->
 
             <RelativeLayout
                 style="@style/style_input2_panel"
@@ -79,8 +80,8 @@
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@+id/label_begin_time" />
             </RelativeLayout>
-            
-            <!-- 截止日期-->
+
+            <!-- 截止日期 -->
 
             <RelativeLayout
                 style="@style/style_input2_panel"
@@ -99,10 +100,21 @@
                     android:layout_marginLeft="5dp"
                     android:layout_toRightOf="@+id/label_end_time" />
             </RelativeLayout>
-           
+
+            <!-- 摘要 -->
+            <EditText
+                android:id="@+id/et_summary"
+                style="@style/style_input2"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/edge_margin2"
+                android:layout_marginRight="@dimen/edge_margin2"
+                android:layout_marginTop="@dimen/common_line_spacing"
+                android:hint="@string/guard_file_hint_summary"
+                android:singleLine="false" />
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
-    
+
     <RelativeLayout
         android:id="@+id/bottom_panel"
         android:layout_width="match_parent"
@@ -131,8 +143,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_toRightOf="@+id/iv_add"
                 android:text="@string/guard_file_create_file"
-                android:textSize="@dimen/text_size_large" 
-                android:textColor="@color/common_title_text_color_highlight"/>
+                android:textColor="@color/common_title_text_color_highlight"
+                android:textSize="@dimen/text_size_large" />
         </RelativeLayout>
     </RelativeLayout>
 

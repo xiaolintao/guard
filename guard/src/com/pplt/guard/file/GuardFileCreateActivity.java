@@ -44,6 +44,9 @@ public class GuardFileCreateActivity extends BaseActivity {
 	@InjectView(id = R.id.tv_end_time)
 	private TextView mEndTimeTv; // 授权截止日期
 
+	@InjectView(id = R.id.et_summary)
+	private EditText mSummaryEt; // 摘要
+
 	@InjectView(id = R.id.bottom_panel, click = "onClickCmdPanel")
 	private View mCmdPanel;
 
@@ -81,6 +84,9 @@ public class GuardFileCreateActivity extends BaseActivity {
 				R.string.guard_file_label_end_time, PATTERN_TIME);
 		FieldHelper.addDateWatcher(mEndTimeTv, mGuardFile, "authEndTime",
 				PATTERN_TIME);
+
+		// 摘要
+		FieldHelper.addTextWatcher(mSummaryEt, mGuardFile, "summary");
 	}
 
 	/**

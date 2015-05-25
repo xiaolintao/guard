@@ -71,7 +71,6 @@ public class GuardFileAdapter extends BaseAdapter {
 
 		// 摘要
 		holder.summaryTv.setText(entity.getSummary());
-		holder.summaryTv.setText("summary");
 
 		convertView.setOnClickListener(new View.OnClickListener() {
 

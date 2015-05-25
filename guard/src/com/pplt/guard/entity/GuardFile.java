@@ -19,6 +19,7 @@ public class GuardFile {
 	@DatabaseField()
 	String filePath; // 文件路径名
 
+	@DatabaseField()
 	String summary; // 摘要
 
 	@DatabaseField()
