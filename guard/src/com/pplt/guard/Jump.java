@@ -2,8 +2,10 @@ package com.pplt.guard;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
 import com.jty.util.JSonUtils;
+import com.pplt.guard.contact.ContactChoiceActivity;
 import com.pplt.guard.contact.ContactEditActivity;
 import com.pplt.guard.entity.Contact;
 
@@ -17,7 +19,9 @@ public class Jump {
 	 * 跳转：编辑联系人。
 	 * 
 	 * @param context
+	 *            context.
 	 * @param contact
+	 *            联系人。
 	 */
 	public static void toContactEdit(Context context, Contact contact) {
 		Intent intent = new Intent(context, ContactEditActivity.class);
@@ -25,6 +29,24 @@ public class Jump {
 		if (contact != null) {
 			String json = JSonUtils.toJSon(contact);
 			intent.putExtra(Global.EXTRA_CONTACT, json);
+		}
+
+		context.startActivity(intent);
+	}
+
+	/**
+	 * 跳转：选择联系人。
+	 * 
+	 * @param context
+	 *            context.
+	 * @param ids
+	 *            ","号分隔的联系人id。
+	 */
+	public static void toContactChoice(Context context, String ids) {
+		Intent intent = new Intent(context, ContactChoiceActivity.class);
+
+		if (!TextUtils.isEmpty(ids)) {
+			intent.putExtra(Global.EXTRA_IDS, ids);
 		}
 
 		context.startActivity(intent);

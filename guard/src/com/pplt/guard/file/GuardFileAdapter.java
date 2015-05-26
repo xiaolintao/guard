@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.pplt.guard.Jump;
 import com.pplt.guard.R;
 import com.pplt.guard.entity.GuardFile;
 
@@ -18,12 +19,14 @@ import com.pplt.guard.entity.GuardFile;
 public class GuardFileAdapter extends BaseAdapter {
 
 	// ----------------------------------------------- Private data
+	private Context mContext; // context
 	private LayoutInflater mInflater; // layout inflater
 
 	private List<GuardFile> mData; // data
 
 	// ----------------------------------------------- Constructor & Setting
 	public GuardFileAdapter(Context context) {
+		mContext = context;
 		mInflater = LayoutInflater.from(context);
 	}
 
@@ -77,6 +80,7 @@ public class GuardFileAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
+				Jump.toContactChoice(mContext, null);
 			}
 		});
 

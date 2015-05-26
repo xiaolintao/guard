@@ -69,6 +69,9 @@
         <activity
             android:name="com.pplt.guard.contact.ContactEditActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.pplt.guard.contact.ContactChoiceActivity"
+            android:screenOrientation="portrait" />
         
         <!-- service -->
         <service android:name="com.pplt.guard.daemon.DaemonService"  android:exported="false" >

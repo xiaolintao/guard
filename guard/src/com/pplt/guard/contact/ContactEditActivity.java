@@ -20,8 +20,7 @@ import com.pplt.guard.entity.ContactDataHelper;
 import com.pplt.ui.TitleBar;
 
 /**
- * 密防文件：制作。
- * 
+ * 联系人：编辑。
  */
 public class ContactEditActivity extends BaseActivity {
 
