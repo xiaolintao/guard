@@ -1,5 +1,6 @@
 package com.pplt.guard.contact;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.jty.util.ToastHelper;
 import com.pplt.guard.Jump;
@@ -22,11 +24,20 @@ import com.pplt.ui.DlgHelper;
  */
 public class ContactAdapter extends BaseAdapter {
 
+	// ----------------------------------------------- Constants
+	/** 模式 */
+	public final static int MODE_BROWSE = 0; // 浏览
+	public final static int MODE_EDIT = 1; // 编辑
+	public final static int MODE_CHOICE = 2; // 选择
+
 	// ----------------------------------------------- Private data
 	private Context mContext; // context
 	private LayoutInflater mInflater; // layout inflater
 
 	private List<Contact> mData; // data
+
+	private int mMode = MODE_BROWSE;
+	private List<Long> mSelectedIds = new ArrayList<Long>();
 
 	// ----------------------------------------------- Constructor & Setting
 	public ContactAdapter(Context context) {
@@ -40,19 +51,20 @@ public class ContactAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void remove(long id) {
-		if (mData == null || mData.size() == 0) {
-			return;
-		}
-
-		for (Contact contact : mData) {
-			if (contact.getId() == id) {
-				mData.remove(contact);
-				break;
-			}
-		}
+	public void setMode(int mode) {
+		mMode = mode;
 
 		notifyDataSetChanged();
+	}
+
+	public void setSelection(List<Long> ids) {
+		mSelectedIds = ids;
+
+		notifyDataSetChanged();
+	}
+
+	public List<Long> getSelection() {
+		return mSelectedIds;
 	}
 
 	// ----------------------------------------------- Override methods
@@ -94,7 +106,15 @@ public class ContactAdapter extends BaseAdapter {
 		String summary = ContactHelper.getSummary(mContext, entity);
 		holder.summaryTv.setText(summary);
 
+		// 选择
+		holder.selectCb.setVisibility(mMode == MODE_CHOICE ? View.VISIBLE
+				: View.GONE);
+		final boolean isSelected = isSelected(entity.getId());
+		holder.selectCb.setChecked(isSelected);
+
 		// 删除
+		holder.deleteTv.setVisibility(mMode == MODE_EDIT ? View.VISIBLE
+				: View.GONE);
 		holder.deleteTv.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -103,16 +123,63 @@ public class ContactAdapter extends BaseAdapter {
 			}
 		});
 
-		// 浏览
+		// convert view
+		boolean enable = mMode != MODE_BROWSE;
+		enable(convertView, enable);
 		convertView.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				Jump.toContactEdit(mContext, entity);
+				if (mMode == MODE_EDIT) {
+					Jump.toContactEdit(mContext, entity);
+				} else if (mMode == MODE_CHOICE) {
+					switchSelection(entity.getId());
+				}
 			}
 		});
 
 		return convertView;
+	}
+
+	// ----------------------------------------------- Private methods
+	/**
+	 * 是否被选中。
+	 * 
+	 * @param id
+	 *            联系人id.
+	 * @return 是否被选中。
+	 */
+	private boolean isSelected(long id) {
+		for (Long item : mSelectedIds) {
+			if (item == id) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * 切换选中状态。
+	 * 
+	 * @param id
+	 *            联系人id.
+	 */
+	private void switchSelection(long id) {
+		boolean has = false;
+		for (Long item : mSelectedIds) {
+			if (item == id) {
+				has = true;
+				mSelectedIds.remove(item);
+				break;
+			}
+		}
+
+		if (!has) {
+			mSelectedIds.add(id);
+		}
+
+		notifyDataSetChanged();
 	}
 
 	// ----------------------------------------------- Private methods
@@ -144,6 +211,28 @@ public class ContactAdapter extends BaseAdapter {
 	}
 
 	/**
+	 * 移除。
+	 * 
+	 * @param id
+	 *            联系人id.
+	 */
+	private void remove(long id) {
+		if (mData == null || mData.size() == 0) {
+			return;
+		}
+
+		for (Contact contact : mData) {
+			if (contact.getId() == id) {
+				mData.remove(contact);
+				break;
+			}
+		}
+
+		notifyDataSetChanged();
+	}
+
+	// ----------------------------------------------- Private methods
+	/**
 	 * 设置visibility.
 	 */
 	void setVisibility(View convertView, int resId, int visibility) {
@@ -153,19 +242,29 @@ public class ContactAdapter extends BaseAdapter {
 		}
 	}
 
+	/**
+	 * 设置enable.
+	 */
+	private void enable(View view, boolean enable) {
+		view.setEnabled(enable);
+		view.setFocusable(enable);
+		view.setClickable(enable);
+	}
+
 	class Holder {
 		TextView nameTv; // 姓名
-
 		TextView summaryTv; // 摘要
 
 		TextView deleteTv; // 删除
+		ToggleButton selectCb; // 选择
 
 		public Holder(View convertView) {
 			nameTv = (TextView) convertView.findViewById(R.id.tv_name);
-
 			summaryTv = (TextView) convertView.findViewById(R.id.tv_summary);
 
 			deleteTv = (TextView) convertView.findViewById(R.id.tv_delete);
+
+			selectCb = (ToggleButton) convertView.findViewById(R.id.cb_select);
 		}
 	}
 

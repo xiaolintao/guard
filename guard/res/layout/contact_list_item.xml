@@ -30,7 +30,22 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="2dp"
-            android:text="@string/delete" />
+            android:text="@string/delete"
+            android:visibility="gone" />
+        
+        <ToggleButton
+            android:id="@+id/cb_select"
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="@dimen/icon_height"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_bg_checkbox"
+            android:textOff=""
+            android:textOn="" 
+            android:clickable="false"
+            android:focusable="false"
+            android:enabled="false"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <TextView

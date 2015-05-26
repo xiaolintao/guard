@@ -85,6 +85,7 @@ public class ContactFragment extends Fragment {
 	private void initViews() {
 		// adapter
 		mAdapter = new ContactAdapter(getActivity());
+		mAdapter.setMode(ContactAdapter.MODE_EDIT);
 		mListView.setAdapter(mAdapter);
 	}
 
