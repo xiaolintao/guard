@@ -10,6 +10,7 @@ import com.kingdom.sdk.ioc.IocContainer;
 import com.pplt.guard.daemon.DaemonService;
 import com.pplt.guard.entity.Contact;
 import com.pplt.guard.entity.GuardFile;
+import com.pplt.guard.entity.GuardFileAuth;
 
 public class TApplication extends Application {
 
@@ -49,7 +50,8 @@ public class TApplication extends Application {
 	 */
 	private void initDB() {
 		// tables
-		Class<?>[] list = new Class<?>[] { GuardFile.class, Contact.class };
+		Class<?>[] list = new Class<?>[] { GuardFile.class, Contact.class,
+				GuardFileAuth.class };
 		DBHelper.addClass(list);
 
 		// single instance
