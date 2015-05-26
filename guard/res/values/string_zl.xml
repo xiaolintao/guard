@@ -40,5 +40,16 @@
     
     <!-- 联系人 -->
     <string name="contact_title">联系人</string>
+    <string name="contact_label_name">姓名：</string>
+    <string name="contact_label_phone">手机：</string>
+    <string name="contact_label_email">邮箱：</string>
+    <string name="contact_label_user">账号：</string>
+    <string name="contact_label_qq">QQ&#160;&#160;：</string>
+    <string name="contact_label_sina">新浪微博：</string>
+    
+    <string name="contact_hint_input_name">请输入姓名</string>
+    
+    <string name="contact_title_add">添加联系人</string>
+    <string name="contact_title_edit">编辑联系人</string>
     
 </resources>

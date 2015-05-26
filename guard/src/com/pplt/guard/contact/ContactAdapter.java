@@ -18,12 +18,14 @@ import com.pplt.guard.entity.Contact;
 public class ContactAdapter extends BaseAdapter {
 
 	// ----------------------------------------------- Private data
+	private Context mContext; // context
 	private LayoutInflater mInflater; // layout inflater
 
 	private List<Contact> mData; // data
 
 	// ----------------------------------------------- Constructor & Setting
 	public ContactAdapter(Context context) {
+		mContext = context;
 		mInflater = LayoutInflater.from(context);
 	}
 
@@ -67,6 +69,10 @@ public class ContactAdapter extends BaseAdapter {
 
 		// 姓名
 		holder.nameTv.setText(entity.getName());
+
+		// 摘要
+		String summary = ContactHelper.getSummary(mContext, entity);
+		holder.summaryTv.setText(summary);
 
 		// 删除
 		holder.deleteTv.setOnClickListener(new View.OnClickListener() {

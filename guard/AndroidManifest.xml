@@ -65,6 +65,11 @@
             android:name="com.pplt.guard.file.GuardFileAddActivity"
             android:screenOrientation="portrait" />
         
+        <!-- 联系人 -->
+        <activity
+            android:name="com.pplt.guard.contact.ContactAddActivity"
+            android:screenOrientation="portrait" />
+        
         <!-- service -->
         <service android:name="com.pplt.guard.daemon.DaemonService"  android:exported="false" >
             <intent-filter >
