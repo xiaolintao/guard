@@ -16,7 +16,8 @@ public class ContactHelper {
 
 		if (contact != null) {
 			// 姓名
-			add(context, buf, R.string.contact_label_name, contact.getName());
+			// add(context, buf, R.string.contact_label_name,
+			// contact.getName());
 
 			// 手机号码
 			add(context, buf, R.string.contact_label_phone, contact.getPhone());

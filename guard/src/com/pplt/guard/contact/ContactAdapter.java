@@ -3,14 +3,19 @@ package com.pplt.guard.contact;
 import java.util.List;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.jty.util.ToastHelper;
+import com.pplt.guard.Jump;
 import com.pplt.guard.R;
 import com.pplt.guard.entity.Contact;
+import com.pplt.guard.entity.ContactDataHelper;
+import com.pplt.ui.DlgHelper;
 
 /**
  * 联系人：adapter。
@@ -31,6 +36,21 @@ public class ContactAdapter extends BaseAdapter {
 
 	public void setData(List<Contact> data) {
 		mData = data;
+
+		notifyDataSetChanged();
+	}
+
+	public void remove(long id) {
+		if (mData == null || mData.size() == 0) {
+			return;
+		}
+
+		for (Contact contact : mData) {
+			if (contact.getId() == id) {
+				mData.remove(contact);
+				break;
+			}
+		}
 
 		notifyDataSetChanged();
 	}
@@ -65,7 +85,7 @@ public class ContactAdapter extends BaseAdapter {
 			holder = (Holder) convertView.getTag();
 		}
 
-		Contact entity = getItem(position);
+		final Contact entity = getItem(position);
 
 		// 姓名
 		holder.nameTv.setText(entity.getName());
@@ -79,6 +99,7 @@ public class ContactAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
+				delete(entity);
 			}
 		});
 
@@ -87,6 +108,7 @@ public class ContactAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
+				Jump.toContactEdit(mContext, entity);
 			}
 		});
 
@@ -94,6 +116,33 @@ public class ContactAdapter extends BaseAdapter {
 	}
 
 	// ----------------------------------------------- Private methods
+	/**
+	 * 删除。
+	 * 
+	 * @param contact
+	 *            contact.
+	 */
+	private void delete(final Contact contact) {
+		String format = mContext.getText(R.string.contact_hint_delete)
+				.toString();
+		String message = String.format(format, contact.getName());
+
+		DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				long id = contact.getId();
+				if (ContactDataHelper.delete(id) != 0) {
+					remove(id);
+				}else {
+					ToastHelper.toast(mContext, R.string.delete_fail);
+				}
+			}
+		};
+
+		DlgHelper.showAlertDialog(mContext, R.string.contact_title_delete, message, listener);
+	}
+
 	/**
 	 * 设置visibility.
 	 */

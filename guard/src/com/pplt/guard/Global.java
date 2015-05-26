@@ -39,6 +39,7 @@ public class Global {
 	/** Extra **/
 	public final static String EXTRA_UID = "extra uid"; // 用户id
 	public final static String EXTRA_PHONE = "extra phone"; // 手机号码
+	public final static String EXTRA_CONTACT = "extra contact"; // 联系人
 
 	private static Context mContext; // context
 	private static String mPhone; // 手机号码

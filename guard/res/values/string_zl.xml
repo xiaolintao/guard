@@ -51,5 +51,7 @@
     
     <string name="contact_title_add">添加联系人</string>
     <string name="contact_title_edit">编辑联系人</string>
+    <string name="contact_title_delete">删除联系人</string>
+    <string name="contact_hint_delete">是否删除联系人"%1$s"?</string>
     
 </resources>

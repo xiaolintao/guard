@@ -67,7 +67,7 @@
         
         <!-- 联系人 -->
         <activity
-            android:name="com.pplt.guard.contact.ContactAddActivity"
+            android:name="com.pplt.guard.contact.ContactEditActivity"
             android:screenOrientation="portrait" />
         
         <!-- service -->

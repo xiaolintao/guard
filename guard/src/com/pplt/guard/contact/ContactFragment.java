@@ -2,7 +2,6 @@ package com.pplt.guard.contact;
 
 import java.util.List;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
+import com.pplt.guard.Jump;
 import com.pplt.guard.R;
 import com.pplt.guard.entity.Contact;
 import com.pplt.guard.entity.ContactDataHelper;
@@ -74,10 +74,7 @@ public class ContactFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getActivity(),
-						ContactAddActivity.class);
-
-				startActivity(intent);
+				Jump.toContactEdit(getActivity(), null);
 			}
 		});
 	}

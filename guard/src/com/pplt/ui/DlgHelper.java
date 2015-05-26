@@ -9,10 +9,9 @@ import android.content.DialogInterface;
 
 import com.pplt.guard.R;
 
-
 /**
  * Dialog helper.
- *
+ * 
  */
 public class DlgHelper {
 
@@ -22,7 +21,7 @@ public class DlgHelper {
 
 	// ---------------------------------------------------- progress
 	public static Dialog showProgressDialog(Context context, CharSequence msg) {
-		ProgressDialog	progressDialog=new ProgressDialog(context);
+		ProgressDialog progressDialog = new ProgressDialog(context);
 		progressDialog.setMessage(msg);
 		progressDialog.show();
 		progressDialog.setCancelable(true);
@@ -36,7 +35,7 @@ public class DlgHelper {
 	}
 
 	public static Dialog showProgressDialog(Context context) {
-		ProgressDialog	progressDialog=new ProgressDialog(context);
+		ProgressDialog progressDialog = new ProgressDialog(context);
 		progressDialog.show();
 		progressDialog.setCancelable(true);
 		return progressDialog;
@@ -65,5 +64,45 @@ public class DlgHelper {
 		CharSequence message = context.getText(messageResId);
 
 		showAlertDialog(context, title, message);
+	}
+
+	public static void showAlertDialog(Context context, int titleResId,
+			CharSequence message) {
+		CharSequence title = context.getText(titleResId);
+
+		showAlertDialog(context, title, message);
+	}
+
+	public static void showAlertDialog(Context context, CharSequence title,
+			CharSequence message, DialogInterface.OnClickListener listener) {
+
+		Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(title).setMessage(message);
+		builder.setPositiveButton(R.string.ok, listener);
+
+		builder.setNegativeButton(R.string.cancel,
+				new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+			}
+		});
+
+		builder.create().show();
+	}
+
+	public static void showAlertDialog(Context context, int titleResId,
+			int messageResId, DialogInterface.OnClickListener listener) {
+		CharSequence title = context.getText(titleResId);
+		CharSequence message = context.getText(messageResId);
+
+		showAlertDialog(context, title, message, listener);
+	}
+
+	public static void showAlertDialog(Context context, int titleResId,
+			CharSequence message, DialogInterface.OnClickListener listener) {
+		CharSequence title = context.getText(titleResId);
+
+		showAlertDialog(context, title, message, listener);
 	}
 }

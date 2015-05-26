@@ -15,9 +15,14 @@
     
     <!-- operation -->
     <string name="add">添加</string>
+    <string name="save">保存</string>
     <string name="delete">删除</string>
     <string name="select_all">全选</string>
     <string name="finish">完成</string>
+    
+	<string name="add_fail">添加出错</string>
+    <string name="save_fail">保存出错</string>
+    <string name="delete_fail">删除出错</string>
     
     <!-- confirm -->
     <string name="confirm_delete">确定删除？</string>
