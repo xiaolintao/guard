@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.kingdom.sdk.db.DBHelper;
 
@@ -63,4 +64,29 @@ public class GuardFileAuthDataHelper {
 		return 0;
 	}
 
+	/**
+	 * 删除。
+	 * 
+	 * @param guardFileId
+	 *            密防文件id.
+	 * @param contactId
+	 *            联系人id.
+	 * @return delete的记录数。
+	 */
+	public static int delete(long guardFileId, long contactId) {
+		try {
+			Dao<GuardFileAuth, Long> dao = DBHelper.singleInstance().getDao(
+					GuardFileAuth.class);
+
+			DeleteBuilder<GuardFileAuth, Long> db = dao.deleteBuilder();
+			db.where().eq("guardFileId", guardFileId).and()
+			.eq("contactId", contactId);
+
+			return db.delete();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
 }

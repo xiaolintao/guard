@@ -2,19 +2,35 @@ package com.pplt.guard;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 
 import com.jty.util.JSonUtils;
-import com.pplt.guard.contact.ContactChoiceActivity;
 import com.pplt.guard.contact.ContactEditActivity;
 import com.pplt.guard.entity.Contact;
+import com.pplt.guard.file.GuardFileAuthActivity;
 
 /**
  * Activity跳转。
  */
 public class Jump {
 
-	// ---------------------------------------------------- Public methods
+	// ---------------------------------------------------- Guard file
+	/**
+	 * 跳转：密防文件授权。
+	 * 
+	 * @param context
+	 *            context.
+	 * @param guardFileId
+	 *            联系人。
+	 */
+	public static void toGuardFileAuth(Context context, long guardFileId) {
+		Intent intent = new Intent(context, GuardFileAuthActivity.class);
+		intent.putExtra(Global.EXTRA_FILE_ID, guardFileId);
+
+		context.startActivity(intent);
+
+	}
+
+	// ---------------------------------------------------- Contact
 	/**
 	 * 跳转：编辑联系人。
 	 * 
@@ -34,23 +50,6 @@ public class Jump {
 		context.startActivity(intent);
 	}
 
-	/**
-	 * 跳转：选择联系人。
-	 * 
-	 * @param context
-	 *            context.
-	 * @param ids
-	 *            ","号分隔的联系人id。
-	 */
-	public static void toContactChoice(Context context, String ids) {
-		Intent intent = new Intent(context, ContactChoiceActivity.class);
-
-		if (!TextUtils.isEmpty(ids)) {
-			intent.putExtra(Global.EXTRA_IDS, ids);
-		}
-
-		context.startActivity(intent);
-	}
 
 	// ---------------------------------------------------- Public methods
 	/**

@@ -64,6 +64,9 @@
         <activity
             android:name="com.pplt.guard.file.GuardFileAddActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.pplt.guard.file.GuardFileAuthActivity"
+            android:screenOrientation="portrait" />
         
         <!-- 联系人 -->
         <activity

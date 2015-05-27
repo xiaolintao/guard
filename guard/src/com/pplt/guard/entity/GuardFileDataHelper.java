@@ -15,6 +15,24 @@ public class GuardFileDataHelper {
 	/**
 	 * 查询。
 	 * 
+	 * @return 记录。
+	 */
+	public static GuardFile getFile(long id) {
+		try {
+			Dao<GuardFile, Long> dao = DBHelper.singleInstance().getDao(
+					GuardFile.class);
+
+			return dao.queryForId(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
+	 * 查询。
+	 * 
 	 * @return 记录集。
 	 */
 	public static List<GuardFile> getFiles() {

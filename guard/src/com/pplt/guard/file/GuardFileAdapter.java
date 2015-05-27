@@ -67,7 +67,7 @@ public class GuardFileAdapter extends BaseAdapter {
 			holder = (Holder) convertView.getTag();
 		}
 
-		GuardFile entity = getItem(position);
+		final GuardFile entity = getItem(position);
 
 		// 文件名
 		holder.filenameTv.setText(entity.getFileName());
@@ -80,7 +80,7 @@ public class GuardFileAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
-				Jump.toContactChoice(mContext, null);
+				Jump.toGuardFileAuth(mContext, entity.getId());
 			}
 		});
 
