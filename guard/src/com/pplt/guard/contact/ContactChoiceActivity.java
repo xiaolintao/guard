@@ -2,12 +2,16 @@ package com.pplt.guard.contact;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.jty.util.JSonUtils;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.BaseActivity;
+import com.pplt.guard.Global;
 import com.pplt.guard.R;
 import com.pplt.guard.entity.Contact;
 import com.pplt.guard.entity.ContactDataHelper;
@@ -41,6 +45,7 @@ public class ContactChoiceActivity extends BaseActivity {
 		InjectUtil.inject(this);
 
 		// initial
+		initTitleBar();
 		initViews();
 	}
 
@@ -52,6 +57,19 @@ public class ContactChoiceActivity extends BaseActivity {
 	}
 
 	// ---------------------------------------------------- Private methods
+	/**
+	 * initial title bar.
+	 */
+	private void initTitleBar() {
+		mTitleBar.setRightBtnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				onClickFinish();
+			}
+		});
+	}
+
 	/**
 	 * initial views.
 	 */
@@ -68,6 +86,22 @@ public class ContactChoiceActivity extends BaseActivity {
 	private void refresh() {
 		List<Contact> list = ContactDataHelper.getContacts("");
 		mAdapter.setData(list);
+	}
+
+	/**
+	 * 完成。
+	 */
+	private void onClickFinish() {
+		List<Long> ids = mAdapter.getSelection();
+		if (ids != null && ids.size() != 0) {
+			String json = JSonUtils.toJSon(ids);
+			Intent data = new Intent();
+			data.putExtra(Global.EXTRA_IDS, json);
+
+			setResult(RESULT_OK, data);
+		}
+
+		finish();
 	}
 
 }

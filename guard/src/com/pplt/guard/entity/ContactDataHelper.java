@@ -41,6 +41,28 @@ public class ContactDataHelper {
 	/**
 	 * 查询。
 	 * 
+	 * @param ids
+	 *            联系人id。
+	 * 
+	 * @return 记录集。
+	 */
+	public static List<Contact> getContacts(List<Long> ids) {
+		try {
+			Dao<Contact, Long> dao = DBHelper.singleInstance().getDao(
+					Contact.class);
+
+			QueryBuilder<Contact, Long> qb = dao.queryBuilder();
+			return qb.where().in("id", ids).query();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return new ArrayList<Contact>();
+	}
+
+	/**
+	 * 查询。
+	 * 
 	 * @param id
 	 *            记录id.
 	 * @return 记录。

@@ -29,6 +29,7 @@
     <string name="guard_file_label_end_time">授权截止日期</string>
     <string name="guard_file_label_begin_time2">授权开始日期：</string>
     <string name="guard_file_label_end_time2">授权截止日期：</string>
+    <string name="guard_file_label_auth_to">授权给：</string>
     
     <string name="guard_file_hint_input_file">请选择文件</string>
     <string name="guard_file_hint_input_open_times">请输入可以打开次数</string>
@@ -37,6 +38,8 @@
     <string name="guard_file_hint_summary">文件摘要</string>
     
     <string name="guard_file_btn_auth">授权</string>
+    <string name="guard_file_btn_auth_to">添加授权</string>
+    <string name="guard_file_btn_auth_reverse">取消授权</string>
     
     <!-- 联系人 -->
     <string name="contact_title">联系人</string>
