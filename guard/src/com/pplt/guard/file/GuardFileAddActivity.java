@@ -159,10 +159,16 @@ public class GuardFileAddActivity extends BaseActivity {
 	 * 点击：授权给。
 	 */
 	public void onClickAuthTo() {
+		List<Long> ids = mAdapter.getAuthTo();
+		List<Long> left = ContactDataHelper.filter(ids);
+
 		Intent intent = new Intent(this, ContactChoiceActivity.class);
+		String json = JSonUtils.toJSon(left);
+		intent.putExtra(Global.EXTRA_IDS, json);
 
 		startActivityForResult(intent, REQUEST_CODE_CONTACT);
 	}
+
 
 	/**
 	 * 授权给。
@@ -176,7 +182,7 @@ public class GuardFileAddActivity extends BaseActivity {
 		}
 
 		List<Contact> contacts = ContactDataHelper.getContacts(ids);
-		mAdapter.setData(contacts);
+		mAdapter.appendData(contacts);
 	}
 
 	/**

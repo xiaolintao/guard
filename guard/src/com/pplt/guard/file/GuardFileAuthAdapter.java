@@ -43,6 +43,16 @@ public class GuardFileAuthAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
+	public void appendData(List<Contact> data) {
+		if (mData != null) {
+			mData.addAll(data);
+		} else {
+			mData = data;
+		}
+
+		notifyDataSetChanged();
+	}
+
 	public void setOnClickItemListener(OnClickItemListener listener) {
 		mListener = listener;
 	}

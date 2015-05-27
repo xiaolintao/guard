@@ -37,6 +37,9 @@ public class ContactDataHelper {
 
 		return new ArrayList<Contact>();
 	}
+	public static List<Contact> getContacts() {
+		return getContacts("");
+	}
 
 	/**
 	 * 查询。
@@ -138,6 +141,27 @@ public class ContactDataHelper {
 		}
 
 		return 0;
+	}
+
+	/**
+	 * 查询：ids不包含的联系人id。
+	 * 
+	 * @return 联系人id。
+	 */
+	public static List<Long> filter(List<Long> ids) {
+		List<Long> left = new ArrayList<Long>();
+
+		List<Contact> contacts = getContacts();
+
+		if (contacts != null && contacts.size() != 0) {
+			for (Contact contact : contacts) {
+				if (ids == null || ids.indexOf(contact.getId()) == -1) {
+					left.add(contact.getId());
+				}
+			}
+		}
+
+		return left;
 	}
 
 	private static void setKey(QueryBuilder<Contact, Long> qb, String key)

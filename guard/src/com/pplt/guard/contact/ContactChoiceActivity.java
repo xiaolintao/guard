@@ -2,6 +2,8 @@ package com.pplt.guard.contact;
 
 import java.util.List;
 
+import org.codehaus.jackson.type.TypeReference;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,13 +35,24 @@ public class ContactChoiceActivity extends BaseActivity {
 	@InjectView(id = R.id.list_view)
 	private EmbededListView mListView; // list view
 
-	ContactAdapter mAdapter; // adapter
+	private ContactAdapter mAdapter; // adapter
+
+	private List<Long> mIds; // 联系人id
 
 	// ---------------------------------------------------- Override methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_choice_view);
+
+		// extra
+		Intent intent = getIntent();
+		if (intent.hasExtra(Global.EXTRA_IDS)) {
+			String json = intent.getStringExtra(Global.EXTRA_IDS);
+			TypeReference<List<Long>> typeReference = new TypeReference<List<Long>>() {
+			};
+			mIds = JSonUtils.readValue(json, typeReference);
+		}
 
 		// IOC
 		InjectUtil.inject(this);
@@ -84,7 +97,8 @@ public class ContactChoiceActivity extends BaseActivity {
 	 * 刷新。
 	 */
 	private void refresh() {
-		List<Contact> list = ContactDataHelper.getContacts("");
+		List<Contact> list = mIds != null ? ContactDataHelper.getContacts(mIds)
+				: ContactDataHelper.getContacts();
 		mAdapter.setData(list);
 	}
 
