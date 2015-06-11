@@ -3,15 +3,15 @@ package com.pplt.guard.daemon;
 import android.content.Context;
 
 /**
- * 轮询。
+ * Daemon。
  * 
- * 1. 新版本。
+ * 1. 检查&下载新版本。
  */
-public class PollingDaemon {
+public class Daemon {
 
 	// ---------------------------------------------------- Private data
 	private Context mContext; // context
-	private PollingThread mThread; // 线程
+	private PollingThread mThread; // 检查&下载新版本。
 
 	// ---------------------------------------------------- Public methods
 	/**
@@ -20,7 +20,7 @@ public class PollingDaemon {
 	 * @param context
 	 *            context.
 	 */
-	public PollingDaemon(Context context) {
+	public Daemon(Context context) {
 		mContext = context;
 	}
 

@@ -24,7 +24,8 @@ public class DaemonService extends Service {
 	// ---------------------------------------------------- Private data
 	private final IBinder mBinder = new DaemonBinder(); // binder
 
-	private PollingDaemon mPollingDaemon; // 轮询
+	private Daemon mDaemon; // daemon
+	private Monitor mMonitor; // monitor
 
 	// ---------------------------------------------------- Override methods
 	@Override
@@ -58,8 +59,8 @@ public class DaemonService extends Service {
 	 * 下载新版本。
 	 */
 	public void downNewVersion() {
-		if (mPollingDaemon != null) {
-			mPollingDaemon.downloadNewVersion();
+		if (mDaemon != null) {
+			mDaemon.downloadNewVersion();
 		}
 	}
 
@@ -68,19 +69,29 @@ public class DaemonService extends Service {
 	 * start.
 	 */
 	private void start() {
-		// 轮询
-		mPollingDaemon = new PollingDaemon(this);
-		mPollingDaemon.start();
+		// daemon
+		mDaemon = new Daemon(this);
+		mDaemon.start();
+
+		// monitor
+		mMonitor = new Monitor(this);
+		mMonitor.start();
 	}
 
 	/**
 	 * stop.
 	 */
 	private void stop() {
-		// 轮询
-		if (mPollingDaemon != null) {
-			mPollingDaemon.stop();
-			mPollingDaemon = null;
+		// daemon
+		if (mDaemon != null) {
+			mDaemon.stop();
+			mDaemon = null;
+		}
+
+		// monitor
+		if (mMonitor != null) {
+			mMonitor.stop();
+			mMonitor = null;
 		}
 	}
 }

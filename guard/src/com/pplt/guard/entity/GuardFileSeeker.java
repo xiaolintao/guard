@@ -9,7 +9,7 @@ import com.pplt.guard.Global;
  */
 public class GuardFileSeeker {
 
-	// ---------------------------------------------------- Constatns
+	// ---------------------------------------------------- Constants
 	private final static String ROOT = Global.getRoot() + "/file";
 
 	// ---------------------------------------------------- Public methods

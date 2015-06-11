@@ -33,8 +33,8 @@ public class Global {
 	public final static int THEME_BLUE = 2; // 蓝色系
 
 	/** Action */
-	public static final String ACTION_NEW_VERSION = "com.jty.stock.newversion"; // 新版本
-	public static final String ACTION_CHANGE_THEME = "com.jty.stock.changetheme"; // 换肤
+	public static final String ACTION_NEW_VERSION = "com.pplt.guard.newversion"; // 新版本
+	public static final String ACTION_PPLT_FILE = "com.pplt.guard.pplt"; // pplt文件变动
 
 	/** Extra **/
 	public final static String EXTRA_UID = "extra uid"; // 用户id

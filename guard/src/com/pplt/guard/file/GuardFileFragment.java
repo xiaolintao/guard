@@ -2,7 +2,10 @@ package com.pplt.guard.file;
 
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.view.ViewGroup;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
+import com.pplt.guard.Global;
 import com.pplt.guard.R;
 import com.pplt.guard.entity.GuardFile;
 import com.pplt.guard.entity.GuardFileDataHelper;
@@ -33,7 +37,9 @@ public class GuardFileFragment extends Fragment {
 	@InjectView(id = R.id.list_view)
 	private EmbededListView mListView; // list view
 
-	GuardFileAdapter mAdapter; // adapter
+	private GuardFileAdapter mAdapter; // adapter
+
+	private BroadcastReceiver mReceiver; // 广播receiver
 
 	// ---------------------------------------------------- Override methods
 	@Override
@@ -63,6 +69,22 @@ public class GuardFileFragment extends Fragment {
 		super.onResume();
 
 		refresh();
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		// broadcast receiver
+		registerBroadcastReceiver();
+	}
+
+	@Override
+	public void onDestroy() {
+		// broadcast receiver
+		unregisterBroadcastReceiver();
+
+		super.onDestroy();
 	}
 
 	// ---------------------------------------------------- Private methods
@@ -97,6 +119,35 @@ public class GuardFileFragment extends Fragment {
 	private void refresh() {
 		List<GuardFile> list = GuardFileDataHelper.getFiles();
 		mAdapter.setData(list);
+	}
+
+	/**
+	 * register broadcast receiver.
+	 */
+	private void registerBroadcastReceiver() {
+		mReceiver = new BroadcastReceiver() {
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				if (intent.getAction().equals(Global.ACTION_PPLT_FILE)) {
+					refresh();
+				}
+			}
+		};
+
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Global.ACTION_PPLT_FILE); // pplt文件变动
+		getActivity().registerReceiver(mReceiver, filter);
+	}
+
+	/**
+	 * unregister broadcast receiver.
+	 */
+	private void unregisterBroadcastReceiver() {
+		if (mReceiver != null) {
+			getActivity().unregisterReceiver(mReceiver);
+			mReceiver = null;
+		}
 	}
 
 }

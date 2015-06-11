@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.kingdom.sdk.db.DBHelper;
 
@@ -62,6 +63,29 @@ public class GuardFileDataHelper {
 					GuardFile.class);
 
 			return dao.create(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	/**
+	 * 删除。
+	 * 
+	 * @param path
+	 *            文件路径。
+	 * @return delete的记录数。
+	 */
+	public static int delete(String path) {
+		try {
+			Dao<GuardFile, Long> dao = DBHelper.singleInstance().getDao(
+					GuardFile.class);
+
+			DeleteBuilder<GuardFile, Long> db = dao.deleteBuilder();
+			db.where().eq("filePath", path);
+
+			return db.delete();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

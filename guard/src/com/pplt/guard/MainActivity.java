@@ -1,11 +1,9 @@
 package com.pplt.guard;
 
-import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,11 +43,11 @@ public class MainActivity extends BaseActivity {
 			new Tab(R.string.main_tab_gurad, R.drawable.mainbar_stock,
 					GuardFileFragment.class.getName()),
 
-					/** 联系人 */
+			/** 联系人 */
 					new Tab(R.string.main_tab_contact, R.drawable.mainbar_focus,
 							ContactFragment.class.getName()),
 
-							/** 个人 */
+			/** 个人 */
 							new Tab(R.string.main_tab_me, R.drawable.mainbar_me,
 									PersonalFragment.class.getName()) };
 
@@ -166,9 +164,8 @@ public class MainActivity extends BaseActivity {
 
 			@Override
 			public void onReceive(Context context, Intent intent) {
-				if (intent.getAction().equals(Global.ACTION_CHANGE_THEME)) {
-					dealTheme(intent);
-				} else if (intent.getAction().equals(Global.ACTION_NEW_VERSION)) {
+				// 新版本
+				if (intent.getAction().equals(Global.ACTION_NEW_VERSION)) {
 					showTabFocus(R.string.main_tab_me);
 					SuperScript.triggerNewVersion();
 				}
@@ -176,19 +173,8 @@ public class MainActivity extends BaseActivity {
 		};
 
 		IntentFilter filter = new IntentFilter();
-		filter.addAction(Global.ACTION_CHANGE_THEME); // 换肤
 		filter.addAction(Global.ACTION_NEW_VERSION); // 新版本
 		registerReceiver(mReceiver, filter);
-	}
-
-	/**
-	 * 处理：换肤。
-	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void dealTheme(Intent intent) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			recreate();
-		}
 	}
 
 	/**

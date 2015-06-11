@@ -14,7 +14,7 @@ import com.pplt.guard.R;
 import com.pplt.ui.NotificationHelper;
 
 /**
- * 轮询thread.
+ * Thread : 检查&下载新版本。
  */
 public class PollingThread implements Runnable {
 
@@ -155,7 +155,7 @@ public class PollingThread implements Runnable {
 	}
 
 	/**
-	 * 发送broadcast: 新版本.
+	 * 发送broadcast.
 	 * 
 	 */
 	private void sendBroadcast() {
