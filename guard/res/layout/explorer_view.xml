@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/explorer_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_navigation_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/explorer_menu_bar_background"
+        android:orientation="horizontal" 
+        android:focusable="false">
+
+        <LinearLayout
+            android:id="@+id/folder_level"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="7dp"
+            android:focusable="false"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/fileList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:fastScrollEnabled="true"
+            android:listSelector="@android:color/transparent"
+            android:choiceMode="singleChoice"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

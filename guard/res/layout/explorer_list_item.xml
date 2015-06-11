@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp" >
+
+    <ToggleButton
+        android:id="@+id/file_list_checked"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:clickable="false"
+        android:focusable="false"
+        android:textOff=""
+        android:textOn="" />
+
+    <TextView
+        android:id="@+id/file_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_toLeftOf="@id/file_modify" >
+
+        <ImageView
+            android:id="@+id/file_image"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/file_name_f"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:layout_toRightOf="@+id/file_image"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="#353535"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

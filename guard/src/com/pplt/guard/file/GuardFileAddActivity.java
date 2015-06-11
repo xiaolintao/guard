@@ -27,7 +27,7 @@ import com.pplt.guard.entity.GuardFile;
 import com.pplt.guard.entity.GuardFileAuth;
 import com.pplt.guard.entity.GuardFileAuthDataHelper;
 import com.pplt.guard.entity.GuardFileDataHelper;
-import com.pplt.guard.entity.GuardFileSeeker;
+import com.pplt.guard.explorer.FileBrowseActivity;
 import com.pplt.ui.EmbededListView;
 import com.pplt.ui.TitleBar;
 
@@ -133,12 +133,16 @@ public class GuardFileAddActivity extends BaseActivity {
 	 * 点击：选择文件。
 	 */
 	public void onClickSelectFile() {
-		String filePath = GuardFileSeeker.getFile();
-		if (filePath == null) {
-			return;
-		}
+		// String filePath = GuardFileSeeker.getFile();
+		// if (filePath == null) {
+		// return;
+		// }
+		//
+		// showFileInfo(filePath);
 
-		showFileInfo(filePath);
+		Intent intent = new Intent(this, FileBrowseActivity.class);
+
+		startActivity(intent);
 	}
 
 	/**
@@ -147,7 +151,7 @@ public class GuardFileAddActivity extends BaseActivity {
 	 * @param filePath
 	 *            文件路径名.
 	 */
-	private void showFileInfo(String filePath) {
+	void showFileInfo(String filePath) {
 		String fileName = FileHelper.getFilename(filePath);
 		mSelectFileTv.setText(fileName);
 

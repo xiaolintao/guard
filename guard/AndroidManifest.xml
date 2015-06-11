@@ -76,6 +76,11 @@
             android:name="com.pplt.guard.contact.ContactChoiceActivity"
             android:screenOrientation="portrait" />
         
+        <!-- 文件explorer -->
+        <activity
+            android:name="com.pplt.guard.explorer.FileBrowseActivity"
+            android:screenOrientation="portrait" />
+        
         <!-- service -->
         <service android:name="com.pplt.guard.daemon.DaemonService"  android:exported="false" >
             <intent-filter >
