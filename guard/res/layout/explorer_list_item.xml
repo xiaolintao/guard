@@ -15,13 +15,12 @@
 
     <TextView
         android:id="@+id/file_modify"
+        style="@style/style_label_medium"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
-        android:gravity="center_vertical"
-        android:textColor="#999999"
-        android:textSize="14sp" />
+        android:gravity="center_vertical" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -36,15 +35,14 @@
 
         <TextView
             android:id="@+id/file_name_f"
+            style="@style/style_text_medium"
             android:layout_width="fill_parent"
             android:layout_height="70dp"
-            android:layout_toRightOf="@+id/file_image"
             android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/file_image"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textColor="#353535"
-            android:textSize="18sp" />
+            android:singleLine="true" />
     </RelativeLayout>
 
 </RelativeLayout>

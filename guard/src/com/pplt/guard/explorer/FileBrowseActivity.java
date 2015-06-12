@@ -4,9 +4,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,20 +13,29 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.kingdom.sdk.ioc.InjectUtil;
+import com.kingdom.sdk.ioc.annotation.InjectView;
+import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
 import com.pplt.guard.R;
+import com.pplt.ui.TitleBar;
 
 /**
  * browse file.
  * 
  */
-public class FileBrowseActivity extends Activity {
+public class FileBrowseActivity extends BaseActivity {
 
 	// ---------------------------------------------------- Constants
 	final static String TAG = "FileBrowseActivity";
 
 	// ---------------------------------------------------- Private data
+	@InjectView(id = R.id.title_bar)
+	private TitleBar mTitleBar;
+
+	@InjectView(id = R.id.fileList)
 	private ListView mListView;
+
 	private FileAdapter mAdapter;
 
 	private String mCurrentDirectory;
@@ -39,34 +46,43 @@ public class FileBrowseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.explorer_view);
 
+		// IOC
+		InjectUtil.inject(this);
+
 		// initial views
+		initTitleBar();
 		initViews();
 	}
 
 	@Override
-	public boolean dispatchKeyEvent(KeyEvent event) {
-		if (event.getAction() == KeyEvent.ACTION_DOWN) {
-			if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-				back();
-				return true;
-			}
+	public void onBackPressed() {
+		if (mCurrentDirectory == null
+				|| mCurrentDirectory.equalsIgnoreCase(getRoot())) {
+			finish();
+		} else {
+			back();
 		}
-
-		return super.dispatchKeyEvent(event);
-	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		return super.onKeyDown(keyCode, event);
 	}
 
 	// ---------------------------------------------------- Private methods
+	/**
+	 * initial title bar.
+	 */
+	private void initTitleBar() {
+		// right button
+		mTitleBar.setRightBtnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+			}
+		});
+	}
+
 	/**
 	 * initial views.
 	 */
 	private void initViews() {
 		// list view
-		mListView = (ListView) findViewById(R.id.fileList);
 		mAdapter = new FileAdapter(this, mListView);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
