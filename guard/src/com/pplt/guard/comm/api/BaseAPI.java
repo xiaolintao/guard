@@ -18,6 +18,6 @@ public class BaseAPI {
 	 * 获取BASE URL.
 	 */
 	private static String getDefaultBaseUrl() {
-		return "http://test2.hipalsports.com/HiPalServices/";
+		return "http://localhost:8080/Services/";
 	}
 }

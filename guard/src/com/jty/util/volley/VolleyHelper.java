@@ -1,6 +1,7 @@
 package com.jty.util.volley;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -12,11 +13,20 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.pplt.guard.Global;
 
 /**
  * Volley helper.
  */
 public class VolleyHelper {
+
+	// ---------------------------------------------------- Constants
+	/*** 网络响应成功 */
+	public static final int RESULT_OK = 0;
+	/*** 网络响应失败 */
+	public static final int RESULT_NET_ERROR = 1;
+	public static final int RESULT_SERVER_ERROR = 2;
+	public static final int RESULT_TIMEOUT = 3;
 
 	// ---------------------------------------------------- Private data
 	private static RequestQueue mQueue;
@@ -71,14 +81,26 @@ public class VolleyHelper {
 			return;
 		}
 
+		int status = RESULT_OK;
 		if (error instanceof TimeoutError) {
-			// 超时
+			status = RESULT_TIMEOUT;
 		} else if (error instanceof ServerError
 				|| error instanceof AuthFailureError) {
-			// 服务端错误 & 认证错误
+			status = RESULT_SERVER_ERROR;
 		} else if (error instanceof NetworkError
 				|| error instanceof NoConnectionError) {
-			// 网络错误 & 没有连接
+			status = RESULT_NET_ERROR;
 		}
+
+		sendBroadcast(context, status);
+	}
+
+	// 发送广播
+	private static void sendBroadcast(Context context, int status) {
+		Intent intent = new Intent();
+		intent.setAction(Global.ACTION_VOLLEY_ABNORMAL);
+		intent.putExtra("status", status);
+
+		context.sendBroadcast(intent);
 	}
 }

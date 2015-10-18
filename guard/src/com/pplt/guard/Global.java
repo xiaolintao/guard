@@ -32,6 +32,7 @@ public class Global {
 	/** Action */
 	public static final String ACTION_NEW_VERSION = "com.pplt.guard.newversion"; // 新版本
 	public static final String ACTION_LOGOUT = "com.pplt.guard.logout"; // 退出登录
+	public static final String ACTION_VOLLEY_ABNORMAL = "com.pplt.guard.volley.abnormal"; // volley异常
 
 	/** Extra **/
 	public final static String EXTRA_UID = "extra uid"; // 用户id
