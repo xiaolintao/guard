@@ -15,7 +15,6 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 import android.content.Context;
-import android.os.StatFs;
 
 /**
  * 读写文件的工具类。
@@ -52,23 +51,6 @@ public class FileHelper {
 		File file = new File(fileName);
 
 		return file.exists() && file.isFile();
-	}
-
-	/**
-	 * 获取剩余空间大小。
-	 * @param dirName 目录名。
-	 * @return 剩余空间大小。
-	 */
-	@SuppressWarnings("deprecation")
-	public static long getLeftSpace(String dirName) {
-		StatFs sf = new StatFs(dirName);
-
-		File path = new File(dirName);
-		if (!path.exists() || !path.isDirectory()) {
-			return 0;
-		}
-
-		return (long)sf.getAvailableBlocks() * (long)sf.getBlockSize();
 	}
 
 	/**

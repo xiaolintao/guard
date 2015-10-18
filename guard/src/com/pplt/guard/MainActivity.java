@@ -14,7 +14,6 @@ import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.contact.ContactFragment;
-import com.pplt.guard.file.GuardFileFragment;
 import com.pplt.guard.personal.PersonalFragment;
 import com.pplt.ui.TabChange;
 import com.pplt.ui.TabChange.OnTabChangedListener;
@@ -40,16 +39,15 @@ public class MainActivity extends BaseActivity {
 
 	private final Tab[] TAB_FRAGMENT = new Tab[] {
 			/** 密防 */
-			new Tab(R.string.main_tab_gurad, R.drawable.mainbar_stock,
-					GuardFileFragment.class.getName()),
+			new Tab(R.string.main_tab_gurad, R.drawable.mainbar_stock, null),
 
 			/** 联系人 */
-					new Tab(R.string.main_tab_contact, R.drawable.mainbar_focus,
-							ContactFragment.class.getName()),
+			new Tab(R.string.main_tab_contact, R.drawable.mainbar_focus,
+					ContactFragment.class.getName()),
 
-			/** 个人 */
-							new Tab(R.string.main_tab_me, R.drawable.mainbar_me,
-									PersonalFragment.class.getName()) };
+					/** 个人 */
+					new Tab(R.string.main_tab_me, R.drawable.mainbar_me,
+							PersonalFragment.class.getName()) };
 
 	// ---------------------------------------------------- Private data
 	@InjectView(id = R.id.tab_change)

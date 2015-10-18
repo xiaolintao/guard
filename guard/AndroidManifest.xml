@@ -60,25 +60,12 @@
             android:name="com.pplt.guard.personal.setting.Disclaimer"
             android:screenOrientation="portrait" />
         
-        <!-- 密防文件 -->
-        <activity
-            android:name="com.pplt.guard.file.GuardFileAddActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.pplt.guard.file.GuardFileAuthActivity"
-            android:screenOrientation="portrait" />
-        
         <!-- 联系人 -->
         <activity
             android:name="com.pplt.guard.contact.ContactEditActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.pplt.guard.contact.ContactChoiceActivity"
-            android:screenOrientation="portrait" />
-        
-        <!-- 文件explorer -->
-        <activity
-            android:name="com.pplt.guard.explorer.FileBrowseActivity"
             android:screenOrientation="portrait" />
         
         <!-- service -->

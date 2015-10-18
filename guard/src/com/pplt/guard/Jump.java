@@ -6,29 +6,11 @@ import android.content.Intent;
 import com.jty.util.JSonUtils;
 import com.pplt.guard.contact.ContactEditActivity;
 import com.pplt.guard.entity.Contact;
-import com.pplt.guard.file.GuardFileAuthActivity;
 
 /**
  * Activity跳转。
  */
 public class Jump {
-
-	// ---------------------------------------------------- Guard file
-	/**
-	 * 跳转：密防文件授权。
-	 * 
-	 * @param context
-	 *            context.
-	 * @param guardFileId
-	 *            联系人。
-	 */
-	public static void toGuardFileAuth(Context context, long guardFileId) {
-		Intent intent = new Intent(context, GuardFileAuthActivity.class);
-		intent.putExtra(Global.EXTRA_FILE_ID, guardFileId);
-
-		context.startActivity(intent);
-
-	}
 
 	// ---------------------------------------------------- Contact
 	/**

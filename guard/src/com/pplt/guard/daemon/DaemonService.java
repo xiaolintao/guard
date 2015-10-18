@@ -25,7 +25,6 @@ public class DaemonService extends Service {
 	private final IBinder mBinder = new DaemonBinder(); // binder
 
 	private Daemon mDaemon; // daemon
-	private Monitor mMonitor; // monitor
 
 	// ---------------------------------------------------- Override methods
 	@Override
@@ -73,9 +72,6 @@ public class DaemonService extends Service {
 		mDaemon = new Daemon(this);
 		mDaemon.start();
 
-		// monitor
-		mMonitor = new Monitor(this);
-		mMonitor.start();
 	}
 
 	/**
@@ -86,12 +82,6 @@ public class DaemonService extends Service {
 		if (mDaemon != null) {
 			mDaemon.stop();
 			mDaemon = null;
-		}
-
-		// monitor
-		if (mMonitor != null) {
-			mMonitor.stop();
-			mMonitor = null;
 		}
 	}
 }
