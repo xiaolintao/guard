@@ -16,16 +16,10 @@ import android.widget.TextView;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.kingdom.sdk.net.http.HttpUtils;
-import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
 import com.pplt.guard.R;
-import com.pplt.guard.comm.HttpParameters;
-import com.pplt.guard.comm.HttpUrls;
-import com.pplt.guard.comm.ResponseCodeHelper;
-import com.pplt.guard.comm.ResponseParser;
 import com.pplt.ui.TitleBar;
 
 /**
@@ -129,18 +123,6 @@ public class RegisterActivity extends BaseActivity {
 			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
 			return;
 		}
-
-		// send
-		String params = HttpParameters.getVerifyPhone(phone,
-				HttpParameters.CODE_TYPE_REGISTER);
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				dealGetVerifyCode(response);
-			}
-		};
-		HttpUtils.HttpPost(HttpUrls.URL_VEFIFY_PHONE, params, listener);
 	}
 
 	/**
@@ -149,20 +131,7 @@ public class RegisterActivity extends BaseActivity {
 	 * @param response
 	 *            响应。
 	 */
-	private void dealGetVerifyCode(ResponseEntity response) {
-		int code = ResponseParser.parseCode(response);
-
-		// success
-		if (code == 0) {
-			ToastHelper.toast(this,
-					R.string.personal_register_hint_verifycode_sended);
-			startTimer();
-			return;
-		}
-
-		// fail
-		String msg = ResponseCodeHelper.getHint(this, code);
-		ToastHelper.toast(this, msg);
+	void dealGetVerifyCode(ResponseEntity response) {
 	}
 
 	/**
@@ -201,20 +170,9 @@ public class RegisterActivity extends BaseActivity {
 	 */
 	private void register() {
 		// parameters
-		String phone = mPhoneEt.getText().toString();
-		String pwd = mPwdEt.getText().toString();
-		String verifyCode = mVerifyCodeEt.getText().toString();
-
-		// send
-		String params = HttpParameters.register(phone, pwd, verifyCode);
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				dealRegister(response);
-			}
-		};
-		HttpUtils.HttpPost(HttpUrls.URL_REGISTER, params, listener);
+		// String phone = mPhoneEt.getText().toString();
+		// String pwd = mPwdEt.getText().toString();
+		// String verifyCode = mVerifyCodeEt.getText().toString();
 	}
 
 	/**
@@ -223,21 +181,8 @@ public class RegisterActivity extends BaseActivity {
 	 * @param response
 	 *            响应。
 	 */
-	private void dealRegister(ResponseEntity response) {
-		int code = ResponseParser.parseCode(response);
+	void dealRegister(ResponseEntity response) {
 
-		// success
-		if (code == 0) {
-			int uid = ResponseParser.parseInt(response, "uid", -1);
-			if (uid != -1) {
-				profile(uid);
-			}
-			return;
-		}
-
-		// fail
-		String msg = ResponseCodeHelper.getHint(this, code);
-		ToastHelper.toast(this, msg);
 	}
 
 	/**
@@ -246,7 +191,7 @@ public class RegisterActivity extends BaseActivity {
 	 * @param uid
 	 *            用户id.
 	 */
-	private void profile(int uid) {
+	void profile(int uid) {
 		String phone = mPhoneEt.getText().toString();
 
 		Intent intent = new Intent(this, ProfileActivity.class);
@@ -257,7 +202,7 @@ public class RegisterActivity extends BaseActivity {
 	}
 
 	// ---------------------------------------------------- timer
-	private void startTimer() {
+	void startTimer() {
 		stopTimer();
 
 		// 禁用按钮

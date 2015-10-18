@@ -6,7 +6,6 @@ import android.os.Environment;
 import com.hipalsports.entity.UserInfo;
 import com.jty.util.FileHelper;
 import com.jty.util.PrefHelper;
-import com.pplt.guard.comm.entity.UserEntity;
 
 public class Global {
 
@@ -24,7 +23,7 @@ public class Global {
 	private final static String PREF_NEW_VERSION_CODE = "new version code"; // 新版本code
 
 	/** PREF: 账号 */
-	private final static String PREF_ACCOUNT_LOGIN = "account login"; // 登录用的账号
+	final static String PREF_ACCOUNT_LOGIN = "account login"; // 登录用的账号
 
 	/** PREF: 界面 */
 	private final static String PREF_MAIN_LAST_TAB = "main last tab"; // 主页面最后"访问"的tab
@@ -43,11 +42,9 @@ public class Global {
 
 	// ---------------------------------------------------- Global data
 	private static Context mContext; // context
-	private static String mPhone; // 手机号码
-	private static UserEntity mUser; // 用户
 
 	/** 用户信息 */
-	private static UserInfo mUserInfo;
+	private static UserInfo mUser;
 
 	// ---------------------------------------------------- initial
 	/**
@@ -127,37 +124,13 @@ public class Global {
 	}
 
 
-	// ---------------------------------------------------- user
-	/**
-	 * 设置手机号码。
-	 * 
-	 * @param phone
-	 *            手机号码。
-	 */
-	public static void setPhone(String phone) {
-		mPhone = phone;
-	}
-
-	/**
-	 * 设置用户。
-	 * 
-	 * @param user
-	 *            用户。
-	 */
-	public static void setUser(UserEntity user) {
-		mUser = user;
-
-		if (mUser != null) {
-			mUser.setPhoneNum(mPhone);
-		}
-	}
-
+	// ---------------------------------------------------- 用户信息
 	/**
 	 * 获取用户。
 	 * 
 	 * @return 用户。
 	 */
-	public static UserEntity getUser() {
+	public static UserInfo getUser() {
 		return mUser;
 	}
 
@@ -168,17 +141,17 @@ public class Global {
 	 *            用户信息。
 	 */
 	public static void setUser(UserInfo user) {
-		mUserInfo = user;
+		mUser = user;
 	}
 
 	/**
 	 * 置空用户信息。
 	 */
 	public static void resetUser() {
-		mUserInfo = null;
+		mUser = null;
 	}
 
-	// ---------------------------------------------------- UI
+	// ---------------------------------------------------- 界面
 	/**
 	 * 设置主页面最后"访问"的tab。
 	 * 

@@ -1,28 +1,16 @@
 package com.pplt.guard.personal;
 
-import java.util.List;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.kingdom.sdk.net.http.HttpUtils;
-import com.kingdom.sdk.net.http.IHttpResponeListener;
-import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
-import com.pplt.guard.comm.HttpParameters;
-import com.pplt.guard.comm.HttpUrls;
-import com.pplt.guard.comm.ResponseCodeHelper;
-import com.pplt.guard.comm.ResponseParser;
-import com.pplt.guard.comm.entity.UserTagEntity;
 import com.pplt.guard.R;
 import com.pplt.ui.LineListView;
 import com.pplt.ui.TitleBar;
@@ -47,8 +35,6 @@ public class ProfileActivity extends BaseActivity {
 
 	@InjectView(id = R.id.tv_finish)
 	private TextView mFinishTv; // 完成按钮
-
-	private UserTagAdapter mAdapter;
 
 	private int mUid; // 用户id
 	private String mPhone; // 手机号码
@@ -138,77 +124,6 @@ public class ProfileActivity extends BaseActivity {
 	 * 完善资料。
 	 */
 	private void profile() {
-		String name = mNameEt.getText().toString();
-
-		String params = HttpParameters.profile(mUid, name, "");
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				int code = ResponseParser.parseCode(response);
-				if (code == 0) {
-					setResult(RESULT_OK);
-					finish();
-					return;
-				} else {
-					String msg = ResponseCodeHelper.getHint(
-							ProfileActivity.this, code);
-					ToastHelper.toast(ProfileActivity.this, msg);
-				}
-			}
-		};
-
-		HttpUtils.HttpPost(HttpUrls.URL_USER_PROFILE, params, listener);
-	}
-
-	/**
-	 * 获取用户标签。
-	 */
-	void getUserTag() {
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				int code = ResponseParser.parseCode(response);
-				if (code == 0) {
-					List<UserTagEntity> list = ResponseParser.parseList(
-							response, UserTagEntity.class);
-					if (list != null && list.size() != 0) {
-						showUserTag(list);
-					}
-				}
-			}
-		};
-
-		HttpUtils.HttpGet(HttpUrls.URL_USER_TAG, listener);
-	}
-
-	/**
-	 * 显示用户标签。
-	 */
-	private void showUserTag(List<UserTagEntity> list) {
-		// adapter
-		mAdapter = new UserTagAdapter(this);
-		mAdapter.setData(list);
-
-		// list
-		mTagList.setAdapter(mAdapter);
-		mTagList.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// 最多选3个
-				if (!mAdapter.isSelected(id)) {
-					List<Long> ids = mAdapter.getSelectedIds();
-					if (ids.size() >= 3) {
-						return;
-					}
-				}
-
-				mAdapter.select(id);
-			}
-		});
 	}
 
 	/**

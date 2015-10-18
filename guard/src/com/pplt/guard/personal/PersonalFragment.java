@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.hipalsports.entity.UserInfo;
 import com.jty.util.FileHelper;
 import com.jty.util.FragmentHelper;
 import com.jty.util.cache.BitmapCache;
@@ -26,7 +27,6 @@ import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.Global;
 import com.pplt.guard.R;
-import com.pplt.guard.comm.entity.UserEntity;
 
 /**
  * 个人。
@@ -115,14 +115,14 @@ public class PersonalFragment extends Fragment {
 	 * 显示用户信息。
 	 */
 	private void showUinfo() {
-		UserEntity user = Global.getUser();
+		UserInfo user = Global.getUser();
 
 		if (user != null) {
 			// 名字
-			mNameTv.setText(user.getName());
+			mNameTv.setText(user.getNickName());
 
 			// 头像
-			String photo = user.getPhoto();
+			String photo = user.getLogoUrl();
 			Bitmap bmp = BitmapCache.getBitmap(photo);
 			if (bmp != null) {
 				mPhotoIv.setImageBitmap(bmp);
@@ -265,9 +265,9 @@ public class PersonalFragment extends Fragment {
 		}
 
 		// 设置Global变量
-		UserEntity user = Global.getUser();
+		UserInfo user = Global.getUser();
 		if (user != null) {
-			user.setPhoto(key);
+			user.setLogoUrl(key);
 			Global.setUser(user);
 		}
 	}

@@ -13,13 +13,7 @@ import com.jty.util.FileHelper;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.kingdom.sdk.net.http.HttpUtils;
-import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
-import com.pplt.guard.comm.HttpParameters;
-import com.pplt.guard.comm.HttpUrls;
-import com.pplt.guard.comm.ResponseCodeHelper;
-import com.pplt.guard.comm.ResponseParser;
 import com.pplt.guard.R;
 
 /**
@@ -40,8 +34,6 @@ public class RetrievePwdStep2Fragment extends Fragment {
 	@InjectView(id = R.id.tv_hint)
 	private TextView mHintTv; // 提示
 
-	private String mPhone = ""; // 手机号码
-
 	// ---------------------------------------------------- Public methods
 	/**
 	 * 设置手机号码。
@@ -50,7 +42,6 @@ public class RetrievePwdStep2Fragment extends Fragment {
 	 *            号码。
 	 */
 	public void setPhone(String phone) {
-		mPhone = phone;
 	}
 
 	// ---------------------------------------------------- Override methods
@@ -135,20 +126,8 @@ public class RetrievePwdStep2Fragment extends Fragment {
 	/**
 	 * "下一步"。
 	 */
-	private void next() {
-		// parameters
-		String pwd = mPwdEt.getText().toString();
-
-		// send
-		String params = HttpParameters.retrievePwdFind(mPhone, pwd);
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				dealNext(response);
-			}
-		};
-		HttpUtils.HttpPost(HttpUrls.URL_RETRIEVE_PWD_FIND, params, listener);
+	void next() {
+		RetrievePwdActivity.sendBroadcast(getActivity(), 3, null);
 	}
 
 	/**
@@ -157,17 +136,6 @@ public class RetrievePwdStep2Fragment extends Fragment {
 	 * @param response
 	 *            响应。
 	 */
-	private void dealNext(ResponseEntity response) {
-		int code = ResponseParser.parseCode(response);
-
-		// success
-		if (code == 0) {
-			RetrievePwdActivity.sendBroadcast(getActivity(), 3, null);
-			return;
-		}
-
-		// fail
-		String msg = ResponseCodeHelper.getHint(getActivity(), code);
-		ToastHelper.toast(getActivity(), msg);
+	void dealNext(ResponseEntity response) {
 	}
 }

@@ -2,7 +2,6 @@ package com.pplt.guard.personal;
 
 import java.io.File;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
@@ -21,21 +20,15 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.hipalsports.entity.UserInfo;
 import com.jty.util.FileHelper;
-import com.jty.util.ToastHelper;
 import com.jty.util.cache.BitmapCache;
 import com.jty.util.cache.BitmapKey;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.kingdom.sdk.net.http.HttpUtils;
-import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.Global;
 import com.pplt.guard.R;
-import com.pplt.guard.comm.HttpUrls;
-import com.pplt.guard.comm.ResponseCodeHelper;
-import com.pplt.guard.comm.ResponseParser;
-import com.pplt.guard.comm.entity.UserEntity;
 import com.pplt.guard.personal.pwd.ChangePwdActivity;
 import com.pplt.ui.PreferenceItem;
 
@@ -146,13 +139,13 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 	 * initial data.
 	 */
 	private void initData() {
-		UserEntity user = Global.getUser();
+		UserInfo user = Global.getUser();
 		if (user == null) {
 			return;
 		}
 
 		// 手机号码
-		String phone = user.getPhoneNum();
+		String phone = user.getPhone();
 		if (!TextUtils.isEmpty(phone)) {
 			setItemText(R.id.item_phone, markPhone(phone));
 		}
@@ -162,14 +155,14 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 	 * 显示用户信息。
 	 */
 	private void showUinfo() {
-		UserEntity user = Global.getUser();
+		UserInfo user = Global.getUser();
 
 		if (user != null) {
 			// 名字
-			mNameTv.setText(user.getName());
+			mNameTv.setText(user.getNickName());
 
 			// 头像
-			String photo = user.getPhoto();
+			String photo = user.getLogoUrl();
 			Bitmap bmp = BitmapCache.getBitmap(photo);
 			if (bmp != null) {
 				mPhotoIv.setImageBitmap(bmp);
@@ -192,15 +185,6 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 	 * 退出登录。
 	 */
 	private void logout() {
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				dealLogout(response);
-			}
-		};
-
-		HttpUtils.HttpGet(HttpUrls.URL_LOGOUT, listener);
 	}
 
 	/**
@@ -209,26 +193,7 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 	 * @param response
 	 *            响应。
 	 */
-	private void dealLogout(ResponseEntity response) {
-		int code = ResponseParser.parseCode(response);
-
-		// success
-		if (code == 0) {
-			Global.resetUser();
-			exit();
-			return;
-		}
-
-		// fail
-		String msg = ResponseCodeHelper.getHint(getActivity(), code);
-		ToastHelper.toast(getActivity(), msg);
-	}
-
-	private void exit() {
-		Activity activity = getActivity();
-		if (activity != null) {
-			activity.finish();
-		}
+	void dealLogout(ResponseEntity response) {
 	}
 
 	// ---------------------------------------------------- change photo
@@ -360,9 +325,9 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 		}
 
 		// 设置Global变量
-		UserEntity user = Global.getUser();
+		UserInfo user = Global.getUser();
 		if (user != null) {
-			user.setPhoto(key);
+			user.setLogoUrl(key);
 			Global.setUser(user);
 		}
 	}

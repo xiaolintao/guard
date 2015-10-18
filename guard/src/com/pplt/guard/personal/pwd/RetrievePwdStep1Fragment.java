@@ -19,14 +19,8 @@ import com.jty.util.FileHelper;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.kingdom.sdk.net.http.HttpUtils;
-import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.R;
-import com.pplt.guard.comm.HttpParameters;
-import com.pplt.guard.comm.HttpUrls;
-import com.pplt.guard.comm.ResponseCodeHelper;
-import com.pplt.guard.comm.ResponseParser;
 
 /**
  * 找回密码：第一步。
@@ -128,18 +122,6 @@ public class RetrievePwdStep1Fragment extends Fragment {
 					R.string.personal_login_hint_input_account);
 			return;
 		}
-
-		// send
-		String params = HttpParameters.getVerifyPhone(phone,
-				HttpParameters.CODE_TYPE_FORGET_PWD);
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				dealGetVerifyCode(response);
-			}
-		};
-		HttpUtils.HttpPost(HttpUrls.URL_VEFIFY_PHONE, params, listener);
 	}
 
 	/**
@@ -148,20 +130,7 @@ public class RetrievePwdStep1Fragment extends Fragment {
 	 * @param response
 	 *            响应。
 	 */
-	private void dealGetVerifyCode(ResponseEntity response) {
-		int code = ResponseParser.parseCode(response);
-
-		// success
-		if (code == 0) {
-			ToastHelper.toast(getActivity(),
-					R.string.personal_register_hint_verifycode_sended);
-			startTimer();
-			return;
-		}
-
-		// fail
-		String msg = ResponseCodeHelper.getHint(getActivity(), code);
-		ToastHelper.toast(getActivity(), msg);
+	void dealGetVerifyCode(ResponseEntity response) {
 	}
 
 	/**
@@ -193,20 +162,8 @@ public class RetrievePwdStep1Fragment extends Fragment {
 	 * "下一步"。
 	 */
 	private void next() {
-		// parameters
 		String phone = mPhoneEt.getText().toString();
-		String verifyCode = mVerifyCodeEt.getText().toString();
-
-		// send
-		String params = HttpParameters.retrievePwdVerify(phone, verifyCode);
-		IHttpResponeListener listener = new IHttpResponeListener() {
-
-			@Override
-			public void onHttpRespone(ResponseEntity response) {
-				dealNext(response);
-			}
-		};
-		HttpUtils.HttpPost(HttpUrls.URL_RETRIEVE_PWD_VERIFY, params, listener);
+		RetrievePwdActivity.sendBroadcast(getActivity(), 2, phone);
 	}
 
 	/**
@@ -215,23 +172,11 @@ public class RetrievePwdStep1Fragment extends Fragment {
 	 * @param response
 	 *            响应。
 	 */
-	private void dealNext(ResponseEntity response) {
-		int code = ResponseParser.parseCode(response);
-
-		// success
-		if (code == 0) {
-			String phone = mPhoneEt.getText().toString();
-			RetrievePwdActivity.sendBroadcast(getActivity(), 2, phone);
-			return;
-		}
-
-		// fail
-		String msg = ResponseCodeHelper.getHint(getActivity(), code);
-		ToastHelper.toast(getActivity(), msg);
+	void dealNext(ResponseEntity response) {
 	}
 
 	// ---------------------------------------------------- timer
-	private void startTimer() {
+	void startTimer() {
 		stopTimer();
 
 		// 禁用按钮
@@ -278,5 +223,4 @@ public class RetrievePwdStep1Fragment extends Fragment {
 			mTimer = null;
 		}
 	}
-
 }
