@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
 			new Tab(R.string.main_tab_contact, R.drawable.mainbar_focus,
 					ContactFragment.class.getName()),
 
-					/** 个人 */
+			/** 个人 */
 					new Tab(R.string.main_tab_me, R.drawable.mainbar_me,
 							PersonalFragment.class.getName()) };
 
@@ -167,11 +167,17 @@ public class MainActivity extends BaseActivity {
 					showTabFocus(R.string.main_tab_me);
 					SuperScript.triggerNewVersion();
 				}
+
+				// 退出登录
+				if (intent.getAction().equals(Global.ACTION_LOGOUT)) {
+					finish();
+				}
 			}
 		};
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Global.ACTION_NEW_VERSION); // 新版本
+		filter.addAction(Global.ACTION_LOGOUT); // 退出登录
 		registerReceiver(mReceiver, filter);
 	}
 

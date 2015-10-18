@@ -6,11 +6,47 @@ import android.content.Intent;
 import com.jty.util.JSonUtils;
 import com.pplt.guard.contact.ContactEditActivity;
 import com.pplt.guard.entity.Contact;
+import com.pplt.guard.personal.LoginActivity;
 
 /**
  * Activity跳转。
  */
 public class Jump {
+
+	// ---------------------------------------------------- Account
+	/**
+	 * 跳转：登录。
+	 * 
+	 * @param context
+	 *            context.
+	 */
+	public static void toLogin(Context context) {
+		Intent intent = new Intent(context, LoginActivity.class);
+
+		context.startActivity(intent);
+	}
+
+	/**
+	 * 退出登录。
+	 * 
+	 * 1. MainActivity=>clear top.
+	 * 
+	 * 2. 给MainActivity发退出广播。
+	 * 
+	 * @param context
+	 *            context.
+	 */
+	public static void logout(Context context) {
+		// clear top
+		Intent intentClearTop = new Intent(context, MainActivity.class);
+		intentClearTop.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		context.startActivity(intentClearTop);
+
+		// broadcast
+		Intent intentLogout = new Intent();
+		intentLogout.setAction(Global.ACTION_LOGOUT);
+		context.sendBroadcast(intentLogout);
+	}
 
 	// ---------------------------------------------------- Contact
 	/**

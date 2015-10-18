@@ -3,10 +3,12 @@ package com.pplt.guard.personal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.hipalsports.entity.UserInfo;
+import com.jty.util.FormatHelper;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
@@ -14,6 +16,9 @@ import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
 import com.pplt.guard.MainActivity;
 import com.pplt.guard.R;
+import com.pplt.guard.comm.api.AccountAPI;
+import com.pplt.guard.comm.response.ResponseCodeHelper;
+import com.pplt.guard.comm.response.ResponseParser;
 import com.pplt.guard.personal.pwd.RetrievePwdActivity;
 
 /**
@@ -25,17 +30,14 @@ public class LoginActivity extends BaseActivity {
 	private final static int REQUEST_CODE_REGISTER = 100; // 注册
 
 	// ---------------------------------------------------- Private data
-	@InjectView(id = R.id.et_phone)
-	private EditText mPhoneEt; // 手机号码
+	@InjectView(id = R.id.et_account)
+	private EditText mAccountEt; // 账号：手机&邮箱
 
 	@InjectView(id = R.id.et_pwd)
 	private EditText mPwdEt; // 密码
 
-	@InjectView(id = R.id.tv_login)
+	@InjectView(id = R.id.tv_login, click = "login")
 	private TextView mLoginTv; // 登录按钮
-
-	@InjectView(id = R.id.tv_verify_code)
-	private TextView mVerifyCodeTv; // 验证码
 
 	@InjectView(id = R.id.tv_register, click = "register")
 	private TextView mRegisterTv; // 注册按钮
@@ -57,11 +59,11 @@ public class LoginActivity extends BaseActivity {
 		// initial
 		initViews();
 
-		// test
-		mPhoneEt.setText("13510853010");
-		mPhoneEt.setSelection(mPhoneEt.getText().length());
-		mPhoneEt.requestFocus();
-		mPwdEt.setText("000000");
+		// test : 账号&密码
+		mAccountEt.setText("liut@21cn.com");
+		mAccountEt.setSelection(mAccountEt.getText().length());
+		mAccountEt.requestFocus();
+		mPwdEt.setText("111");
 	}
 
 	@Override
@@ -83,32 +85,6 @@ public class LoginActivity extends BaseActivity {
 	 * initial view.
 	 */
 	private void initViews() {
-		// 验证码
-		int code = (int) (Math.random() * 10000.0f);
-		mVerifyCodeTv.setText("" + code);
-
-		// 登录
-		mLoginTv.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (!checkInput()) {
-					return;
-				}
-
-				login();
-			}
-		});
-
-		// // 忘记密码
-		// mForgetPwdTv.setOnClickListener(new View.OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// forgetPwd();
-		// }
-		// });
-
 	}
 
 	// ---------------------------------------------------- Private methods
@@ -118,10 +94,15 @@ public class LoginActivity extends BaseActivity {
 	 * @return 输入是否完整。
 	 */
 	private boolean checkInput() {
-		// 手机号码
-		String phone = mPhoneEt.getText().toString();
-		if (TextUtils.isEmpty(phone)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_phone);
+		// 账号
+		String account = mAccountEt.getText().toString();
+		if (TextUtils.isEmpty(account)) {
+			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
+			return false;
+		}
+		if (!FormatHelper.isEmail(account) && !FormatHelper.isPhone(account)) {
+			ToastHelper.toast(this,
+					R.string.personal_login_hint_input_right_account);
 			return false;
 		}
 
@@ -142,15 +123,55 @@ public class LoginActivity extends BaseActivity {
 	/**
 	 * 登录。
 	 */
-	private void login() {
-		// 手机号码
-		String phone = mPhoneEt.getText().toString();
-		Global.setPhone(phone);
+	public void login() {
+		// check input
+		if (!checkInput()) {
+			return;
+		}
+
+		// listener
+		Response.Listener<String> listener = new Response.Listener<String>() {
+
+			@Override
+			public void onResponse(String response) {
+				if (isFinishing()) {
+					return;
+				}
+
+				dealLoginResponse(response);
+			}
+		};
+
+		// request
+		String account = mAccountEt.getText().toString();
+		String pwd = mPwdEt.getText().toString();
+		AccountAPI.login(this, account, "0", pwd, listener);
+	}
+
+	/**
+	 * deal : 登录响应包。
+	 * 
+	 * @param response
+	 *            响应包。
+	 */
+	private void dealLoginResponse(String response) {
+		// check result
+		boolean result = ResponseParser.parseResult(response);
+		if (!result) {
+			mTimes++;
+
+			int code = ResponseParser.parseCode(response);
+			String hint = ResponseCodeHelper.getHint(this, code);
+			ToastHelper.toast(this, hint);
+			return;
+		}
+
+		// 用户信息
+		UserInfo user = ResponseParser.parse(response, UserInfo.class);
+		Global.setUser(user);
 
 		toMain();
-
 		finish();
-		mTimes = 0;
 	}
 
 	/**

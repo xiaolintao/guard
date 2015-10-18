@@ -3,6 +3,7 @@ package com.pplt.guard;
 import android.content.Context;
 import android.os.Environment;
 
+import com.hipalsports.entity.UserInfo;
 import com.jty.util.FileHelper;
 import com.jty.util.PrefHelper;
 import com.pplt.guard.comm.entity.UserEntity;
@@ -18,23 +19,20 @@ public class Global {
 	/** 文件：数据库 **/
 	public final static String DB_FILENAME = getRoot() + "/pplt.db";
 
-	/** PREF: initial */
+	/** PREF: 版本 */
 	private final static String PREF_NEW_VERSION = "new version"; // 新版本name
 	private final static String PREF_NEW_VERSION_CODE = "new version code"; // 新版本code
 
-	/** PREF: UI */
-	private final static String PREF_THEME = "app theme"; // theme
+	/** PREF: 账号 */
+	private final static String PREF_ACCOUNT_LOGIN = "account login"; // 登录用的账号
+
+	/** PREF: 界面 */
 	private final static String PREF_MAIN_LAST_TAB = "main last tab"; // 主页面最后"访问"的tab
 	private final static String PREF_SUPER_SCRIPT = "super script"; // 角标
 
-	/** 风格 */
-	public final static int THEME_BLACK = 0; // 黑色系
-	public final static int THEME_RED = 1; // 红色系
-	public final static int THEME_BLUE = 2; // 蓝色系
-
 	/** Action */
 	public static final String ACTION_NEW_VERSION = "com.pplt.guard.newversion"; // 新版本
-	public static final String ACTION_PPLT_FILE = "com.pplt.guard.pplt"; // pplt文件变动
+	public static final String ACTION_LOGOUT = "com.pplt.guard.logout"; // 退出登录
 
 	/** Extra **/
 	public final static String EXTRA_UID = "extra uid"; // 用户id
@@ -43,9 +41,13 @@ public class Global {
 	public final static String EXTRA_CONTACT = "extra contact"; // 联系人
 	public final static String EXTRA_IDS = "extra ids"; // id
 
+	// ---------------------------------------------------- Global data
 	private static Context mContext; // context
 	private static String mPhone; // 手机号码
 	private static UserEntity mUser; // 用户
+
+	/** 用户信息 */
+	private static UserInfo mUserInfo;
 
 	// ---------------------------------------------------- initial
 	/**
@@ -59,6 +61,7 @@ public class Global {
 	 * load.
 	 */
 	public static void load() {
+		// 角标
 		SuperScript.load();
 	}
 
@@ -84,6 +87,7 @@ public class Global {
 		return TMP_PATH;
 	}
 
+	// ---------------------------------------------------- 版本
 	/**
 	 * 设置新版本name。
 	 * 
@@ -157,43 +161,24 @@ public class Global {
 		return mUser;
 	}
 
+	/**
+	 * 设置用户信息。
+	 * 
+	 * @param user
+	 *            用户信息。
+	 */
+	public static void setUser(UserInfo user) {
+		mUserInfo = user;
+	}
+
+	/**
+	 * 置空用户信息。
+	 */
+	public static void resetUser() {
+		mUserInfo = null;
+	}
+
 	// ---------------------------------------------------- UI
-	/**
-	 * 设置主题风格。
-	 * 
-	 * @param style
-	 *            主题风格：THEME_*。
-	 */
-	public static void setTheme(int style) {
-		PrefHelper.setInt(mContext, PREF_THEME, style);
-	}
-
-	/**
-	 * 获取主题风格。
-	 * 
-	 * @return 主题风格：THEME_*。
-	 */
-	public static int getTheme() {
-		return PrefHelper.getInt(mContext, PREF_THEME, THEME_BLACK);
-	}
-
-	/**
-	 * 使主题风格生效。
-	 * 
-	 * @param context
-	 *            context.
-	 */
-	public static void applyTheme(Context context) {
-		int style = getTheme();
-
-		int[] themes = new int[] { R.style.AppTheme };
-		if (style < 0 || style >= themes.length) {
-			return;
-		}
-
-		context.setTheme(themes[style]);
-	}
-
 	/**
 	 * 设置主页面最后"访问"的tab。
 	 * 

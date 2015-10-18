@@ -214,7 +214,7 @@ public class PersonalDetailFragment extends Fragment implements OnClickListener 
 
 		// success
 		if (code == 0) {
-			Global.setUser(null);
+			Global.resetUser();
 			exit();
 			return;
 		}

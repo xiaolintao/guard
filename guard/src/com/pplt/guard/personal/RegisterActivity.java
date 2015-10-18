@@ -126,7 +126,7 @@ public class RegisterActivity extends BaseActivity {
 		// 手机号码
 		String phone = mPhoneEt.getText().toString();
 		if (TextUtils.isEmpty(phone)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_phone);
+			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
 			return;
 		}
 
@@ -174,7 +174,7 @@ public class RegisterActivity extends BaseActivity {
 		// 手机号码
 		String phone = mPhoneEt.getText().toString();
 		if (TextUtils.isEmpty(phone)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_phone);
+			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
 			return false;
 		}
 

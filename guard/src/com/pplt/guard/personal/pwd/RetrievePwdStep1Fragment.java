@@ -22,11 +22,11 @@ import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.kingdom.sdk.net.http.HttpUtils;
 import com.kingdom.sdk.net.http.IHttpResponeListener;
 import com.kingdom.sdk.net.http.ResponseEntity;
+import com.pplt.guard.R;
 import com.pplt.guard.comm.HttpParameters;
 import com.pplt.guard.comm.HttpUrls;
 import com.pplt.guard.comm.ResponseCodeHelper;
 import com.pplt.guard.comm.ResponseParser;
-import com.pplt.guard.R;
 
 /**
  * 找回密码：第一步。
@@ -125,7 +125,7 @@ public class RetrievePwdStep1Fragment extends Fragment {
 		String phone = mPhoneEt.getText().toString();
 		if (TextUtils.isEmpty(phone)) {
 			ToastHelper.toast(getActivity(),
-					R.string.personal_login_hint_input_phone);
+					R.string.personal_login_hint_input_account);
 			return;
 		}
 
@@ -174,7 +174,7 @@ public class RetrievePwdStep1Fragment extends Fragment {
 		String phone = mPhoneEt.getText().toString();
 		if (TextUtils.isEmpty(phone)) {
 			ToastHelper.toast(getActivity(),
-					R.string.personal_login_hint_input_phone);
+					R.string.personal_login_hint_input_account);
 			return false;
 		}
 

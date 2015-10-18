@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- unknown -->
+    <string name="error_unkonwn">未知错误</string>
+    
+    <!-- 账号 -->
+    <!-- 801 -->
+    <string name="error_account">账号尚未注册</string>
+    <!-- 802 -->
+    <string name="error_password">密码有误</string>
+
+</resources>

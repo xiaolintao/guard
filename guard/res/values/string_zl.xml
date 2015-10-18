@@ -14,35 +14,12 @@
     <dimen name="edge_margin2">30dp</dimen>
     
     <!-- 主界面 -->
-    <string name="main_tab_gurad">密防文件</string>
-    <string name="main_tab_contact">联系人</string>
-    <string name="main_tab_me">个人中心</string>
+    <string name="main_tab_gurad">密语</string>
+    <string name="main_tab_contact">通讯录</string>
+    <string name="main_tab_me">个人</string>
     
-    <!-- 密防文件 -->
-    <string name="guard_file_title">密防文件</string>
-    <string name="guard_file_create">制作</string>
-    <string name="guard_file_create_file">制作文件</string>
-    <string name="guard_file_title_create">制作密防文件</string>
-    <string name="guard_file_label_select_file">选择文件>></string>
-    <string name="guard_file_label_open_times">可以打开次数：</string>
-    <string name="guard_file_label_begin_time">授权开始日期</string>
-    <string name="guard_file_label_end_time">授权截止日期</string>
-    <string name="guard_file_label_begin_time2">授权开始日期：</string>
-    <string name="guard_file_label_end_time2">授权截止日期：</string>
-    <string name="guard_file_label_auth_to">授权给：</string>
-    
-    <string name="guard_file_hint_input_file">请选择文件</string>
-    <string name="guard_file_hint_input_open_times">请输入可以打开次数</string>
-    <string name="guard_file_hint_input_begin_time">请选择授权开始日期</string>
-    <string name="guard_file_hint_input_end_time">请选择授权截止日期</string>
-    <string name="guard_file_hint_summary">文件摘要</string>
-    
-    <string name="guard_file_btn_auth">授权</string>
-    <string name="guard_file_btn_auth_to">添加授权</string>
-    <string name="guard_file_btn_auth_reverse">取消授权</string>
-    
-    <!-- 联系人 -->
-    <string name="contact_title">联系人</string>
+    <!-- 通讯录-->
+    <string name="contact_title">通讯录</string>
     <string name="contact_label_name">姓名：</string>
     <string name="contact_label_phone">手机：</string>
     <string name="contact_label_email">邮箱：</string>
@@ -57,8 +34,5 @@
     <string name="contact_title_delete">删除联系人</string>
     <string name="contact_title_choice">选择联系人</string>
     <string name="contact_hint_delete">是否删除联系人"%1$s"?</string>
-    
-    <!-- 文件explorer -->
-    <string name="explorer_title_browser">选择文件</string>
     
 </resources>

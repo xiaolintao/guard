@@ -16,21 +16,35 @@ import android.view.ViewGroup;
 
 import com.jty.util.VersionHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
+import com.kingdom.sdk.ioc.annotation.InjectView;
+import com.pplt.guard.Global;
+import com.pplt.guard.Jump;
+import com.pplt.guard.R;
 import com.pplt.guard.SuperScript;
 import com.pplt.guard.daemon.DaemonService;
 import com.pplt.guard.daemon.DaemonService.DaemonBinder;
 import com.pplt.guard.personal.pwd.ChangePwdActivity;
-import com.pplt.guard.R;
 import com.pplt.ui.DlgHelper;
 import com.pplt.ui.PreferenceItem;
 
 /**
  * 系统设置。
  */
-public class SystemSettingFragment extends Fragment implements
-View.OnClickListener {
+public class SystemSettingFragment extends Fragment {
 
 	// ---------------------------------------------------- Private data
+	@InjectView(id = R.id.item_change_pwd, click = "changePwd")
+	private View mChangePwdPi; // 修改密码
+
+	@InjectView(id = R.id.item_feedback, click = "")
+	private View mFeedback; // 意见反馈
+
+	@InjectView(id = R.id.item_version, click = "version")
+	private View mVersion; // 版本
+
+	@InjectView(id = R.id.tv_logout, click = "logout")
+	private View mLogout; // 退出登录
+
 	private DaemonService mDaemonService;
 
 	// ---------------------------------------------------- Override methods
@@ -77,8 +91,6 @@ View.OnClickListener {
 	 * initial views.
 	 */
 	private void initViews() {
-		// click listener
-		setOnClickListener();
 	}
 
 	/**
@@ -97,44 +109,24 @@ View.OnClickListener {
 
 	// ---------------------------------------------------- Private methods
 	/**
-	 * set click listener.
-	 */
-	private void setOnClickListener() {
-		int[] ids = new int[] { R.id.item_change_pwd, R.id.item_feedback,
-				R.id.item_version };
-
-		for (int id : ids) {
-			View view = getView().findViewById(id);
-			if (view != null) {
-				view.setOnClickListener(this);
-			}
-		}
-	}
-
-	@Override
-	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.item_change_pwd: // 修改密码
-			changePwd();
-			break;
-		case R.id.item_feedback: // 意见反馈
-			break;
-		case R.id.item_version: // 关于
-			version();
-			SuperScript.aboutClicked();
-			break;
-		default:
-			break;
-		}
-	}
-
-	/**
 	 * 修改密码。
 	 */
-	private void changePwd() {
+	public void changePwd() {
 		Intent intent = new Intent(getActivity(), ChangePwdActivity.class);
 
 		startActivity(intent);
+	}
+
+	/**
+	 * 退出登录。
+	 */
+	public void logout() {
+		// 用户信息
+		Global.resetUser();
+
+		// 跳转：登录
+		Jump.logout(getActivity());
+		Jump.toLogin(getActivity());
 	}
 
 	// ---------------------------------------------------- Private methods

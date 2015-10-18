@@ -2,10 +2,10 @@
 <resources>
     
     <!-- login -->
-    <string name="login_lable_pplt">紫色密防系统</string>
-    <string name="personal_login_hint_account">手机/邮箱/账号</string>
+    <string name="login_lable_pplt">紫色密语</string>
+    <string name="personal_login_hint_account">手机号码/邮箱</string>
     <string name="personal_login_hint_phone">手机号码</string>
-    <string name="login_other_account">其他账号登录</string>
+    <string name="login_other_account">社交账号登录</string>
     <string name="login">立即登录</string>
     
     <!-- login&register -->
@@ -20,7 +20,8 @@
     <string name="personal_anonymous">匿名</string>
     
     <!-- personal: login -->
-    <string name="personal_login_hint_input_phone">请输入手机号码</string>
+    <string name="personal_login_hint_input_account">请输入手机号码/邮箱</string>
+    <string name="personal_login_hint_input_right_account">请输入正确的手机号码/邮箱</string>
     <string name="personal_login_hint_input_pwd">请输入密码</string>
     <string name="personal_login_hint_input_pwd2">请重复输入密码</string>
     <string name="personal_login_hint_input_old_pwd">请输入旧密码</string>
@@ -64,6 +65,7 @@
     <string name="personal_item_feedback">意见反馈</string>
     <string name="personal_item_version">版本</string>
     
+    <string name="personal_hint_weixin">微信账号登录</string>
     <string name="personal_hint_qq">QQ账号登录</string>
     <string name="personal_hint_sina">新浪微博账号登录</string>
     
@@ -72,7 +74,7 @@
     <string name="photo_from_album">从手机相册选择</string>
     
     <!-- version -->
-    <string name="version_downloading">正在下载紫色密防</string>
-    <string name="version_downloaded">紫色密防下载完成</string>
+    <string name="version_downloading">正在下载紫色密语</string>
+    <string name="version_downloaded">紫色密语下载完成</string>
     <string name="version_install">点击安装</string>
 </resources>

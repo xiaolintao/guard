@@ -9,18 +9,13 @@ import android.view.Window;
 /**
  * Base of all activity.
  * 
- * 1. applyTheme.
- * 
- * 2. avoid setting system text size.
+ * 1. avoid setting system text size.
  */
 public class BaseActivity extends FragmentActivity {
 
 	// ---------------------------------------------------- Override methods
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// theme
-		Global.applyTheme(this);
-
 		// avoid setting system text size.
 		Resources res = getResources();
 		Configuration config = new Configuration();
