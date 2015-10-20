@@ -75,6 +75,20 @@
                 <action android:name="com.jty.stock.daemon.DaemonService" />
             </intent-filter>
         </service>
+        
+      <!-- share SDK -->
+      <activity
+           android:name="cn.sharesdk.framework.ShareSDKUIShell"
+           android:theme="@android:style/Theme.Translucent.NoTitleBar"
+           android:configChanges="keyboardHidden|orientation|screenSize"
+           android:windowSoftInputMode="stateHidden|adjustResize" />
+       
+       <!-- 微信分享回调 -->
+       <activity
+           android:name="com.pplt.guard.wxapi.WXEntryActivity"
+           android:theme="@android:style/Theme.Translucent.NoTitleBar"
+           android:configChanges="keyboardHidden|orientation|screenSize"
+           android:exported="true" />
     </application>
 
 </manifest>

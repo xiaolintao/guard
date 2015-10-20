@@ -21,12 +21,11 @@ import com.pplt.guard.Global;
 public class VolleyHelper {
 
 	// ---------------------------------------------------- Constants
-	/*** 网络响应成功 */
-	public static final int RESULT_OK = 0;
 	/*** 网络响应失败 */
-	public static final int RESULT_NET_ERROR = 1;
-	public static final int RESULT_SERVER_ERROR = 2;
-	public static final int RESULT_TIMEOUT = 3;
+	public static final int RESULT_UNKNOWN_ERROR = -1;
+	public static final int RESULT_NET_ERROR = -2;
+	public static final int RESULT_SERVER_ERROR = -3;
+	public static final int RESULT_TIMEOUT = -4;
 
 	// ---------------------------------------------------- Private data
 	private static RequestQueue mQueue;
@@ -81,7 +80,7 @@ public class VolleyHelper {
 			return;
 		}
 
-		int status = RESULT_OK;
+		int status = RESULT_UNKNOWN_ERROR;
 		if (error instanceof TimeoutError) {
 			status = RESULT_TIMEOUT;
 		} else if (error instanceof ServerError
