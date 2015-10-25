@@ -90,10 +90,10 @@ public class LoginActivity extends BaseActivity {
 		ShareSDK.initSDK(this);
 
 		// test : 账号&密码
-		mAccountEt.setText("liut@21cn.com");
+		mAccountEt.setText("xiaolintao@21cn.com");
 		mAccountEt.setSelection(mAccountEt.getText().length());
 		mAccountEt.requestFocus();
-		mPwdEt.setText("111");
+		mPwdEt.setText("112");
 	}
 
 	@Override
@@ -175,7 +175,7 @@ public class LoginActivity extends BaseActivity {
 		// request
 		String account = mAccountEt.getText().toString();
 		String pwd = mPwdEt.getText().toString();
-		AccountAPI.login(this, account, "0", pwd, listener);
+		AccountAPI.login(this, account, pwd, listener);
 	}
 
 	/**

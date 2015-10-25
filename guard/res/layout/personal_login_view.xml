@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginTop="15dp"
-            android:background="@drawable/btn_bg_blue"
+            android:background="@drawable/btn_blue"
             android:gravity="center"
             android:text="@string/personal_login" />
 
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/input_line_height"
                 android:gravity="center_vertical"
-                android:text="@string/personal_register2"
+                android:text="@string/personal_to_register"
                 android:textColor="@color/common_title_text_color_highlight"
                 android:textSize="@dimen/text_size_medium" />
 

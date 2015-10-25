@@ -47,7 +47,7 @@
         android:layout_marginLeft="@dimen/edge_margin"
         android:layout_marginRight="@dimen/edge_margin"
         android:layout_marginTop="@dimen/preference_margin"
-        android:background="@drawable/btn_bg_red"
+        android:background="@drawable/btn_red"
         android:gravity="center"
         android:text="@string/personal_logout" />
 

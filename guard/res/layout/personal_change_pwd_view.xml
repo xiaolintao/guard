@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftImage="@drawable/navigationbar_button_back_blue"
-        app:rightText="@string/ok"
         app:titleText="@string/personal_change_pwd" />
 
     <LinearLayout
@@ -21,31 +20,57 @@
         android:paddingLeft="@dimen/edge_margin"
         android:paddingRight="@dimen/edge_margin" >
 
-
         <EditText
-            android:id="@+id/et_old_pwd"
+            android:id="@+id/et_account"
             style="@style/style_input"
             android:layout_marginTop="@dimen/line_margin"
-            android:hint="@string/personal_login_hint_input_old_pwd"
-            android:inputType="textPassword">
+            android:hint="@string/personal_login_hint_account" >
         </EditText>
+
+        <LinearLayout
+            android:id="@+id/verify_code_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/line_margin" 
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_verify_code"
+                style="@style/style_input"
+                android:layout_width="0dp"
+                android:hint="@string/personal_login_hint_input_verifycode"
+                android:layout_weight="1">
+            </EditText>
+            
+            <TextView
+                android:id="@+id/tv_verify_code"
+                style="@style/style_input"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/input_line_height"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_grey"
+                android:gravity="center"
+                android:text="@string/personal_get_verifycode" 
+                android:layout_weight="1"/>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/et_pwd"
             style="@style/style_input"
             android:layout_marginTop="@dimen/line_margin"
             android:hint="@string/personal_login_hint_input_new_pwd"
-            android:inputType="textPassword">
+            android:inputType="textPassword" >
         </EditText>
-    
-     <EditText
-         android:id="@+id/et_pwd2"
-         style="@style/style_input"
-            android:layout_marginTop="@dimen/line_margin"
-            android:hint="@string/personal_login_hint_input_new_pwd2"
-            android:inputType="textPassword">
-     </EditText>
-     
+
+        <TextView
+            android:id="@+id/tv_change_pwd"
+            style="@style/style_text_medium"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_blue"
+            android:gravity="center"
+            android:text="@string/personal_change_pwd" />
     </LinearLayout>
 
 </LinearLayout>

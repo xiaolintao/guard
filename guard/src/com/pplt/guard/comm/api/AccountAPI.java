@@ -1,8 +1,12 @@
 package com.pplt.guard.comm.api;
 
+import java.util.Locale;
+
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.android.volley.Response;
+import com.jty.util.FormatHelper;
 import com.jty.util.volley.VolleyHelper;
 
 /**
@@ -10,6 +14,7 @@ import com.jty.util.volley.VolleyHelper;
  */
 public class AccountAPI extends BaseAPI {
 
+	// ---------------------------------------------------- Login
 	/**
 	 * 登录.
 	 * 
@@ -17,18 +22,16 @@ public class AccountAPI extends BaseAPI {
 	 *            context.
 	 * @param account
 	 *            账号。
-	 * @param type
-	 *            账号类型：0 - email 1 - phone.
 	 * @param password
 	 *            密码。
 	 * @param listener
 	 *            volley response listener.
 	 */
-	public static void login(Context context, String account, String type,
-			String password, Response.Listener<String> listener) {
+	public static void login(Context context, String account, String password,
+			Response.Listener<String> listener) {
 		RequestParams params = new RequestParams();
 		params.put("accountNumber", account);
-		params.put("type", type);
+		params.put("type", getAccountType(account));
 		params.put("password", password);
 
 		VolleyHelper.post(context, BASE_URL + "users/login", params.toString(),
@@ -61,5 +64,90 @@ public class AccountAPI extends BaseAPI {
 
 		VolleyHelper.post(context, BASE_URL + "users/bindAccount",
 				params.toString(), listener);
+	}
+
+	/**
+	 * 获取验证码（修改密码时）
+	 * 
+	 * @param conext
+	 *            context.
+	 * @param account
+	 *            账号。
+	 * @param listener
+	 *            volley response listener.
+	 */
+	public static void getCaptcha(Context context, String account,
+			Response.Listener<String> listener) {
+		RequestParams params = new RequestParams();
+		params.put("accountNumber", account);
+		params.put("type", getAccountType(account));
+		params.put("locale", getLocale());
+
+		VolleyHelper.post(context, BASE_URL + "users/getCaptcha",
+				params.toString(), listener);
+	}
+
+	/**
+	 * 修改密码。
+	 * 
+	 * @param context
+	 *            context.
+	 * @param account
+	 *            账号。
+	 * @param captcha
+	 *            验证码。
+	 * @param password
+	 *            新密码。
+	 * @param listener
+	 *            volley response listener.
+	 */
+	public static void rePassword(Context context, String account,
+			String captcha, String password, Response.Listener<String> listener) {
+		RequestParams params = new RequestParams();
+		params.put("accountNumber", account);
+		params.put("captcha", captcha);
+		params.put("password", password);
+		params.put("type", getAccountType(account));
+
+		VolleyHelper.post(context, BASE_URL + "users/rePassword",
+				params.toString(), listener);
+	}
+
+	// ---------------------------------------------------- Private methods
+	/**
+	 * 获取账号类型。
+	 * 
+	 * @param account
+	 *            账号。
+	 * @return 0 : email 1 : phone -1 : 其它。
+	 */
+	private static int getAccountType(String account) {
+		if (TextUtils.isEmpty(account)) {
+			return -1;
+		}
+
+		// email
+		if (FormatHelper.isEmail(account)) {
+			return 0;
+		}
+
+		// phone
+		if (FormatHelper.isPhone(account)) {
+			return 1;
+		}
+
+		return -1;
+	}
+
+	/**
+	 * 获取locale : language +"_" + country.
+	 * 
+	 * @return locale.
+	 */
+	private static String getLocale() {
+		String language = Locale.getDefault().getLanguage();
+		String country = Locale.getDefault().getCountry();
+
+		return language + "_" + country;
 	}
 }

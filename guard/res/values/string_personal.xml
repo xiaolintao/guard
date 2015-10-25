@@ -12,8 +12,7 @@
     <string name="personal_login">登录</string>
     <string name="personal_logout">退出登录</string>
     <string name="personal_register">注册</string>
-    <string name="personal_register2">注册>></string>
-    <string name="personal_register_phone">手机注册</string>
+    <string name="personal_to_register">注册>></string>
     <string name="personal_forget_pwd">忘记密码?</string>
     <string name="personal_change_pwd">修改密码</string>
     <string name="personal_retrieve_pwd">找回密码</string>
@@ -36,12 +35,21 @@
     <string name="third_login_hint_auth_complete">授权成功，正在跳转登录操作…</string>
     <string name="third_login_hint_auth_cancel">授权操作已取消</string>
     <string name="third_login_hint_auth_error">授权操作遇到错误</string>
+    <string name="personal_hint_weixin">微信账号登录</string>
+    <string name="personal_hint_qq">QQ账号登录</string>
+    <string name="personal_hint_sina">新浪微博账号登录</string>
+    
+    <!-- 验证码 -->
+    <string name="personal_get_verifycode">获取验证码</string>
+    <string name="personal_hint_verifycode_sended_phone">验证码已发送到您的手机</string>
+    <string name="personal_hint_verifycode_sended_email">验证码已发送到您的邮箱</string>
+    <string name="personal_hint_time_left">剩余%1$d秒</string>
+    
+    <!--  -->
     
     <!-- personal：register -->
     <string name="personal_register_successed">注册成功</string>
-    <string name="personal_register_get_verifycode">获取验证码</string>
-    <string name="personal_register_hint_verifycode_sended">手机验证码已发送</string>
-    <string name="personal_register_hint_time_left">剩余%1$d秒</string>
+    
     
     <!-- personal：找回密码 -->
     <string name="personal_retrieve_pwd_verified">成功通过验证，请重设您的密码！</string>
@@ -70,10 +78,6 @@
     <string name="personal_item_change_pwd">修改密码</string>
     <string name="personal_item_feedback">意见反馈</string>
     <string name="personal_item_version">版本</string>
-    
-    <string name="personal_hint_weixin">微信账号登录</string>
-    <string name="personal_hint_qq">QQ账号登录</string>
-    <string name="personal_hint_sina">新浪微博账号登录</string>
     
     <!-- personal: photo -->
     <string name="photo_take_photo">拍照</string>

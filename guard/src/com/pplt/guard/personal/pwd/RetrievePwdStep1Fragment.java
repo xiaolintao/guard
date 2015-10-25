@@ -206,7 +206,7 @@ public class RetrievePwdStep1Fragment extends Fragment {
 		}
 
 		// 未到时
-		String df = getText(R.string.personal_register_hint_time_left)
+		String df = getText(R.string.personal_hint_time_left)
 				.toString();
 		String hint = String.format(df, mCount);
 		mVerifyCodeTv.setText(hint);
@@ -215,7 +215,7 @@ public class RetrievePwdStep1Fragment extends Fragment {
 	private void stopTimer() {
 		// 启用按钮
 		mVerifyCodeTv.setEnabled(true);
-		mVerifyCodeTv.setText(R.string.personal_register_get_verifycode);
+		mVerifyCodeTv.setText(R.string.personal_get_verifycode);
 
 		// 取消timer
 		if (mTimer != null) {

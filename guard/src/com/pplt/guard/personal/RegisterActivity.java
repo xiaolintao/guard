@@ -4,7 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,12 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.jty.util.FormatHelper;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.kingdom.sdk.net.http.ResponseEntity;
 import com.pplt.guard.BaseActivity;
-import com.pplt.guard.Global;
 import com.pplt.guard.R;
 import com.pplt.ui.TitleBar;
 
@@ -27,15 +26,12 @@ import com.pplt.ui.TitleBar;
  */
 public class RegisterActivity extends BaseActivity {
 
-	// ---------------------------------------------------- Constants
-	private final static int REQUEST_CODE_PROFILE = 101; // 完善用户资料
-
 	// ---------------------------------------------------- Private data
 	@InjectView(id = R.id.title_bar)
 	private TitleBar mTitleBar;
 
-	@InjectView(id = R.id.et_phone)
-	private EditText mPhoneEt; // 手机号码
+	@InjectView(id = R.id.et_account)
+	private EditText mAccountEt; // 手机
 
 	@InjectView(id = R.id.et_pwd)
 	private EditText mPwdEt; // 密码
@@ -74,16 +70,6 @@ public class RegisterActivity extends BaseActivity {
 		initViews();
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == REQUEST_CODE_PROFILE) {
-			if (resultCode == RESULT_OK) {
-				setResult(RESULT_OK);
-				finish();
-			}
-		}
-	}
-
 	// ---------------------------------------------------- Private methods
 	/**
 	 * initial view.
@@ -117,12 +103,31 @@ public class RegisterActivity extends BaseActivity {
 	 * 获取手机验证码。
 	 */
 	private void getVerifyCode() {
-		// 手机号码
-		String phone = mPhoneEt.getText().toString();
-		if (TextUtils.isEmpty(phone)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
+		// 检查账号
+		if (!checkAccount()) {
 			return;
 		}
+	}
+
+	/**
+	 * 检查账号。
+	 * 
+	 * @return 账号格式是否正确。
+	 */
+	private boolean checkAccount() {
+		// 账号
+		String account = mAccountEt.getText().toString();
+		if (TextUtils.isEmpty(account)) {
+			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
+			return false;
+		}
+		if (!FormatHelper.isEmail(account) && !FormatHelper.isPhone(account)) {
+			ToastHelper.toast(this,
+					R.string.personal_login_hint_input_right_account);
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -140,10 +145,8 @@ public class RegisterActivity extends BaseActivity {
 	 * @return 输入是否完整。
 	 */
 	private boolean checkInput() {
-		// 手机号码
-		String phone = mPhoneEt.getText().toString();
-		if (TextUtils.isEmpty(phone)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
+		// 账号
+		if (!checkAccount()) {
 			return false;
 		}
 
@@ -185,22 +188,6 @@ public class RegisterActivity extends BaseActivity {
 
 	}
 
-	/**
-	 * 完善资料。
-	 * 
-	 * @param uid
-	 *            用户id.
-	 */
-	void profile(int uid) {
-		String phone = mPhoneEt.getText().toString();
-
-		Intent intent = new Intent(this, ProfileActivity.class);
-		intent.putExtra(Global.EXTRA_UID, uid);
-		intent.putExtra(Global.EXTRA_PHONE, phone);
-
-		startActivityForResult(intent, REQUEST_CODE_PROFILE);
-	}
-
 	// ---------------------------------------------------- timer
 	void startTimer() {
 		stopTimer();
@@ -232,7 +219,7 @@ public class RegisterActivity extends BaseActivity {
 		}
 
 		// 未到时
-		String df = getText(R.string.personal_register_hint_time_left)
+		String df = getText(R.string.personal_hint_time_left)
 				.toString();
 		String hint = String.format(df, mCount);
 		mVerifyCodeTv.setText(hint);
@@ -241,7 +228,7 @@ public class RegisterActivity extends BaseActivity {
 	private void stopTimer() {
 		// 启用按钮
 		mVerifyCodeTv.setEnabled(true);
-		mVerifyCodeTv.setText(R.string.personal_register_get_verifycode);
+		mVerifyCodeTv.setText(R.string.personal_get_verifycode);
 
 		// 取消timer
 		if (mTimer != null) {
