@@ -27,7 +27,7 @@ import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
-import com.pplt.guard.MainActivity;
+import com.pplt.guard.Jump;
 import com.pplt.guard.R;
 import com.pplt.guard.comm.api.AccountAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
@@ -90,10 +90,10 @@ public class LoginActivity extends BaseActivity {
 		ShareSDK.initSDK(this);
 
 		// test : 账号&密码
-		mAccountEt.setText("xiaolintao@21cn.com");
+		mAccountEt.setText("369024496@qq.com");
 		mAccountEt.setSelection(mAccountEt.getText().length());
 		mAccountEt.requestFocus();
-		mPwdEt.setText("112");
+		mPwdEt.setText("111");
 	}
 
 	@Override
@@ -200,7 +200,7 @@ public class LoginActivity extends BaseActivity {
 		UserInfo user = ResponseParser.parse(response, UserInfo.class);
 		Global.setUser(user);
 
-		toMain();
+		Jump.toMain(this);
 		finish();
 	}
 
@@ -218,15 +218,6 @@ public class LoginActivity extends BaseActivity {
 	 */
 	public void forgetPwd() {
 		Intent intent = new Intent(this, RetrievePwdActivity.class);
-
-		startActivity(intent);
-	}
-
-	/**
-	 * 跳转：主界面.
-	 */
-	private void toMain() {
-		Intent intent = new Intent(this, MainActivity.class);
 
 		startActivity(intent);
 	}

@@ -1,61 +1,44 @@
 package com.pplt.guard.personal;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.jty.util.FormatHelper;
+import com.android.volley.Response;
+import com.hipalsports.entity.UserInfo;
+import com.hipalsports.enums.PurposeEnum;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.kingdom.sdk.net.http.ResponseEntity;
-import com.pplt.guard.BaseActivity;
+import com.pplt.guard.Global;
+import com.pplt.guard.Jump;
 import com.pplt.guard.R;
+import com.pplt.guard.comm.api.AccountAPI;
+import com.pplt.guard.comm.response.ResponseCodeHelper;
+import com.pplt.guard.comm.response.ResponseParser;
 import com.pplt.ui.TitleBar;
 
 /**
  * 注册。
  */
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends VerifyCodeActivity {
 
 	// ---------------------------------------------------- Private data
 	@InjectView(id = R.id.title_bar)
 	private TitleBar mTitleBar;
 
-	@InjectView(id = R.id.et_account)
-	private EditText mAccountEt; // 手机
-
 	@InjectView(id = R.id.et_pwd)
 	private EditText mPwdEt; // 密码
+
+	@InjectView(id = R.id.et_nickname)
+	private EditText mNicknameEt; // 昵称
 
 	@InjectView(id = R.id.et_verify_code)
 	private EditText mVerifyCodeEt; // 验证码：输入
 
-	@InjectView(id = R.id.tv_verify_code)
-	private TextView mVerifyCodeTv; // 验证码：申请下发
-
-	@InjectView(id = R.id.tv_register)
+	@InjectView(id = R.id.tv_register, click = "register")
 	private TextView mRegisterTv; // 注册按钮
-
-	private Timer mTimer;
-	private int mCount;
-
-	@SuppressLint("HandlerLeak")
-	private Handler mHandler = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			showTimeLeft();
-		}
-	};
 
 	// ---------------------------------------------------- Override methods
 	@Override
@@ -68,6 +51,12 @@ public class RegisterActivity extends BaseActivity {
 
 		// initial views
 		initViews();
+
+		// test : 账号&密码
+		mAccountEt.setText("369024496@qq.com");
+		mAccountEt.setSelection(mAccountEt.getText().length());
+		mAccountEt.requestFocus();
+		mPwdEt.setText("112");
 	}
 
 	// ---------------------------------------------------- Private methods
@@ -75,68 +64,14 @@ public class RegisterActivity extends BaseActivity {
 	 * initial view.
 	 */
 	private void initViews() {
-		// 验证码
-		mVerifyCodeTv.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				getVerifyCode();
-			}
-		});
-
-		// register
-		mRegisterTv.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (!checkInput()) {
-					return;
-				}
-
-				register();
-			}
-		});
 	}
 
 	// ---------------------------------------------------- Private methods
 	/**
-	 * 获取手机验证码。
+	 * TODO: 获取验证码。
 	 */
-	private void getVerifyCode() {
-		// 检查账号
-		if (!checkAccount()) {
-			return;
-		}
-	}
-
-	/**
-	 * 检查账号。
-	 * 
-	 * @return 账号格式是否正确。
-	 */
-	private boolean checkAccount() {
-		// 账号
-		String account = mAccountEt.getText().toString();
-		if (TextUtils.isEmpty(account)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
-			return false;
-		}
-		if (!FormatHelper.isEmail(account) && !FormatHelper.isPhone(account)) {
-			ToastHelper.toast(this,
-					R.string.personal_login_hint_input_right_account);
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * 处理响应。
-	 * 
-	 * @param response
-	 *            响应。
-	 */
-	void dealGetVerifyCode(ResponseEntity response) {
+	public void getVerifyCode() {
+		doGetVerifyCode(PurposeEnum.REGISTER.value());
 	}
 
 	/**
@@ -165,17 +100,47 @@ public class RegisterActivity extends BaseActivity {
 			return false;
 		}
 
+		// 昵称
+		String nickName = mNicknameEt.getText().toString();
+		if (TextUtils.isEmpty(nickName)) {
+			ToastHelper.toast(this,
+					R.string.personal_register_hint_input_nickname);
+			return false;
+		}
+
 		return true;
 	}
 
 	/**
 	 * 注册。
 	 */
-	private void register() {
-		// parameters
-		// String phone = mPhoneEt.getText().toString();
-		// String pwd = mPwdEt.getText().toString();
-		// String verifyCode = mVerifyCodeEt.getText().toString();
+	public void register() {
+		// 检查输入
+		if (!checkInput()) {
+			return;
+		}
+
+		forbidClick(mRegisterTv, 3);
+
+		// listener
+		Response.Listener<String> listener = new Response.Listener<String>() {
+
+			@Override
+			public void onResponse(String response) {
+				if (isFinishing() || response == null) {
+					return;
+				}
+
+				dealRegister(response);
+			}
+		};
+
+		// request
+		String account = mAccountEt.getText().toString();
+		String pwd = mPwdEt.getText().toString();
+		String verifyCode = mVerifyCodeEt.getText().toString();
+		String nickName = mNicknameEt.getText().toString();
+		AccountAPI.register(this, account, pwd, verifyCode, nickName, listener);
 	}
 
 	/**
@@ -184,56 +149,23 @@ public class RegisterActivity extends BaseActivity {
 	 * @param response
 	 *            响应。
 	 */
-	void dealRegister(ResponseEntity response) {
+	private void dealRegister(String response) {
+		int code = ResponseParser.parseCode(response);
 
-	}
+		// success
+		if (code == 0) {
+			ToastHelper.toast(this, R.string.personal_register_successed);
 
-	// ---------------------------------------------------- timer
-	void startTimer() {
-		stopTimer();
+			UserInfo user = ResponseParser.parse(response, UserInfo.class);
+			Global.setUser(user);
 
-		// 禁用按钮
-		mVerifyCodeTv.setEnabled(false);
-
-		// 设置计数值
-		mCount = 30;
-
-		// 启动timer
-		mTimer = new Timer(getPackageName(), false);
-		mTimer.schedule(new TimerTask() {
-
-			@Override
-			public void run() {
-				mHandler.sendEmptyMessage(0);
-			}
-		}, 1000, 1000);
-	}
-
-	private void showTimeLeft() {
-		mCount--;
-
-		// 到时
-		if (mCount == 0) {
-			stopTimer();
+			Jump.toMain(this);
+			finish();
 			return;
 		}
 
-		// 未到时
-		String df = getText(R.string.personal_hint_time_left)
-				.toString();
-		String hint = String.format(df, mCount);
-		mVerifyCodeTv.setText(hint);
-	}
-
-	private void stopTimer() {
-		// 启用按钮
-		mVerifyCodeTv.setEnabled(true);
-		mVerifyCodeTv.setText(R.string.personal_get_verifycode);
-
-		// 取消timer
-		if (mTimer != null) {
-			mTimer.cancel();
-			mTimer = null;
-		}
+		// fail
+		String msg = ResponseCodeHelper.getHint(this, code);
+		ToastHelper.toast(this, msg);
 	}
 }

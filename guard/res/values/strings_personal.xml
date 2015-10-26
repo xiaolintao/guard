@@ -4,7 +4,6 @@
     <!-- login -->
     <string name="login_lable_pplt">紫色密语</string>
     <string name="personal_login_hint_account">手机号码/邮箱</string>
-    <string name="personal_login_hint_phone">手机号码</string>
     <string name="login_other_account">社交账号登录</string>
     <string name="login">立即登录</string>
     
@@ -26,9 +25,10 @@
     <string name="personal_login_hint_input_old_pwd">请输入旧密码</string>
     <string name="personal_login_hint_input_new_pwd">请输入新密码</string>
     <string name="personal_login_hint_input_new_pwd2">确认新密码</string>
-    <string name="personal_login_hint_input_verifycode">验证码</string>
+    <string name="personal_login_hint_input_verifycode">请输入验证码</string>
     <string name="personal_login_hint_input_pwd_not_equal">密码不一致</string>
     <string name="personal_login_hint_wrong_pwd_three_times">密码已输错3次,请稍候再试</string>
+    <string name="personal_register_hint_input_nickname">请输入昵称</string>
     
     <!-- personal: third login -->
     <string name="third_login_hint_install_weixin">请先安装微信客户端</string>

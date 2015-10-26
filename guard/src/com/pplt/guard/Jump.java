@@ -13,6 +13,18 @@ import com.pplt.guard.personal.LoginActivity;
  */
 public class Jump {
 
+	/**
+	 * 跳转：主界面.
+	 * 
+	 * @param context
+	 *            context.
+	 */
+	public static void toMain(Context context) {
+		Intent intent = new Intent(context, MainActivity.class);
+
+		context.startActivity(intent);
+	}
+
 	// ---------------------------------------------------- Account
 	/**
 	 * 跳转：登录。
