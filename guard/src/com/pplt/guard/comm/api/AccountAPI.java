@@ -147,6 +147,33 @@ public class AccountAPI extends BaseAPI {
 	}
 
 	/**
+	 * 修改密码。
+	 * 
+	 * @param context
+	 *            context.
+	 * @param account
+	 *            账号。
+	 * @param oldPassword
+	 *            验证码。
+	 * @param newPassword
+	 *            新密码。
+	 * @param listener
+	 *            volley response listener.
+	 */
+	public static void changePassword(Context context, String account,
+			String oldPassword, String newPassword,
+			Response.Listener<String> listener) {
+		RequestParams params = new RequestParams();
+		params.put("accountNumber", account);
+		params.put("oldPassword", oldPassword);
+		params.put("newPassword", newPassword);
+		params.put("type", getAccountType(account));
+
+		VolleyHelper.post(context, BASE_URL + "users/changePassword",
+				params.toString(), listener);
+	}
+
+	/**
 	 * 获取验证码。
 	 * 
 	 * @param conext

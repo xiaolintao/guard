@@ -7,32 +7,36 @@ import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.hipalsports.entity.UserInfo;
-import com.hipalsports.enums.PurposeEnum;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
+import com.pplt.guard.BaseActivity;
 import com.pplt.guard.Global;
 import com.pplt.guard.R;
 import com.pplt.guard.comm.api.AccountAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
 import com.pplt.guard.comm.response.ResponseParser;
-import com.pplt.guard.personal.VerifyCodeActivity;
+import com.pplt.guard.personal.checker.AccountChecker;
+import com.pplt.guard.personal.checker.InputChecker;
 import com.pplt.ui.TitleBar;
 
 /**
  * 修改密码。
  */
-public class ChangePwdActivity extends VerifyCodeActivity {
+public class ChangePwdActivity extends BaseActivity {
 
 	// ---------------------------------------------------- Private data
 	@InjectView(id = R.id.title_bar)
 	private TitleBar mTitleBar;
 
-	@InjectView(id = R.id.et_pwd)
-	private EditText mPwdEt; // 密码
+	@InjectView(id = R.id.et_account)
+	protected EditText mAccountEt; // 账号：手机&邮箱
 
-	@InjectView(id = R.id.et_verify_code)
-	private EditText mVerifyCodeEt; // 验证码：输入
+	@InjectView(id = R.id.et_old_pwd)
+	private EditText mOldPwdEt; // 旧密码
+
+	@InjectView(id = R.id.et_new_pwd)
+	private EditText mNewPwdEt; // 新密码
 
 	@InjectView(id = R.id.tv_change_pwd, click = "changePwd")
 	private TextView mChangePwdTv; // 修改密码按钮
@@ -85,13 +89,6 @@ public class ChangePwdActivity extends VerifyCodeActivity {
 
 	// ---------------------------------------------------- Private methods
 	/**
-	 * TODO: 获取验证码。
-	 */
-	public void getVerifyCode() {
-		doGetVerifyCode(PurposeEnum.RESET_PWD.value());
-	}
-
-	/**
 	 * 修改密码。
 	 */
 	public void changePwd() {
@@ -115,9 +112,9 @@ public class ChangePwdActivity extends VerifyCodeActivity {
 
 		// request
 		String account = mAccountEt.getText().toString();
-		String pwd = mPwdEt.getText().toString();
-		String verifyCode = mVerifyCodeEt.getText().toString();
-		AccountAPI.resetPassword(this, account, verifyCode, pwd, listener);
+		String oldPwd = mOldPwdEt.getText().toString();
+		String newPwd = mNewPwdEt.getText().toString();
+		AccountAPI.changePassword(this, account, oldPwd, newPwd, listener);
 	}
 
 	/**
@@ -149,22 +146,17 @@ public class ChangePwdActivity extends VerifyCodeActivity {
 	 */
 	private boolean checkInput() {
 		// 账号
-		if (!checkAccount()) {
+		if (!AccountChecker.check(this, mAccountEt)) {
 			return false;
 		}
 
-		// 密码
-		String pwd = mPwdEt.getText().toString();
-		if (TextUtils.isEmpty(pwd)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_pwd);
+		// 旧密码
+		if (!InputChecker.check(this, mOldPwdEt)) {
 			return false;
 		}
 
-		// 验证码
-		String verifyCode = mVerifyCodeEt.getText().toString();
-		if (TextUtils.isEmpty(verifyCode)) {
-			ToastHelper.toast(this,
-					R.string.personal_login_hint_input_verifycode);
+		// 新密码
+		if (!InputChecker.check(this, mNewPwdEt)) {
 			return false;
 		}
 
