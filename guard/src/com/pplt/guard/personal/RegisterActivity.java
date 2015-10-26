@@ -1,7 +1,6 @@
 package com.pplt.guard.personal;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -17,6 +16,8 @@ import com.pplt.guard.R;
 import com.pplt.guard.comm.api.AccountAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
 import com.pplt.guard.comm.response.ResponseParser;
+import com.pplt.guard.personal.checker.AccountChecker;
+import com.pplt.guard.personal.checker.InputChecker;
 import com.pplt.ui.TitleBar;
 
 /**
@@ -75,43 +76,6 @@ public class RegisterActivity extends VerifyCodeActivity {
 	}
 
 	/**
-	 * 检查输入。
-	 * 
-	 * @return 输入是否完整。
-	 */
-	private boolean checkInput() {
-		// 账号
-		if (!checkAccount()) {
-			return false;
-		}
-
-		// 密码
-		String pwd = mPwdEt.getText().toString();
-		if (TextUtils.isEmpty(pwd)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_pwd);
-			return false;
-		}
-
-		// 验证码
-		String verifyCode = mVerifyCodeEt.getText().toString();
-		if (TextUtils.isEmpty(verifyCode)) {
-			ToastHelper.toast(this,
-					R.string.personal_login_hint_input_verifycode);
-			return false;
-		}
-
-		// 昵称
-		String nickName = mNicknameEt.getText().toString();
-		if (TextUtils.isEmpty(nickName)) {
-			ToastHelper.toast(this,
-					R.string.personal_register_hint_input_nickname);
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
 	 * 注册。
 	 */
 	public void register() {
@@ -167,5 +131,34 @@ public class RegisterActivity extends VerifyCodeActivity {
 		// fail
 		String msg = ResponseCodeHelper.getHint(this, code);
 		ToastHelper.toast(this, msg);
+	}
+
+	/**
+	 * 检查输入。
+	 * 
+	 * @return 输入是否完整。
+	 */
+	private boolean checkInput() {
+		// 账号
+		if (!AccountChecker.check(this, mAccountEt)) {
+			return false;
+		}
+
+		// 验证码
+		if (!InputChecker.check(this, mVerifyCodeEt)) {
+			return false;
+		}
+
+		// 密码
+		if (!InputChecker.check(this, mPwdEt)) {
+			return false;
+		}
+
+		// 昵称
+		if (!InputChecker.check(this, mNicknameEt)) {
+			return false;
+		}
+
+		return true;
 	}
 }

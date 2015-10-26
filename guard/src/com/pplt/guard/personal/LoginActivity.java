@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ import cn.sharesdk.wechat.friends.Wechat;
 
 import com.android.volley.Response;
 import com.hipalsports.entity.UserInfo;
-import com.jty.util.FormatHelper;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
@@ -32,6 +30,8 @@ import com.pplt.guard.R;
 import com.pplt.guard.comm.api.AccountAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
 import com.pplt.guard.comm.response.ResponseParser;
+import com.pplt.guard.personal.checker.AccountChecker;
+import com.pplt.guard.personal.checker.InputChecker;
 import com.pplt.guard.personal.pwd.RetrievePwdActivity;
 
 /**
@@ -71,8 +71,6 @@ public class LoginActivity extends BaseActivity {
 
 	@InjectView(id = R.id.iv_qq, click = "qqLogin")
 	private View mQQIv; // QQ登录
-
-	private static int mTimes = 0; // 次数
 
 	// ---------------------------------------------------- Override methods
 	@Override
@@ -125,26 +123,13 @@ public class LoginActivity extends BaseActivity {
 	 */
 	private boolean checkInput() {
 		// 账号
-		String account = mAccountEt.getText().toString();
-		if (TextUtils.isEmpty(account)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
-			return false;
-		}
-		if (!FormatHelper.isEmail(account) && !FormatHelper.isPhone(account)) {
-			ToastHelper.toast(this,
-					R.string.personal_login_hint_input_right_account);
+		if (!AccountChecker.check(this, mAccountEt)) {
 			return false;
 		}
 
 		// 密码
-		String pwd = mPwdEt.getText().toString();
-		if (TextUtils.isEmpty(pwd)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_pwd);
+		if (!InputChecker.check(this, mPwdEt)) {
 			return false;
-		}
-
-		// 验证码
-		if (mTimes >= 3) {
 		}
 
 		return true;
@@ -198,7 +183,6 @@ public class LoginActivity extends BaseActivity {
 		}
 
 		// fail
-		mTimes++;
 		String hint = ResponseCodeHelper.getHint(this, code);
 		ToastHelper.toast(this, hint);
 	}

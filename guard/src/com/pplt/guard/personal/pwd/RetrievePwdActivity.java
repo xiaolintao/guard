@@ -1,7 +1,6 @@
 package com.pplt.guard.personal.pwd;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +16,8 @@ import com.pplt.guard.comm.api.AccountAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
 import com.pplt.guard.comm.response.ResponseParser;
 import com.pplt.guard.personal.VerifyCodeActivity;
+import com.pplt.guard.personal.checker.AccountChecker;
+import com.pplt.guard.personal.checker.InputChecker;
 import com.pplt.ui.TitleBar;
 
 /**
@@ -184,15 +185,12 @@ public class RetrievePwdActivity extends VerifyCodeActivity {
 	 */
 	private boolean checkValidateAccountNumber() {
 		// 账号
-		if (!checkAccount()) {
+		if (!AccountChecker.check(this, mAccountEt)) {
 			return false;
 		}
 
 		// 验证码
-		String verifyCode = mVerifyCodeEt.getText().toString();
-		if (TextUtils.isEmpty(verifyCode)) {
-			ToastHelper.toast(this,
-					R.string.personal_login_hint_input_verifycode);
+		if (!InputChecker.check(this, mVerifyCodeEt)) {
 			return false;
 		}
 
@@ -206,9 +204,7 @@ public class RetrievePwdActivity extends VerifyCodeActivity {
 	 */
 	private boolean checkResetPwd() {
 		// 密码
-		String pwd = mPwdEt.getText().toString();
-		if (TextUtils.isEmpty(pwd)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_new_pwd);
+		if (!InputChecker.check(this, mPwdEt)) {
 			return false;
 		}
 

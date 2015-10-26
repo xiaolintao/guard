@@ -6,7 +6,6 @@ import java.util.TimerTask;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +19,7 @@ import com.pplt.guard.R;
 import com.pplt.guard.comm.api.AccountAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
 import com.pplt.guard.comm.response.ResponseParser;
+import com.pplt.guard.personal.checker.AccountChecker;
 
 /**
  * 账号。
@@ -51,35 +51,13 @@ public class VerifyCodeActivity extends BaseActivity {
 		}
 	};
 
-	// ---------------------------------------------------- Protected methods
-	/**
-	 * 检查账号。
-	 * 
-	 * @return 账号格式是否正确。
-	 */
-	protected boolean checkAccount() {
-		String account = mAccountEt.getText().toString();
-
-		if (TextUtils.isEmpty(account)) {
-			ToastHelper.toast(this, R.string.personal_login_hint_input_account);
-			return false;
-		}
-		if (!FormatHelper.isEmail(account) && !FormatHelper.isPhone(account)) {
-			ToastHelper.toast(this,
-					R.string.personal_login_hint_input_right_account);
-			return false;
-		}
-
-		return true;
-	}
-
 	// ---------------------------------------------------- Private methods
 	/**
 	 * 获取验证码。
 	 */
 	protected void doGetVerifyCode(int purpose) {
 		// 检查账号
-		if (!checkAccount()) {
+		if (!AccountChecker.check(this, mAccountEt)) {
 			return;
 		}
 
