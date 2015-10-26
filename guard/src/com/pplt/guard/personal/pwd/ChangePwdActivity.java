@@ -117,7 +117,7 @@ public class ChangePwdActivity extends VerifyCodeActivity {
 		String account = mAccountEt.getText().toString();
 		String pwd = mPwdEt.getText().toString();
 		String verifyCode = mVerifyCodeEt.getText().toString();
-		AccountAPI.rePassword(this, account, verifyCode, pwd, listener);
+		AccountAPI.resetPassword(this, account, verifyCode, pwd, listener);
 	}
 
 	/**
@@ -127,18 +127,16 @@ public class ChangePwdActivity extends VerifyCodeActivity {
 	 *            响应包。
 	 */
 	private void dealChangePwd(String response) {
-		// check result
-		boolean result = ResponseParser.parseResult(response);
+		int code = ResponseParser.parseCode(response);
 
 		// success
-		if (result) {
+		if (code == 0) {
 			ToastHelper.toast(this, R.string.personal_retrieve_pwd_changed);
 			finish();
 			return;
 		}
 
 		// fail
-		int code = ResponseParser.parseCode(response);
 		String hint = ResponseCodeHelper.getHint(this, code);
 		ToastHelper.toast(this, hint);
 	}

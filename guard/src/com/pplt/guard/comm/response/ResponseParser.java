@@ -14,19 +14,6 @@ public class ResponseParser {
 
 	// ---------------------------------------------------- Public methods
 	/**
-	 * 解析 : success字段。
-	 * 
-	 * @param response
-	 *            response数据。
-	 * @return success字段。
-	 */
-	public static boolean parseResult(String response) {
-		ResponseEntity entity = parseEntity(response);
-
-		return entity != null ? entity.success : false;
-	}
-
-	/**
 	 * 解析 : errorCode字段。
 	 * 
 	 * @param response

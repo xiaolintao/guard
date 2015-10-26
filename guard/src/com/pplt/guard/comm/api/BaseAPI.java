@@ -18,6 +18,6 @@ public class BaseAPI {
 	 * 获取BASE URL.
 	 */
 	private static String getDefaultBaseUrl() {
-		return "http://192.168.0.101:8080/HiPalServices/";
+		return "http://192.168.0.100:8080/HiPalServices/";
 	}
 }

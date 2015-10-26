@@ -133,7 +133,7 @@ public class AccountAPI extends BaseAPI {
 	 * @param listener
 	 *            volley response listener.
 	 */
-	public static void rePassword(Context context, String account,
+	public static void resetPassword(Context context, String account,
 			String captcha, String password, Response.Listener<String> listener) {
 		RequestParams params = new RequestParams();
 		params.put("accountNumber", account);
@@ -141,7 +141,7 @@ public class AccountAPI extends BaseAPI {
 		params.put("password", password);
 		params.put("type", getAccountType(account));
 
-		VolleyHelper.post(context, BASE_URL + "users/rePassword",
+		VolleyHelper.post(context, BASE_URL + "users/resetPassword",
 				params.toString(), listener);
 	}
 

@@ -7,21 +7,11 @@ import java.util.List;
  */
 public class ResponseEntity {
 
-	public boolean success;
-
 	public int errorCode;
 
 	public String errorMessage;
 
 	public List<String> data;
-
-	public boolean getSuccess() {
-		return success;
-	}
-
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
 
 	public int getErrorCode() {
 		return errorCode;

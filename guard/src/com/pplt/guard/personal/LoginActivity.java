@@ -185,23 +185,22 @@ public class LoginActivity extends BaseActivity {
 	 *            响应包。
 	 */
 	private void dealLoginResponse(String response) {
-		// check result
-		boolean result = ResponseParser.parseResult(response);
-		if (!result) {
-			mTimes++;
+		int code = ResponseParser.parseCode(response);
 
-			int code = ResponseParser.parseCode(response);
-			String hint = ResponseCodeHelper.getHint(this, code);
-			ToastHelper.toast(this, hint);
+		// success
+		if (code == 0) {
+			UserInfo user = ResponseParser.parse(response, UserInfo.class);
+			Global.setUser(user);
+
+			Jump.toMain(this);
+			finish();
 			return;
 		}
 
-		// 用户信息
-		UserInfo user = ResponseParser.parse(response, UserInfo.class);
-		Global.setUser(user);
-
-		Jump.toMain(this);
-		finish();
+		// fail
+		mTimes++;
+		String hint = ResponseCodeHelper.getHint(this, code);
+		ToastHelper.toast(this, hint);
 	}
 
 	/**
