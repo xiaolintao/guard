@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/step1_panel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,7 +9,7 @@
     android:paddingRight="@dimen/edge_margin" >
 
     <EditText
-        android:id="@+id/et_phone"
+        android:id="@+id/et_account"
         style="@style/style_input"
         android:layout_marginTop="@dimen/line_margin"
         android:hint="@string/personal_login_hint_account"
@@ -43,7 +44,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_next"
+        android:id="@+id/tv_validate_account_number"
         style="@style/style_text_medium"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
@@ -51,12 +52,4 @@
         android:background="@drawable/btn_blue"
         android:gravity="center"
         android:text="@string/next" />
-
-    <TextView
-        android:id="@+id/tv_hint"
-        style="@style/style_label_medium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp" />
-
 </LinearLayout>

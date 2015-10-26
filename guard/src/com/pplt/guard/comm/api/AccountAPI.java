@@ -14,7 +14,38 @@ import com.jty.util.volley.VolleyHelper;
  */
 public class AccountAPI extends BaseAPI {
 
-	// ---------------------------------------------------- Login
+	// ---------------------------------------------------- Public methods
+	/**
+	 * 注册。
+	 * 
+	 * @param context
+	 *            context.
+	 * @param account
+	 *            账号。
+	 * @param password
+	 *            密码。
+	 * @param captcha
+	 *            验证码。
+	 * @param nickName
+	 *            昵称。
+	 * @param listener
+	 *            volley response listener.
+	 */
+	public static void register(Context context, String account,
+			String password, String captcha, String nickName,
+			Response.Listener<String> listener) {
+
+		RequestParams params = new RequestParams();
+		params.put("accountNumber", account);
+		params.put("type", getAccountType(account));
+		params.put("password", password);
+		params.put("captcha", captcha);
+		params.put("nickName", nickName);
+
+		VolleyHelper.post(context, BASE_URL + "users/register",
+				params.toString(), listener);
+	}
+
 	/**
 	 * 登录.
 	 * 
@@ -67,60 +98,30 @@ public class AccountAPI extends BaseAPI {
 	}
 
 	/**
-	 * 获取验证码（修改密码时）
-	 * 
-	 * @param conext
-	 *            context.
-	 * @param account
-	 *            账号。
-	 * @param listener
-	 *            volley response listener.
-	 */
-	public static void getCaptcha(Context context, String account, int purpose,
-			Response.Listener<String> listener) {
-		RequestParams params = new RequestParams();
-		params.put("accountNumber", account);
-		params.put("type", getAccountType(account));
-		params.put("purpose", purpose);
-		params.put("locale", getLocale());
-
-		VolleyHelper.post(context, BASE_URL + "users/getCaptcha",
-				params.toString(), listener);
-	}
-
-	/**
-	 * 注册。
+	 * 验证账号。
 	 * 
 	 * @param context
 	 *            context.
 	 * @param account
 	 *            账号。
-	 * @param password
-	 *            密码。
 	 * @param captcha
 	 *            验证码。
-	 * @param nickName
-	 *            昵称。
 	 * @param listener
 	 *            volley response listener.
 	 */
-	public static void register(Context context, String account,
-			String password, String captcha, String nickName,
-			Response.Listener<String> listener) {
-
+	public static void validateAccountNumber(Context context, String account,
+			String captcha, Response.Listener<String> listener) {
 		RequestParams params = new RequestParams();
 		params.put("accountNumber", account);
-		params.put("type", getAccountType(account));
-		params.put("password", password);
 		params.put("captcha", captcha);
-		params.put("nickName", nickName);
+		params.put("type", getAccountType(account));
 
-		VolleyHelper.post(context, BASE_URL + "users/register",
+		VolleyHelper.post(context, BASE_URL + "users/validateAccountNumber",
 				params.toString(), listener);
 	}
 
 	/**
-	 * 修改密码。
+	 * 重设密码。
 	 * 
 	 * @param context
 	 *            context.
@@ -142,6 +143,30 @@ public class AccountAPI extends BaseAPI {
 		params.put("type", getAccountType(account));
 
 		VolleyHelper.post(context, BASE_URL + "users/resetPassword",
+				params.toString(), listener);
+	}
+
+	/**
+	 * 获取验证码。
+	 * 
+	 * @param conext
+	 *            context.
+	 * @param account
+	 *            账号。
+	 * @param purpose
+	 * @see PurposeEnum。
+	 * @param listener
+	 *            volley response listener.
+	 */
+	public static void getCaptcha(Context context, String account, int purpose,
+			Response.Listener<String> listener) {
+		RequestParams params = new RequestParams();
+		params.put("accountNumber", account);
+		params.put("type", getAccountType(account));
+		params.put("purpose", purpose);
+		params.put("locale", getLocale());
+
+		VolleyHelper.post(context, BASE_URL + "users/getCaptcha",
 				params.toString(), listener);
 	}
 

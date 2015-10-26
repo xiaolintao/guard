@@ -4,10 +4,10 @@
     <!-- unknown -->
     <string name="error_unkonwn">未知错误</string>
     
-    <!-- 账号 -->
-    <!-- 801 -->
-    <string name="error_account">账号尚未注册</string>
-    <!-- 802 -->
-    <string name="error_password">密码有误</string>
+    <!-- volley -->
+    <string name="volley_net_error">网络错误</string>
+    <string name="volley_server_error">服务器错误</string>
+    <string name="volley_auth_error">服务器认证错误</string>
+    <string name="volley_timeout">服务器连接超时</string>
 
 </resources>
