@@ -25,7 +25,8 @@ public class VolleyHelper {
 	public static final int RESULT_UNKNOWN_ERROR = -1;
 	public static final int RESULT_NET_ERROR = -2;
 	public static final int RESULT_SERVER_ERROR = -3;
-	public static final int RESULT_TIMEOUT = -4;
+	public static final int RESULT_AUTH_ERROR = -4;
+	public static final int RESULT_TIMEOUT = -5;
 
 	// ---------------------------------------------------- Private data
 	private static RequestQueue mQueue;
@@ -83,9 +84,10 @@ public class VolleyHelper {
 		int status = RESULT_UNKNOWN_ERROR;
 		if (error instanceof TimeoutError) {
 			status = RESULT_TIMEOUT;
-		} else if (error instanceof ServerError
-				|| error instanceof AuthFailureError) {
+		} else if (error instanceof ServerError) {
 			status = RESULT_SERVER_ERROR;
+		} else if (error instanceof AuthFailureError) {
+			status = RESULT_AUTH_ERROR;
 		} else if (error instanceof NetworkError
 				|| error instanceof NoConnectionError) {
 			status = RESULT_NET_ERROR;

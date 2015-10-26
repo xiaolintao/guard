@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.jty.util.ToastHelper;
+import com.jty.util.volley.VolleyCodeHelper;
 import com.kingdom.sdk.db.DBHelper;
 import com.kingdom.sdk.ioc.IocContainer;
 import com.pplt.guard.daemon.DaemonService;
@@ -100,7 +101,7 @@ public class TApplication extends Application {
 
 			@Override
 			public void onReceive(Context context, Intent intent) {
-				ToastHelper.toast(getApplicationContext(), "网络异常");
+				dealVolleyAbnormal(intent);
 			}
 		};
 
@@ -117,5 +118,17 @@ public class TApplication extends Application {
 			unregisterReceiver(mReceiver);
 			mReceiver = null;
 		}
+	}
+
+	/**
+	 * deal : volley异常
+	 */
+	private void dealVolleyAbnormal(Intent intent) {
+		int status = -1;
+		if (intent.hasExtra("status")) {
+			status = intent.getIntExtra("status", -1);
+		}
+		String hint = VolleyCodeHelper.getHint(this, status);
+		ToastHelper.toast(getApplicationContext(), hint);
 	}
 }
