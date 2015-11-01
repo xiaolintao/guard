@@ -34,5 +34,11 @@
     <string name="about_item_disclaimer">免责声明</string>
     <string name="about_hint_version_newest">当前版本已是最新，无需更新。</string>
     <string name="about_hint_download_newversion">最新版本%1$s，是否下载更新?</string>
+    
+    <!-- chat -->
+    <string name="chat_hint_register_fail">注册聊天室时出错</string>
+    <string name="chat_hint_login_fail">登录聊天室时出错</string>
+    <string name="chat_hint_user_removed">聊天室账号被删除</string>
+    <string name="chat_hint_connect_conflict">聊天室账号在其它地方登录</string>
 
 </resources>

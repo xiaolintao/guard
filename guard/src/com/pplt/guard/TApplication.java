@@ -1,18 +1,28 @@
 package com.pplt.guard;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.easemob.EMCallBack;
+import com.easemob.EMConnectionListener;
+import com.easemob.EMError;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMGroupManager;
 import com.hipalsports.entity.FriendDetail;
+import com.hipalsports.entity.UserInfo;
 import com.jty.util.ToastHelper;
 import com.jty.util.volley.VolleyCodeHelper;
 import com.kingdom.sdk.db.DBHelper;
 import com.kingdom.sdk.ioc.IocContainer;
+import com.pplt.chat.EMChatHelper;
 import com.pplt.guard.daemon.DaemonService;
 
 public class TApplication extends Application {
@@ -47,6 +57,9 @@ public class TApplication extends Application {
 		// daemon service
 		startDaemon();
 
+		// 环信
+		EMChatHelper.init(this);
+
 		// broadcast receiver
 		registerBroadcastReceiver();
 	}
@@ -62,8 +75,7 @@ public class TApplication extends Application {
 		super.onTerminate();
 	}
 
-
-	// ---------------------------------------------------- Private methods
+	// ---------------------------------------------------- initial
 	/**
 	 * initial database.
 	 */
@@ -89,6 +101,7 @@ public class TApplication extends Application {
 		stopService(service);
 	}
 
+	// ---------------------------------------------------- broadcast
 	/**
 	 * register broadcast receiver.
 	 */
@@ -101,11 +114,26 @@ public class TApplication extends Application {
 
 			@Override
 			public void onReceive(Context context, Intent intent) {
-				dealVolleyAbnormal(intent);
+				// 登录
+				if (intent.getAction().equals(Global.ACTION_LOGIN)) {
+					dealLogin(intent);
+				}
+
+				// 退出登录
+				if (intent.getAction().equals(Global.ACTION_LOGOUT)) {
+					dealLogout(intent);
+				}
+
+				// volley异常
+				if (intent.getAction().equals(Global.ACTION_VOLLEY_ABNORMAL)) {
+					dealVolleyAbnormal(intent);
+				}
 			}
 		};
 
 		IntentFilter filter = new IntentFilter();
+		filter.addAction(Global.ACTION_LOGIN); // 登录
+		filter.addAction(Global.ACTION_LOGOUT); // 退出登录
 		filter.addAction(Global.ACTION_VOLLEY_ABNORMAL); // volley异常
 		registerReceiver(mReceiver, filter);
 	}
@@ -121,6 +149,28 @@ public class TApplication extends Application {
 	}
 
 	/**
+	 * deal : 登录。
+	 */
+	private void dealLogin(Intent intent) {
+		// check user information
+		UserInfo userInfo = Global.getUser();
+		if (userInfo == null) {
+			return;
+		}
+
+		// 环信登录
+		final Integer userId = userInfo.getUserId();
+		final String pwd = EMChatHelper.getPwd(userId);
+		EMChatLogin(userId + "", pwd);
+	}
+
+	/**
+	 * deal : 退出登录。
+	 */
+	private void dealLogout(Intent intent) {
+	}
+
+	/**
 	 * deal : volley异常
 	 */
 	private void dealVolleyAbnormal(Intent intent) {
@@ -129,6 +179,147 @@ public class TApplication extends Application {
 			status = intent.getIntExtra("status", -1);
 		}
 		String hint = VolleyCodeHelper.getHint(this, status);
-		ToastHelper.toast(getApplicationContext(), hint);
+		ToastHelper.toast(this, hint);
+	}
+
+	// ---------------------------------------------------- 环信
+	private final static int MESSAGE_SHOW = 100;
+	@SuppressLint("HandlerLeak")
+	private Handler mHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == MESSAGE_SHOW) {
+				int resId = msg.arg1;
+				ToastHelper.toast(getApplicationContext(), resId);
+			}
+		}
+	};
+
+	/**
+	 * 环信：登录。
+	 */
+	private void EMChatLogin(final String userId, final String pwd) {
+		EMChatManager.getInstance().login(userId, pwd, new EMCallBack() {
+
+			@Override
+			public void onSuccess() {
+				Log.d(TAG, "EMChatLogin onSuccess.");
+
+				onEMChatLoginSuccess();
+			}
+
+			@Override
+			public void onProgress(int progress, String status) {
+			}
+
+			@Override
+			public void onError(int code, String message) {
+				if (code == EMError.INVALID_PASSWORD_USERNAME) {
+					EMChatRegister(userId + "", pwd);
+				} else {
+					showMessage(R.string.chat_hint_login_fail);
+				}
+			}
+		});
+	}
+
+	/**
+	 * 环信：注册。
+	 */
+	private void EMChatRegister(final String userId, final String pwd) {
+		EMChatHelper.register(userId, pwd, new EMCallBack() {
+
+			@Override
+			public void onSuccess() {
+				EMChatLoginAgain(userId, pwd);
+			}
+
+			@Override
+			public void onProgress(int progress, String status) {
+			}
+
+			@Override
+			public void onError(int code, String message) {
+				showMessage(R.string.chat_hint_register_fail);
+			}
+		});
+	}
+
+	/**
+	 * 环信：登录。
+	 */
+	private void EMChatLoginAgain(final String userId, final String pwd) {
+		EMChatManager.getInstance().login(userId, pwd, new EMCallBack() {
+
+			@Override
+			public void onSuccess() {
+				Log.d(TAG, "EMChatLoginAgain onSuccess.");
+
+				onEMChatLoginSuccess();
+			}
+
+			@Override
+			public void onProgress(int progress, String status) {
+			}
+
+			@Override
+			public void onError(int code, String message) {
+				showMessage(R.string.chat_hint_login_fail);
+			}
+		});
+	}
+
+	/**
+	 * 环信：login成功。
+	 */
+	private void onEMChatLoginSuccess() {
+		// load
+		EMGroupManager.getInstance().loadAllGroups();
+		EMChatManager.getInstance().loadAllConversations();
+
+		// listener
+		registerEMChatListener();
+	}
+
+	/**
+	 * 环信：listener.
+	 */
+	private void registerEMChatListener() {
+		// connect
+		registerEMConnectionListener();
+	}
+
+	/**
+	 * 环信：connect listener
+	 */
+	private void registerEMConnectionListener() {
+		EMConnectionListener listener = new EMConnectionListener() {
+
+			@Override
+			public void onDisconnected(final int error) {
+				if (error == EMError.USER_REMOVED) {
+					showMessage(R.string.chat_hint_user_removed);
+				} else if (error == EMError.CONNECTION_CONFLICT) {
+					showMessage(R.string.chat_hint_connect_conflict);
+				}
+
+				Jump.logout(getApplicationContext());
+			}
+
+			@Override
+			public void onConnected() {
+			}
+		};
+
+		EMChatManager.getInstance().addConnectionListener(listener);
+	}
+
+	private void showMessage(int resId) {
+		Message msg = mHandler.obtainMessage();
+		msg.what = MESSAGE_SHOW;
+		msg.arg1 = resId;
+
+		mHandler.sendMessage(msg);
 	}
 }

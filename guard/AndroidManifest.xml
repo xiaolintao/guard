@@ -16,6 +16,17 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 环信 start -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 环信 end -->
+
     <application
         android:name="com.pplt.guard.TApplication"
         android:allowBackup="true"
@@ -35,32 +46,32 @@
         <activity
             android:name="com.pplt.guard.MainActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <!-- common -->
         <activity
             android:name="com.pplt.guard.WrapperActivity"
             android:screenOrientation="portrait" />
-        
+
         <!-- 个人中心 -->
         <activity
             android:name="com.pplt.guard.personal.RegisterActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.pplt.guard.personal.ProfileActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.pplt.guard.personal.pwd.RetrievePwdActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.pplt.guard.personal.pwd.ChangePwdActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.pplt.guard.personal.setting.About"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.pplt.guard.personal.setting.Disclaimer"
             android:screenOrientation="portrait" />
-        
+
         <!-- 联系人 -->
         <activity
             android:name="com.pplt.guard.contact.ContactEditActivity"
@@ -68,27 +79,33 @@
         <activity
             android:name="com.pplt.guard.contact.ContactChoiceActivity"
             android:screenOrientation="portrait" />
-        
+
         <!-- service -->
-        <service android:name="com.pplt.guard.daemon.DaemonService"  android:exported="false" >
-            <intent-filter >
+        <service
+            android:name="com.pplt.guard.daemon.DaemonService"
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.jty.stock.daemon.DaemonService" />
             </intent-filter>
         </service>
+
+        <!-- share SDK start -->
+        <activity
+            android:name="cn.sharesdk.framework.ShareSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.pplt.guard.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- share SDK end -->
         
-      <!-- share SDK -->
-      <activity
-           android:name="cn.sharesdk.framework.ShareSDKUIShell"
-           android:theme="@android:style/Theme.Translucent.NoTitleBar"
-           android:configChanges="keyboardHidden|orientation|screenSize"
-           android:windowSoftInputMode="stateHidden|adjustResize" />
-       
-       <!-- 微信分享回调 -->
-       <activity
-           android:name="com.pplt.guard.wxapi.WXEntryActivity"
-           android:theme="@android:style/Theme.Translucent.NoTitleBar"
-           android:configChanges="keyboardHidden|orientation|screenSize"
-           android:exported="true" />
+        <!-- 环信 start -->
+        <meta-data android:name="EASEMOB_APPKEY"  android:value="pplt#pplt" />
+    	<service android:name="com.easemob.chat.EMChatService" />
+        <!-- 环信 end -->
     </application>
 
 </manifest>
