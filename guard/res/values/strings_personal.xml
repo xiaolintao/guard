@@ -2,7 +2,7 @@
 <resources>
     
     <!-- login -->
-    <string name="login_lable_pplt">紫色密语</string>
+    <string name="login_lable_pplt">密闭空间</string>
     <string name="personal_login_hint_account">手机号码/邮箱</string>
     <string name="login_other_account">社交账号登录</string>
     <string name="login">立即登录</string>

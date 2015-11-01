@@ -8,12 +8,12 @@ import android.content.IntentFilter;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.hipalsports.entity.FriendDetail;
 import com.jty.util.ToastHelper;
 import com.jty.util.volley.VolleyCodeHelper;
 import com.kingdom.sdk.db.DBHelper;
 import com.kingdom.sdk.ioc.IocContainer;
 import com.pplt.guard.daemon.DaemonService;
-import com.pplt.guard.entity.Contact;
 
 public class TApplication extends Application {
 
@@ -69,7 +69,7 @@ public class TApplication extends Application {
 	 */
 	private void initDB() {
 		// tables
-		Class<?>[] list = new Class<?>[] { Contact.class };
+		Class<?>[] list = new Class<?>[] { FriendDetail.class };
 		DBHelper.addClass(list);
 
 		// single instance

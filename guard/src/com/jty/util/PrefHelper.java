@@ -9,13 +9,23 @@ import android.content.SharedPreferences;
  */
 public class PrefHelper {
 	// ---------------------------------------------------- Constants
-	private final static String PREF_NAME = "com.jty.stock";
+	private static String SUFFIX = "";
 
-	// ---------------------------------------------------- Constructor
+	// ---------------------------------------------------- Constructor & Setter
 	/**
 	 * Constructor.
 	 */
 	private PrefHelper() {
+	}
+
+	/**
+	 * 设置preferences的后缀。
+	 * 
+	 * @param suffix
+	 *            后缀。
+	 */
+	public static void setPrefSuffix(String suffix) {
+		SUFFIX = suffix;
 	}
 
 	// ---------------------------------------------------- Public methods
@@ -30,7 +40,8 @@ public class PrefHelper {
 	 *            value.
 	 */
 	public static void setString(Context context, String name, String value) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putString(name, value);
 		editor.commit();
@@ -49,7 +60,8 @@ public class PrefHelper {
 	 */
 	public static String getString(Context context, String name,
 			String defaultValue) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 
 		return settings.getString(name, defaultValue);
 	}
@@ -65,7 +77,8 @@ public class PrefHelper {
 	 *            value.
 	 */
 	public static void setInt(Context context, String name, int value) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putInt(name, value);
 		editor.commit();
@@ -83,7 +96,8 @@ public class PrefHelper {
 	 * @return value.
 	 */
 	public static int getInt(Context context, String name, int defaultValue) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 
 		return settings.getInt(name, defaultValue);
 	}
@@ -99,7 +113,8 @@ public class PrefHelper {
 	 *            value.
 	 */
 	public static void setLong(Context context, String name, long value) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putLong(name, value);
 		editor.commit();
@@ -117,7 +132,8 @@ public class PrefHelper {
 	 * @return value.
 	 */
 	public static long getLong(Context context, String name, long defaultValue) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 
 		return settings.getLong(name, defaultValue);
 	}
@@ -133,7 +149,8 @@ public class PrefHelper {
 	 *            value.
 	 */
 	public static void setFloat(Context context, String name, float value) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putFloat(name, value);
 		editor.commit();
@@ -152,7 +169,8 @@ public class PrefHelper {
 	 */
 	public static float getFloat(Context context, String name,
 			float defaultValue) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 
 		return settings.getFloat(name, defaultValue);
 	}
@@ -168,7 +186,8 @@ public class PrefHelper {
 	 *            value.
 	 */
 	public static void setBoolean(Context context, String name, boolean value) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 		SharedPreferences.Editor editor = settings.edit();
 		editor.putBoolean(name, value);
 		editor.commit();
@@ -187,8 +206,17 @@ public class PrefHelper {
 	 */
 	public static boolean getBoolean(Context context, String name,
 			boolean defaultValue) {
-		SharedPreferences settings = context.getSharedPreferences(PREF_NAME, 1);
+		SharedPreferences settings = context.getSharedPreferences(
+				getPrefName(context), 1);
 
 		return settings.getBoolean(name, defaultValue);
+	}
+
+	// ---------------------------------------------------- Private methods
+	private static String getPrefName(Context context) {
+		String packageName = context.getPackageName();
+
+		return SUFFIX != null && SUFFIX.length() > 0 ? packageName + "_"
+				+ SUFFIX : packageName;
 	}
 }

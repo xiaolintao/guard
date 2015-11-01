@@ -2,7 +2,7 @@
 <resources>
 
     <!-- app -->
-    <string name="app_name">紫色密语</string>
+    <string name="app_name">密闭空间</string>
     <string name="press_twice_exit">再按一次退出</string>
 
     <!-- common -->

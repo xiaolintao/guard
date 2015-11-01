@@ -3,9 +3,6 @@ package com.pplt.guard;
 import android.content.Context;
 import android.content.Intent;
 
-import com.jty.util.JSonUtils;
-import com.pplt.guard.contact.ContactEditActivity;
-import com.pplt.guard.entity.Contact;
 import com.pplt.guard.personal.LoginActivity;
 
 /**
@@ -61,25 +58,6 @@ public class Jump {
 	}
 
 	// ---------------------------------------------------- Contact
-	/**
-	 * 跳转：编辑联系人。
-	 * 
-	 * @param context
-	 *            context.
-	 * @param contact
-	 *            联系人。
-	 */
-	public static void toContactEdit(Context context, Contact contact) {
-		Intent intent = new Intent(context, ContactEditActivity.class);
-
-		if (contact != null) {
-			String json = JSonUtils.toJSon(contact);
-			intent.putExtra(Global.EXTRA_CONTACT, json);
-		}
-
-		context.startActivity(intent);
-	}
-
 
 	// ---------------------------------------------------- Public methods
 	/**

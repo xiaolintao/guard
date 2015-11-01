@@ -32,7 +32,7 @@
                 android:layout_marginTop="@dimen/common_line_spacing"
                 android:cacheColorHint="@android:color/transparent"
                 android:divider="@android:color/transparent"
-                android:dividerHeight="@dimen/common_line_spacing"
+                android:dividerHeight="0dp"
                 android:listSelector="@drawable/common_btn_pressed_mark_dark" />
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>

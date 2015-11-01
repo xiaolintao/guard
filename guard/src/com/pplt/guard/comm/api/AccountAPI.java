@@ -91,6 +91,7 @@ public class AccountAPI extends BaseAPI {
 		RequestParams params = new RequestParams();
 		params.put("bindId", bindId);
 		params.put("nickName", nickName);
+		params.put("gender", gender);
 		params.put("logoUrl", avatar);
 
 		VolleyHelper.post(context, BASE_URL + "users/bindAccount",

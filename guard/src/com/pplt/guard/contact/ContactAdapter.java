@@ -4,20 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.jty.util.ToastHelper;
-import com.pplt.guard.Jump;
+import com.hipalsports.entity.FriendDetail;
 import com.pplt.guard.R;
-import com.pplt.guard.entity.Contact;
-import com.pplt.guard.entity.ContactDataHelper;
-import com.pplt.ui.DlgHelper;
 
 /**
  * 联系人：adapter。
@@ -27,25 +23,22 @@ public class ContactAdapter extends BaseAdapter {
 	// ----------------------------------------------- Constants
 	/** 模式 */
 	public final static int MODE_BROWSE = 0; // 浏览
-	public final static int MODE_EDIT = 1; // 编辑
-	public final static int MODE_CHOICE = 2; // 选择
+	public final static int MODE_CHOICE = 1; // 选择
 
 	// ----------------------------------------------- Private data
-	private Context mContext; // context
 	private LayoutInflater mInflater; // layout inflater
 
-	private List<Contact> mData; // data
+	private List<FriendDetail> mData; // data
 
 	private int mMode = MODE_BROWSE;
 	private List<Long> mSelectedIds = new ArrayList<Long>();
 
 	// ----------------------------------------------- Constructor & Setting
 	public ContactAdapter(Context context) {
-		mContext = context;
 		mInflater = LayoutInflater.from(context);
 	}
 
-	public void setData(List<Contact> data) {
+	public void setData(List<FriendDetail> data) {
 		mData = data;
 
 		notifyDataSetChanged();
@@ -74,14 +67,16 @@ public class ContactAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Contact getItem(int position) {
+	public FriendDetail getItem(int position) {
 		return position >= 0 && position <= getCount() - 1 ? mData
 				.get(position) : null;
 	}
 
 	@Override
 	public long getItemId(int position) {
-		return position;
+		FriendDetail item = getItem(position);
+
+		return item != null ? item.getId() : -1;
 	}
 
 	@Override
@@ -97,31 +92,18 @@ public class ContactAdapter extends BaseAdapter {
 			holder = (Holder) convertView.getTag();
 		}
 
-		final Contact entity = getItem(position);
+		final FriendDetail entity = getItem(position);
 
-		// 姓名
-		holder.nameTv.setText(entity.getName());
+		// 头像
 
-		// 摘要
-		String summary = ContactHelper.getSummary(mContext, entity);
-		holder.summaryTv.setText(summary);
+		// 昵称
+		holder.nickNameTv.setText(entity.getNickName());
 
 		// 选择
 		holder.selectCb.setVisibility(mMode == MODE_CHOICE ? View.VISIBLE
 				: View.GONE);
 		final boolean isSelected = isSelected(entity.getId());
 		holder.selectCb.setChecked(isSelected);
-
-		// 删除
-		holder.deleteTv.setVisibility(mMode == MODE_EDIT ? View.VISIBLE
-				: View.GONE);
-		holder.deleteTv.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				delete(entity);
-			}
-		});
 
 		// convert view
 		boolean enable = mMode != MODE_BROWSE;
@@ -130,9 +112,7 @@ public class ContactAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
-				if (mMode == MODE_EDIT) {
-					Jump.toContactEdit(mContext, entity);
-				} else if (mMode == MODE_CHOICE) {
+				if (mMode == MODE_CHOICE) {
 					switchSelection(entity.getId());
 				}
 			}
@@ -184,55 +164,6 @@ public class ContactAdapter extends BaseAdapter {
 
 	// ----------------------------------------------- Private methods
 	/**
-	 * 删除。
-	 * 
-	 * @param contact
-	 *            contact.
-	 */
-	private void delete(final Contact contact) {
-		String format = mContext.getText(R.string.contact_hint_delete)
-				.toString();
-		String message = String.format(format, contact.getName());
-
-		DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				long id = contact.getId();
-				if (ContactDataHelper.delete(id) != 0) {
-					remove(id);
-				}else {
-					ToastHelper.toast(mContext, R.string.delete_fail);
-				}
-			}
-		};
-
-		DlgHelper.showAlertDialog(mContext, R.string.contact_title_delete, message, listener);
-	}
-
-	/**
-	 * 移除。
-	 * 
-	 * @param id
-	 *            联系人id.
-	 */
-	private void remove(long id) {
-		if (mData == null || mData.size() == 0) {
-			return;
-		}
-
-		for (Contact contact : mData) {
-			if (contact.getId() == id) {
-				mData.remove(contact);
-				break;
-			}
-		}
-
-		notifyDataSetChanged();
-	}
-
-	// ----------------------------------------------- Private methods
-	/**
 	 * 设置visibility.
 	 */
 	void setVisibility(View convertView, int resId, int visibility) {
@@ -252,19 +183,18 @@ public class ContactAdapter extends BaseAdapter {
 	}
 
 	class Holder {
-		TextView nameTv; // 姓名
-		TextView summaryTv; // 摘要
+		ImageView photoIv; // 头像
+		TextView nickNameTv; // 昵称
 
-		TextView deleteTv; // 删除
 		ToggleButton selectCb; // 选择
+		View divider; // 分隔线
 
 		public Holder(View convertView) {
-			nameTv = (TextView) convertView.findViewById(R.id.tv_name);
-			summaryTv = (TextView) convertView.findViewById(R.id.tv_summary);
-
-			deleteTv = (TextView) convertView.findViewById(R.id.tv_delete);
+			photoIv = (ImageView) convertView.findViewById(R.id.iv_photo);
+			nickNameTv = (TextView) convertView.findViewById(R.id.tv_name);
 
 			selectCb = (ToggleButton) convertView.findViewById(R.id.cb_select);
+			divider = convertView.findViewById(R.id.iv_divider);
 		}
 	}
 

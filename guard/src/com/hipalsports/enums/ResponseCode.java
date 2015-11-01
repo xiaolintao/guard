@@ -11,6 +11,7 @@ public enum ResponseCode {
 	// 账号
 	ACCOUNT_EXISTS(100200, "账号已存在"),
 	ACCOUNT_NOT_EXISTS(100201, "账号不存在"),
+	ACCOUNT_BIND_FAIL(100202, "账号绑定时出错"),
 	
 	// 验证码
 	CAPTCHA_ERROR(100210, "验证码有误"),
@@ -21,6 +22,10 @@ public enum ResponseCode {
 	// 密码
 	PASSWORD_ERROR(100220, "密码有误"),
 	UPDATE_PASSWORD_FAIL(100221, "重设密码时出错"),
+	
+	// 用户
+	USER_NOT_EXISTS(100230,"用户不存在"),
+	GET_FRIENDS_FAIL(100231, "获取好友列表时出错"),
 	
 	// common
 	UNKNOWN(-1, "未知错误"),

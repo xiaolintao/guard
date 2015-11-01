@@ -28,6 +28,9 @@ public class RequestParams {
 		Iterator<Entry<String, Object>> it = mValues.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, Object> entry = it.next();
+			if (entry.getValue() == null) {
+				continue;
+			}
 
 			if (sb.length() != 0) {
 				sb.append("&");
@@ -35,11 +38,7 @@ public class RequestParams {
 
 			sb.append(entry.getKey());
 			sb.append("=");
-			if (entry.getValue() != null) {
-				sb.append(entry.getValue());
-			} else {
-				sb.append("");
-			}
+			sb.append(entry.getValue());
 		}
 
 		return sb.toString();

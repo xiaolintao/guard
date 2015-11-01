@@ -8,13 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Response;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.hipalsports.entity.FriendDetail;
+import com.hipalsports.entity.UserInfo;
+import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
-import com.pplt.guard.Jump;
+import com.pplt.guard.Global;
 import com.pplt.guard.R;
-import com.pplt.guard.entity.Contact;
-import com.pplt.guard.entity.ContactDataHelper;
+import com.pplt.guard.comm.api.FriendAPI;
+import com.pplt.guard.comm.response.ResponseCodeHelper;
+import com.pplt.guard.comm.response.ResponseParser;
 import com.pplt.ui.EmbededListView;
 import com.pplt.ui.TitleBar;
 
@@ -61,6 +66,7 @@ public class ContactFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 
+		refreshFromDB();
 		refresh();
 	}
 
@@ -74,7 +80,6 @@ public class ContactFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-				Jump.toContactEdit(getActivity(), null);
 			}
 		});
 	}
@@ -85,16 +90,81 @@ public class ContactFragment extends Fragment {
 	private void initViews() {
 		// adapter
 		mAdapter = new ContactAdapter(getActivity());
-		mAdapter.setMode(ContactAdapter.MODE_EDIT);
+		mAdapter.setMode(ContactAdapter.MODE_CHOICE);
 		mListView.setAdapter(mAdapter);
 	}
 
 	/**
-	 * 刷新。
+	 * 刷新：from server。
 	 */
 	private void refresh() {
-		List<Contact> list = ContactDataHelper.getContacts("");
-		mAdapter.setData(list);
+		// check
+		UserInfo user = Global.getUser();
+		if (user == null) {
+			return;
+		}
+
+		// listener
+		Response.Listener<String> listener = new Response.Listener<String>() {
+
+			@Override
+			public void onResponse(String response) {
+				if (!isAdded() || isDetached()) {
+					return;
+				}
+
+				if (response == null) {
+					return;
+				}
+
+				dealRefresh(response);
+			}
+		};
+
+		// request
+		int userId = Global.getUser().getUserId();
+		String lastUpdateTime = FriendDataHelper.getLastUpdateTime(userId);
+		FriendAPI.getFriends(getActivity(), userId, lastUpdateTime, 0, 100,
+				listener);
+	}
+
+	/**
+	 * deal : 刷新响应包。
+	 * 
+	 * @param response
+	 *            响应包。
+	 */
+	private void dealRefresh(String response) {
+		int code = ResponseParser.parseCode(response);
+
+		// success
+		if (code == 0) {
+			// 写数据库
+			List<FriendDetail> list = ResponseParser.parseList(response,
+					FriendDetail.class);
+			FriendDataHelper.add(list);
+
+			refreshFromDB();
+			return;
+		}
+
+		// fail
+		String hint = ResponseCodeHelper.getHint(getActivity(), code);
+		ToastHelper.toast(getActivity(), hint);
+	}
+
+	/**
+	 * 刷新：from database
+	 */
+	private void refreshFromDB() {
+		UserInfo user = Global.getUser();
+		if (user == null) {
+			return;
+		}
+
+		int userId = Global.getUser().getUserId();
+		List<FriendDetail> data = FriendDataHelper.queryList(userId, 0);
+		mAdapter.setData(data);
 	}
 
 }

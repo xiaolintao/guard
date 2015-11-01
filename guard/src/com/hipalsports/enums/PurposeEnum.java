@@ -5,7 +5,8 @@ package com.hipalsports.enums;
  */
 public enum PurposeEnum {
 
-	UNKNOWN(-1, "UNKNOWN"), REGISTER(0, "REGISTER"), RESET_PWD(1, "RESET_PWD");
+	UNKNOWN(-1, "UNKNOWN"), REGISTER(0, "REGISTER"), RESET_PWD(1, "RESET_PWD"),
+	VALIDATE_ACCOUNT(2,"VALIDATE_ACCOUNT");
 	
 	private final int value;
 	private final String reasonPhrase;
