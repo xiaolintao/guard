@@ -124,9 +124,9 @@ public class SystemSettingFragment extends Fragment {
 		// 用户信息
 		Global.resetUser();
 
-		// 跳转：登录
-		Jump.logout(getActivity());
-		Jump.toLogin(getActivity());
+		// 跳转：主界面
+		Jump.toMain(getActivity());
+		Jump.sendLogoutBroadcast(getActivity());
 	}
 
 	// ---------------------------------------------------- Private methods

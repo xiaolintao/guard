@@ -178,6 +178,7 @@ public class LoginActivity extends BaseActivity {
 			Global.setUser(user);
 
 			Jump.toMain(this);
+			Jump.sendLoginBroadcast(this);
 			finish();
 			return;
 		}

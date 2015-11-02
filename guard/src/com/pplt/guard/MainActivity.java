@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
 			new Tab(R.string.main_tab_contact, R.drawable.mainbar_focus,
 					ContactFragment.class.getName()),
 
-			/** 个人 */
+					/** 个人 */
 					new Tab(R.string.main_tab_me, R.drawable.mainbar_me,
 							PersonalFragment.class.getName()) };
 
@@ -170,6 +170,7 @@ public class MainActivity extends BaseActivity {
 
 				// 退出登录
 				if (intent.getAction().equals(Global.ACTION_LOGOUT)) {
+					Jump.toLogin(MainActivity.this);
 					finish();
 				}
 			}

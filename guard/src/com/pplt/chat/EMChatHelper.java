@@ -6,7 +6,6 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.os.AsyncTask;
 
 import com.easemob.EMCallBack;
 import com.easemob.EMError;
@@ -37,6 +36,9 @@ public class EMChatHelper {
 
 		EMChat.getInstance().init(context);
 
+		// 取消自动登录
+		EMChat.getInstance().setAutoLogin(false);
+
 		// 代码混淆时，需设置成false
 		EMChat.getInstance().setDebugMode(true);
 	}
@@ -55,39 +57,35 @@ public class EMChatHelper {
 	 */
 	public static void register(final String userId, final String pwd,
 			final EMCallBack callback) {
-		new AsyncTask<Void, Void, Integer>() {
-
+		new Thread(new Runnable() {
 			@Override
-			protected Integer doInBackground(Void... params) {
-				try {
-					EMChatManager.getInstance().createAccountOnServer(userId,
-							pwd);
-				} catch (EaseMobException e) {
-					int errorCode = e.getErrorCode();
-					if (errorCode == EMError.USER_ALREADY_EXISTS) {
-						return EMError.NO_ERROR;
+			public void run() {
+				int result = registerSync(userId, pwd);
+
+				if (callback != null) {
+					if (result == 0) {
+						callback.onSuccess();
 					} else {
-						return errorCode;
+						callback.onError(result, "");
 					}
 				}
+			}
+		}).start();
+	}
 
+	private static int registerSync(final String userId, final String pwd) {
+		try {
+			EMChatManager.getInstance().createAccountOnServer(userId, pwd);
+		} catch (EaseMobException e) {
+			int errorCode = e.getErrorCode();
+			if (errorCode == EMError.USER_ALREADY_EXISTS) {
 				return EMError.NO_ERROR;
+			} else {
+				return errorCode;
 			}
+		}
 
-			@Override
-			protected void onPostExecute(Integer result) {
-				if (callback == null) {
-					return;
-				}
-
-				if (result == 0) {
-					callback.onSuccess();
-				} else {
-					callback.onError(result, "");
-				}
-			}
-
-		}.execute();
+		return EMError.NO_ERROR;
 	}
 
 	// ---------------------------------------------------- Private methods

@@ -10,18 +10,6 @@ import com.pplt.guard.personal.LoginActivity;
  */
 public class Jump {
 
-	/**
-	 * 跳转：主界面.
-	 * 
-	 * @param context
-	 *            context.
-	 */
-	public static void toMain(Context context) {
-		Intent intent = new Intent(context, MainActivity.class);
-
-		context.startActivity(intent);
-	}
-
 	// ---------------------------------------------------- Account
 	/**
 	 * 跳转：登录。
@@ -36,28 +24,42 @@ public class Jump {
 	}
 
 	/**
-	 * 退出登录。
-	 * 
-	 * 1. MainActivity=>clear top.
-	 * 
-	 * 2. 给MainActivity发退出广播。
+	 * 跳转：主界面.
 	 * 
 	 * @param context
 	 *            context.
 	 */
-	public static void logout(Context context) {
-		// clear top
-		Intent intentClearTop = new Intent(context, MainActivity.class);
-		intentClearTop.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		context.startActivity(intentClearTop);
+	public static void toMain(Context context) {
+		Intent intent = new Intent(context, MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-		// broadcast
-		Intent intentLogout = new Intent();
-		intentLogout.setAction(Global.ACTION_LOGOUT);
-		context.sendBroadcast(intentLogout);
+		context.startActivity(intent);
 	}
 
-	// ---------------------------------------------------- Contact
+	// ---------------------------------------------------- Broadcast
+	/**
+	 * 发送广播：登录。
+	 * 
+	 * @param context
+	 *            context.
+	 */
+	public static void sendLoginBroadcast(Context context) {
+		Intent intent = new Intent();
+		intent.setAction(Global.ACTION_LOGIN);
+		context.sendBroadcast(intent);
+	}
+
+	/**
+	 * 发送广播：退出登录。
+	 * 
+	 * @param context
+	 *            context.
+	 */
+	public static void sendLogoutBroadcast(Context context) {
+		Intent intent = new Intent();
+		intent.setAction(Global.ACTION_LOGOUT);
+		context.sendBroadcast(intent);
+	}
 
 	// ---------------------------------------------------- Public methods
 	/**

@@ -1,5 +1,7 @@
 package com.pplt.guard;
 
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.BroadcastReceiver;
@@ -15,6 +17,8 @@ import com.easemob.EMCallBack;
 import com.easemob.EMConnectionListener;
 import com.easemob.EMError;
 import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMContactListener;
+import com.easemob.chat.EMContactManager;
 import com.easemob.chat.EMGroupManager;
 import com.hipalsports.entity.FriendDetail;
 import com.hipalsports.entity.UserInfo;
@@ -68,6 +72,9 @@ public class TApplication extends Application {
 	public void onTerminate() {
 		// daemon service
 		stopDaemon();
+
+		// 环信
+		EMChatManager.getInstance().logout();
 
 		// broadcast receiver
 		unregisterBroadcastReceiver();
@@ -168,6 +175,8 @@ public class TApplication extends Application {
 	 * deal : 退出登录。
 	 */
 	private void dealLogout(Intent intent) {
+		// 环信
+		EMChatManager.getInstance().logout();
 	}
 
 	/**
@@ -216,7 +225,7 @@ public class TApplication extends Application {
 			@Override
 			public void onError(int code, String message) {
 				if (code == EMError.INVALID_PASSWORD_USERNAME) {
-					EMChatRegister(userId + "", pwd);
+					EMChatRegister(userId, pwd);
 				} else {
 					showMessage(R.string.chat_hint_login_fail);
 				}
@@ -279,21 +288,47 @@ public class TApplication extends Application {
 		EMChatManager.getInstance().loadAllConversations();
 
 		// listener
-		registerEMChatListener();
+		setEMChatListener();
+	}
+
+	/**
+	 * 环信：退出登录。
+	 */
+	void EMChatLogout() {
+		EMChatManager.getInstance().logout(new EMCallBack() {
+
+			@Override
+			public void onSuccess() {
+				Log.d(TAG, "EMChatLogout onSuccess ");
+			}
+
+			@Override
+			public void onProgress(int progress, String status) {
+			}
+
+			@Override
+			public void onError(int code, String message) {
+				Log.d(TAG, "EMChatLogout onError: code =  " + code
+						+ ",message = " + message);
+			}
+		});
 	}
 
 	/**
 	 * 环信：listener.
 	 */
-	private void registerEMChatListener() {
+	private void setEMChatListener() {
 		// connect
-		registerEMConnectionListener();
+		setEMConnectionListener();
+
+		// contact
+		setEMContactListener();
 	}
 
 	/**
 	 * 环信：connect listener
 	 */
-	private void registerEMConnectionListener() {
+	private void setEMConnectionListener() {
 		EMConnectionListener listener = new EMConnectionListener() {
 
 			@Override
@@ -304,7 +339,8 @@ public class TApplication extends Application {
 					showMessage(R.string.chat_hint_connect_conflict);
 				}
 
-				Jump.logout(getApplicationContext());
+				EMChatManager.getInstance().logout();
+				Jump.sendLogoutBroadcast(getApplicationContext());
 			}
 
 			@Override
@@ -313,6 +349,42 @@ public class TApplication extends Application {
 		};
 
 		EMChatManager.getInstance().addConnectionListener(listener);
+	}
+
+	/**
+	 * 环信：contact listener
+	 */
+	private void setEMContactListener() {
+		EMContactListener listener = new EMContactListener() {
+
+			@Override
+			public void onContactAdded(List<String> usernameList) {
+				Log.d(TAG, "onContactAdded = " + usernameList);
+			}
+
+			@Override
+			public void onContactDeleted(List<String> usernameList) {
+				Log.d(TAG, "onContactDeleted = " + usernameList);
+			}
+
+			@Override
+			public void onContactInvited(String username, String reason) {
+				Log.d(TAG, "onContactInvited username = " + username
+						+ ", reason=" + reason);
+			}
+
+			@Override
+			public void onContactAgreed(String username) {
+				Log.d(TAG, "onContactAgreed = " + username);
+			}
+
+			@Override
+			public void onContactRefused(String username) {
+				Log.d(TAG, "onContactRefused = " + username);
+			}
+		};
+
+		EMContactManager.getInstance().setContactListener(listener);
 	}
 
 	private void showMessage(int resId) {
