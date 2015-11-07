@@ -20,6 +20,7 @@ import cn.sharesdk.wechat.friends.Wechat;
 
 import com.android.volley.Response;
 import com.hipalsports.entity.UserInfo;
+import com.hipalsports.enums.GenderEnum;
 import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
@@ -327,10 +328,15 @@ public class LoginActivity extends BaseActivity {
 		// request
 		String userId = db.getUserId();
 		String userName = db.getUserName();
-		String gender = db.getUserGender();
+		int gender = getGender(db.getUserGender());
 		String userIcon = db.getUserIcon();
-		AccountAPI.thirdLogin(this, userId, userName, gender, userIcon,
-				listener);
+		AccountAPI.thirdLogin(this, platformName, userId, userName, gender,
+				userIcon, listener);
+	}
+
+	private int getGender(String userGender) {
+		return userGender != null && userGender.compareToIgnoreCase("m") == 0 ? GenderEnum.MAN
+				.value() : GenderEnum.WOMEN.value();
 	}
 
 	private void toast(int resid) {
