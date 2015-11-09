@@ -205,7 +205,7 @@ public class AccountAPI extends BaseAPI {
 	}
 
 	/**
-	 * 更新用户信息：此接口不能更新phone&email&password。
+	 * 更新用户信息：此接口不更新phone&email&password字段。
 	 * 
 	 * @param conext
 	 *            context.
@@ -229,7 +229,7 @@ public class AccountAPI extends BaseAPI {
 	}
 
 	/**
-	 * 更新账号。
+	 * 更新账号：此接口更新phone&email字段。
 	 * 
 	 * @param context
 	 *            context.

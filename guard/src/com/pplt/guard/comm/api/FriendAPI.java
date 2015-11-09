@@ -18,7 +18,7 @@ public class FriendAPI extends BaseAPI {
 	 * @param userId
 	 *            用户id.
 	 * @param lastUpdateTime
-	 *            最后更新时间。
+	 *            最后更新时间：非null - 查询此时间之后的记录 null - 查找全部。
 	 * @param offset
 	 *            offset.
 	 * @param length
@@ -32,7 +32,9 @@ public class FriendAPI extends BaseAPI {
 
 		RequestParams params = new RequestParams();
 		params.put("userId", userId);
-		params.put("lastUpdateTime", lastUpdateTime);
+		if (lastUpdateTime != null) {
+			params.put("lastUpdateTime", lastUpdateTime);
+		}
 		params.put("offset", offset);
 		params.put("length", length);
 
