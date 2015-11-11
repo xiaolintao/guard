@@ -3,6 +3,9 @@ package com.pplt.guard;
 import android.content.Context;
 import android.content.Intent;
 
+import com.alibaba.fastjson.JSON;
+import com.hipalsports.entity.FriendDetail;
+import com.pplt.guard.chat.EMChatActivity;
 import com.pplt.guard.personal.LoginActivity;
 
 /**
@@ -61,7 +64,7 @@ public class Jump {
 		context.sendBroadcast(intent);
 	}
 
-	// ---------------------------------------------------- Public methods
+	// ---------------------------------------------------- Fragment
 	/**
 	 * 跳转：fragment.
 	 * 
@@ -75,5 +78,23 @@ public class Jump {
 		String title = context.getResources().getText(titleResId).toString();
 
 		WrapperActivity.start(context, title, fname);
+	}
+
+	// ---------------------------------------------------- Chat
+	/**
+	 * 跳转：聊天。
+	 * 
+	 * @param friend
+	 *            好友信息。
+	 */
+	public static void toChat(Context context, FriendDetail friend) {
+		Intent intent = new Intent(context, EMChatActivity.class);
+
+		if (friend != null) {
+			String data = JSON.toJSONString(friend);
+			intent.putExtra(Global.EXTRA_FRIEND_DETAIL, data);
+		}
+
+		context.startActivity(intent);
 	}
 }

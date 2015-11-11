@@ -55,6 +55,12 @@
         <activity
             android:name="com.pplt.guard.WrapperActivity"
             android:screenOrientation="portrait" />
+        
+        <!-- 聊天 -->
+        <activity
+            android:name="com.pplt.guard.chat.EMChatActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
 
         <!-- 个人中心 -->
         <activity

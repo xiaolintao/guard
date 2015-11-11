@@ -19,6 +19,8 @@
     <string name="delete">删除</string>
     <string name="select_all">全选</string>
     <string name="finish">完成</string>
+    <string name="clear">清空</string>
+    <string name="send">发送</string>
     
 	<string name="add_fail">添加出错</string>
     <string name="save_fail">保存出错</string>
@@ -35,10 +37,16 @@
     <string name="about_hint_version_newest">当前版本已是最新，无需更新。</string>
     <string name="about_hint_download_newversion">最新版本%1$s，是否下载更新?</string>
     
-    <!-- chat -->
+    <!-- chat room -->
     <string name="chat_hint_register_fail">注册聊天室时出错</string>
     <string name="chat_hint_login_fail">登录聊天室时出错</string>
     <string name="chat_hint_user_removed">聊天室账号被删除</string>
     <string name="chat_hint_connect_conflict">聊天室账号在其它地方登录</string>
+    
+    <!-- chat -->
+    <string name="chat_title">聊天</string>
+    <string name="chat_hint_clear_messages">是否清空聊天记录？</string>
+    <string name="chat_hint_input_content">请求输入内容</string>
+    <string name="chat_hint_send_message_fail">发送消息时出错</string>
 
 </resources>

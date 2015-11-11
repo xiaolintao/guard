@@ -1,4 +1,4 @@
-package com.pplt.chat;
+package com.pplt.guard.chat;
 
 import java.security.MessageDigest;
 import java.util.List;
@@ -11,6 +11,11 @@ import com.easemob.EMCallBack;
 import com.easemob.EMError;
 import com.easemob.chat.EMChat;
 import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMConversation;
+import com.easemob.chat.EMMessage;
+import com.easemob.chat.EMMessage.ChatType;
+import com.easemob.chat.MessageBody;
+import com.easemob.chat.TextMessageBody;
 import com.easemob.exceptions.EaseMobException;
 
 /**
@@ -86,6 +91,56 @@ public class EMChatHelper {
 		}
 
 		return EMError.NO_ERROR;
+	}
+
+	// ---------------------------------------------------- Public methods
+	/**
+	 * 获取消息内容。
+	 * 
+	 * @param message
+	 *            消息体。
+	 * @return 内容。
+	 */
+	public static String getContent(EMMessage message) {
+		MessageBody body = message.getBody();
+		if (body != null && body instanceof TextMessageBody) {
+			return ((TextMessageBody) body).getMessage();
+		}
+
+		return message.getBody().toString();
+	}
+
+	/**
+	 * 发送文本消息。
+	 * 
+	 * @param username
+	 *            接收者。
+	 * @param content
+	 *            消息内容。
+	 * @param callback
+	 *            回调。
+	 */
+	public static void sendMessage(String username, String content,
+			EMCallBack callback) {
+		EMConversation conversation = EMChatManager.getInstance()
+				.getConversation(username);
+
+		// 创建一条文本消息
+		EMMessage message = EMMessage.createSendMessage(EMMessage.Type.TXT);
+		message.setChatType(ChatType.Chat);
+
+		// 设置消息body
+		TextMessageBody txtBody = new TextMessageBody(content);
+		message.addBody(txtBody);
+
+		// 设置接收人
+		message.setReceipt(username);
+
+		// 把消息加入到此会话对象中
+		conversation.addMessage(message);
+
+		// 发送消息
+		EMChatManager.getInstance().sendMessage(message, callback);
 	}
 
 	// ---------------------------------------------------- Private methods

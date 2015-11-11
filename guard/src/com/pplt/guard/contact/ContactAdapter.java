@@ -106,17 +106,17 @@ public class ContactAdapter extends BaseAdapter {
 		holder.selectCb.setChecked(isSelected);
 
 		// convert view
-		boolean enable = mMode != MODE_BROWSE;
-		enable(convertView, enable);
-		convertView.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (mMode == MODE_CHOICE) {
-					switchSelection(entity.getId());
-				}
-			}
-		});
+		// boolean enable = mMode != MODE_BROWSE;
+		// enable(convertView, enable);
+		// convertView.setOnClickListener(new View.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(View v) {
+		// if (mMode == MODE_CHOICE) {
+		// switchSelection(entity.getId());
+		// }
+		// }
+		// });
 
 		return convertView;
 	}
@@ -145,7 +145,7 @@ public class ContactAdapter extends BaseAdapter {
 	 * @param id
 	 *            联系人id.
 	 */
-	private void switchSelection(long id) {
+	public void switchSelection(long id) {
 		boolean has = false;
 		for (Long item : mSelectedIds) {
 			if (item == id) {
@@ -176,7 +176,7 @@ public class ContactAdapter extends BaseAdapter {
 	/**
 	 * 设置enable.
 	 */
-	private void enable(View view, boolean enable) {
+	void enable(View view, boolean enable) {
 		view.setEnabled(enable);
 		view.setFocusable(enable);
 		view.setClickable(enable);

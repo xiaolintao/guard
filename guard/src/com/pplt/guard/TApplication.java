@@ -26,7 +26,7 @@ import com.jty.util.ToastHelper;
 import com.jty.util.volley.VolleyCodeHelper;
 import com.kingdom.sdk.db.DBHelper;
 import com.kingdom.sdk.ioc.IocContainer;
-import com.pplt.chat.EMChatHelper;
+import com.pplt.guard.chat.EMChatHelper;
 import com.pplt.guard.daemon.DaemonService;
 
 public class TApplication extends Application {

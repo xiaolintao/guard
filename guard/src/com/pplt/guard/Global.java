@@ -38,9 +38,9 @@ public class Global {
 	/** Extra **/
 	public final static String EXTRA_UID = "extra uid"; // 用户id
 	public final static String EXTRA_PHONE = "extra phone"; // 手机号码
-	public final static String EXTRA_FILE_ID = "extra file id"; // 文件id
-	public final static String EXTRA_CONTACT = "extra contact"; // 联系人
-	public final static String EXTRA_IDS = "extra ids"; // id
+
+	/** Extra : 聊天 */
+	public final static String EXTRA_FRIEND_DETAIL = "extra friend detail"; // 好友信息
 
 	// ---------------------------------------------------- Global data
 	private static Context mContext; // context

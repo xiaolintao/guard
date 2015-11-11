@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.android.volley.Response;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
@@ -16,6 +18,7 @@ import com.jty.util.ToastHelper;
 import com.kingdom.sdk.ioc.InjectUtil;
 import com.kingdom.sdk.ioc.annotation.InjectView;
 import com.pplt.guard.Global;
+import com.pplt.guard.Jump;
 import com.pplt.guard.R;
 import com.pplt.guard.comm.api.FriendAPI;
 import com.pplt.guard.comm.response.ResponseCodeHelper;
@@ -38,7 +41,7 @@ public class ContactFragment extends Fragment {
 	@InjectView(id = R.id.list_view)
 	private EmbededListView mListView; // list view
 
-	ContactAdapter mAdapter; // adapter
+	private ContactAdapter mAdapter; // adapter
 
 	// ---------------------------------------------------- Override methods
 	@Override
@@ -90,8 +93,21 @@ public class ContactFragment extends Fragment {
 	private void initViews() {
 		// adapter
 		mAdapter = new ContactAdapter(getActivity());
-		mAdapter.setMode(ContactAdapter.MODE_CHOICE);
+		mAdapter.setMode(ContactAdapter.MODE_BROWSE);
 		mListView.setAdapter(mAdapter);
+
+		// list view
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				FriendDetail friend = mAdapter.getItem(position);
+				if (friend != null) {
+					Jump.toChat(getActivity(), friend);
+				}
+			}
+		});
 	}
 
 	/**
